@@ -1,43 +1,10 @@
 fileFormatVersion: 2
-guid: 6918ca3705c1d5f4984166ac98ad9e54
+guid: 0561be03b3c3d7a48945c0669fdd2ab0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3871381339000826362
-    second: gente_0
-  - first:
-      213: 8477082428076797919
-    second: gente_1
-  - first:
-      213: 7339086770398498537
-    second: gente_2
-  - first:
-      213: 8407528675356654963
-    second: gente_3
-  - first:
-      213: 6872866709762107701
-    second: gente_4
-  - first:
-      213: 6183923602654442492
-    second: gente_5
-  - first:
-      213: 7543203018789768617
-    second: gente_6
-  - first:
-      213: 3746228887326777866
-    second: gente_7
-  - first:
-      213: -7619964863887492126
-    second: gente_8
-  - first:
-      213: -7581951102329056975
-    second: gente_9
-  - first:
-      213: 7066484816081501488
-    second: gente_10
-  - first:
-      213: 2063332025525202658
-    second: gente_11
+      213: 8885591853307190532
+    second: masGente_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -146,233 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gente_0
-      rect:
-        serializedVersion: 2
-        x: 59
-        y: 698
-        width: 272
-        height: 326
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: af9683df0d8e9b530800000000000000
-      internalID: 3871381339000826362
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_1
-      rect:
-        serializedVersion: 2
-        x: 798
-        y: 1010
-        width: 42
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fdf29390e85a4a570800000000000000
-      internalID: 8477082428076797919
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_2
-      rect:
-        serializedVersion: 2
-        x: 1013
-        y: 1004
-        width: 11
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9ee0f55988ca9d560800000000000000
-      internalID: 7339086770398498537
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_3
-      rect:
-        serializedVersion: 2
-        x: 374
-        y: 677
-        width: 263
-        height: 275
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 37d3b8509ca8da470800000000000000
-      internalID: 8407528675356654963
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_4
-      rect:
-        serializedVersion: 2
-        x: 687
-        y: 678
-        width: 266
-        height: 235
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5396af7cbd3516f50800000000000000
-      internalID: 6872866709762107701
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_5
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 350
-        width: 177
-        height: 157
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cf33f56b0c5b1d550800000000000000
-      internalID: 6183923602654442492
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_6
-      rect:
-        serializedVersion: 2
-        x: 206
-        y: 357
-        width: 117
-        height: 177
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9ad4e931e27dea860800000000000000
-      internalID: 7543203018789768617
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_7
-      rect:
-        serializedVersion: 2
-        x: 377
-        y: 345
-        width: 261
-        height: 182
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a026b6c13574df330800000000000000
-      internalID: 3746228887326777866
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_8
-      rect:
-        serializedVersion: 2
-        x: 698
-        y: 353
-        width: 122
-        height: 169
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2eb370f1452704690800000000000000
-      internalID: -7619964863887492126
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_9
-      rect:
-        serializedVersion: 2
-        x: 809
-        y: 341
-        width: 116
-        height: 177
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1319b41b4af77c690800000000000000
-      internalID: -7581951102329056975
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_10
+      name: masGente_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 137
-        width: 14
-        height: 152
+        y: 683
+        width: 341
+        height: 341
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,30 +128,184 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 03dba391082311260800000000000000
-      internalID: 7066484816081501488
+      spriteID: 40dda7376b6ff4b70800000000000000
+      internalID: 8885591853307190532
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gente_11
+      name: masGente_1
       rect:
         serializedVersion: 2
-        x: 387
-        y: 0
-        width: 229
-        height: 239
+        x: 341
+        y: 683
+        width: 341
+        height: 341
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2eeed139b8d62ac10800000000000000
-      internalID: 2063332025525202658
+      spriteID: 84f102887bc5a864cba55ff10d5213a4
+      internalID: -1167495501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: masGente_2
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 683
+        width: 341
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 017fee45a009d80479cdd04bebade747
+      internalID: 1279731199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: masGente_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 342
+        width: 341
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22b35f6d2fa0b6241a961af16839f847
+      internalID: -917359245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: masGente_4
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 342
+        width: 341
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b1f29b549f6b974fb22e2ac8b678471
+      internalID: -1444268741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: masGente_5
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 342
+        width: 341
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75c28d8a8d621b7449d477f9a7325115
+      internalID: 150110813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: masGente_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 341
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6bd6cc1dbe3cc7459ae93359742b794
+      internalID: 640459012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: masGente_7
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 1
+        width: 341
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f2536b8ebe59e845b6ccf2448551f8c
+      internalID: -1007114599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: masGente_8
+      rect:
+        serializedVersion: 2
+        x: 682
+        y: 1
+        width: 341
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2fb74b7bc9986347a7b994d321e2184
+      internalID: 715072927
       vertices: []
       indices: 
       edges: []
@@ -413,7 +314,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0f3184e52dcf0cf4f8e97eff5e2b14e9
     internalID: 0
     vertices: []
     indices: 
@@ -423,18 +324,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      gente_0: 3871381339000826362
-      gente_1: 8477082428076797919
-      gente_10: 7066484816081501488
-      gente_11: 2063332025525202658
-      gente_2: 7339086770398498537
-      gente_3: 8407528675356654963
-      gente_4: 6872866709762107701
-      gente_5: 6183923602654442492
-      gente_6: 7543203018789768617
-      gente_7: 3746228887326777866
-      gente_8: -7619964863887492126
-      gente_9: -7581951102329056975
+      masGente_0: 8885591853307190532
+      masGente_1: -1167495501
+      masGente_2: 1279731199
+      masGente_3: -917359245
+      masGente_4: -1444268741
+      masGente_5: 150110813
+      masGente_6: 640459012
+      masGente_7: -1007114599
+      masGente_8: 715072927
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

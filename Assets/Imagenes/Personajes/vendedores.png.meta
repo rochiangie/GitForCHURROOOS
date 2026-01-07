@@ -1,43 +1,10 @@
 fileFormatVersion: 2
-guid: 6918ca3705c1d5f4984166ac98ad9e54
+guid: 21703f4268322fe45b29609f47c7493c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3871381339000826362
-    second: gente_0
-  - first:
-      213: 8477082428076797919
-    second: gente_1
-  - first:
-      213: 7339086770398498537
-    second: gente_2
-  - first:
-      213: 8407528675356654963
-    second: gente_3
-  - first:
-      213: 6872866709762107701
-    second: gente_4
-  - first:
-      213: 6183923602654442492
-    second: gente_5
-  - first:
-      213: 7543203018789768617
-    second: gente_6
-  - first:
-      213: 3746228887326777866
-    second: gente_7
-  - first:
-      213: -7619964863887492126
-    second: gente_8
-  - first:
-      213: -7581951102329056975
-    second: gente_9
-  - first:
-      213: 7066484816081501488
-    second: gente_10
-  - first:
-      213: 2063332025525202658
-    second: gente_11
+      213: 33633418921617307
+    second: vendedores_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -146,233 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gente_0
-      rect:
-        serializedVersion: 2
-        x: 59
-        y: 698
-        width: 272
-        height: 326
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: af9683df0d8e9b530800000000000000
-      internalID: 3871381339000826362
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_1
-      rect:
-        serializedVersion: 2
-        x: 798
-        y: 1010
-        width: 42
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fdf29390e85a4a570800000000000000
-      internalID: 8477082428076797919
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_2
-      rect:
-        serializedVersion: 2
-        x: 1013
-        y: 1004
-        width: 11
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9ee0f55988ca9d560800000000000000
-      internalID: 7339086770398498537
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_3
-      rect:
-        serializedVersion: 2
-        x: 374
-        y: 677
-        width: 263
-        height: 275
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 37d3b8509ca8da470800000000000000
-      internalID: 8407528675356654963
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_4
-      rect:
-        serializedVersion: 2
-        x: 687
-        y: 678
-        width: 266
-        height: 235
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5396af7cbd3516f50800000000000000
-      internalID: 6872866709762107701
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_5
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 350
-        width: 177
-        height: 157
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cf33f56b0c5b1d550800000000000000
-      internalID: 6183923602654442492
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_6
-      rect:
-        serializedVersion: 2
-        x: 206
-        y: 357
-        width: 117
-        height: 177
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9ad4e931e27dea860800000000000000
-      internalID: 7543203018789768617
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_7
-      rect:
-        serializedVersion: 2
-        x: 377
-        y: 345
-        width: 261
-        height: 182
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a026b6c13574df330800000000000000
-      internalID: 3746228887326777866
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_8
-      rect:
-        serializedVersion: 2
-        x: 698
-        y: 353
-        width: 122
-        height: 169
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 2eb370f1452704690800000000000000
-      internalID: -7619964863887492126
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_9
-      rect:
-        serializedVersion: 2
-        x: 809
-        y: 341
-        width: 116
-        height: 177
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1319b41b4af77c690800000000000000
-      internalID: -7581951102329056975
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: gente_10
+      name: vendedores_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 137
-        width: 14
-        height: 152
+        y: 678
+        width: 314
+        height: 346
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -381,30 +128,338 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 03dba391082311260800000000000000
-      internalID: 7066484816081501488
+      spriteID: b97a7639a6d777000800000000000000
+      internalID: 33633418921617307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: gente_11
+      name: vendedores_1
       rect:
         serializedVersion: 2
-        x: 387
-        y: 0
-        width: 229
-        height: 239
+        x: 328
+        y: 677
+        width: 256
+        height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 2eeed139b8d62ac10800000000000000
-      internalID: 2063332025525202658
+      spriteID: d991f2d2c82dcab4095715cd624e12f1
+      internalID: 427752011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_2
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 671
+        width: 393
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 041ca1c2c6997d44db83300834fe3f62
+      internalID: -1524344242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_3
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2384505bb42824044800970f55176a2f
+      internalID: -2140470048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_4
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 342
+        width: 249
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f586baa8ed4bc449bee5fb7cf2f10a5
+      internalID: 620173275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c3eb4005b9e90c46935ee5b5e8c95e5
+      internalID: -1680209797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_6
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde99da7a8ea4d54a9c6d06c70591b64
+      internalID: 129380500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_7
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0af6d74045eeeb8409d9a2eb0cd3c525
+      internalID: 1373840676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 293ba79d754fc29469b88f9b4f132e4f
+      internalID: -1939471689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_9
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 336
+        width: 339
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce1db455089faa43b3cb490b7dd8b10
+      internalID: 869130950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_10
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 346
+        width: 355
+        height: 312
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e24bd815e0a28d345ab60274940d1ab1
+      internalID: 937143536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_11
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 254
+        width: 256
+        height: 256
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 283e9dc54cac8ff47ad2691bb85715f9
+      internalID: 1952086502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 256
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 662056c69a3828544a2ee3b62264a1de
+      internalID: 719573841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 256
+        height: 337
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a48429ec8187d6c4b861e1fe0c4640d2
+      internalID: -306570363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_14
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 256
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 062d9a2e41ec82342a4ca0630252be08
+      internalID: -1303188434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: vendedores_15
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 28
+        width: 256
+        height: 313
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6363496918df7942bdd4def8099a3d3
+      internalID: -140596750
       vertices: []
       indices: 
       edges: []
@@ -413,7 +468,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0d8f82051e1d5844bbb916df305d3566
     internalID: 0
     vertices: []
     indices: 
@@ -423,18 +478,22 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      gente_0: 3871381339000826362
-      gente_1: 8477082428076797919
-      gente_10: 7066484816081501488
-      gente_11: 2063332025525202658
-      gente_2: 7339086770398498537
-      gente_3: 8407528675356654963
-      gente_4: 6872866709762107701
-      gente_5: 6183923602654442492
-      gente_6: 7543203018789768617
-      gente_7: 3746228887326777866
-      gente_8: -7619964863887492126
-      gente_9: -7581951102329056975
+      vendedores_0: 33633418921617307
+      vendedores_1: 427752011
+      vendedores_10: 937143536
+      vendedores_11: 1952086502
+      vendedores_12: 719573841
+      vendedores_13: -306570363
+      vendedores_14: -1303188434
+      vendedores_15: -140596750
+      vendedores_2: -1524344242
+      vendedores_3: -2140470048
+      vendedores_4: 620173275
+      vendedores_5: -1680209797
+      vendedores_6: 129380500
+      vendedores_7: 1373840676
+      vendedores_8: -1939471689
+      vendedores_9: 869130950
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
