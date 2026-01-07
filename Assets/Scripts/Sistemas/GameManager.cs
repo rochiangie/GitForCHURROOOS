@@ -57,13 +57,37 @@ public class GameManager : MonoBehaviour
         // Frenamos el tiempo DESPUÉS de mostrar la UI para evitar errores de frustum
         Invoke("PausarTiempo", 0.1f);
 
-        GameEvents.TriggerGameOver();
+        // Asegúrate de que GameEvents exista o comenta esta línea si da error
+        // GameEvents.TriggerGameOver(); 
     }
 
     private void PausarTiempo()
     {
         Time.timeScale = 0f;
     }
+
+    // --- NUEVOS MÉTODOS PARA BOTONES (OnClick) ---
+
+    /// <summary>
+    /// Carga la escena que sigue en el Build Settings.
+    /// </summary>
+    public void CargarSiguienteEscena()
+    {
+        Time.timeScale = 1f;
+        int escenaActual = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(escenaActual + 1);
+    }
+
+    /// <summary>
+    /// Carga la escena llamada específicamente "Juego".
+    /// </summary>
+    public void CargarEscenaJuego()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Juego");
+    }
+
+    // --- MÉTODOS EXISTENTES ---
 
     public void ReiniciarNivel()
     {
