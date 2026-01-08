@@ -1,35 +1,70 @@
 using UnityEngine;
+using System.Collections;
 
 public class PlayerActions : MonoBehaviour
 {
-    public int churros = 24;
-    public int plata = 0;
-    public LayerMask customerLayer;
-    public LayerMask npcLayer;
+    private PlayerStats stats;
+    private PlayerHealthSystem health;
+    private Animator anim;
+
+    [Header("Configuración de Acciones")]
+    public float drinkRecovery = 25f;
+    public float drinkCost = 5f;
+
+    private bool isDrunkEfecto = false;
+
+    void Start()
+    {
+        stats = GetComponent<PlayerStats>();
+        health = GetComponent<PlayerHealthSystem>();
+        anim = GetComponent<Animator>();
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) Vender();
-        if (Input.GetKeyDown(KeyCode.Q)) Pelear();
+        // Tecla E para refrescarse con una bebida (si tiene dinero)
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TomarBebida();
+        }
+
+        // Actualizar el parámetro en el Animator
+        // Es "Drunk" si tiene poca hidratación O si activó el efecto por script
+        bool currentDrunkState = (stats.hydration <= 20f || isDrunkEfecto);
+        anim.SetBool("setdrunk", currentDrunkState);
     }
 
-    void Vender()
+    public void TomarBebida()
     {
-        Collider2D customer = Physics2D.OverlapCircle(transform.position, 1.5f, customerLayer);
-        if (customer != null && churros > 0)
+        if (stats.money >= drinkCost)
         {
-            churros--;
-            plata += 1000;
-            AudioManager.Instance.GritarChurros();
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.ventaExitosa);
-            // Aquí podrías avisar al NPC que ya compró
+            stats.money -= drinkCost;
+            stats.hydration = Mathf.Min(stats.hydration + drinkRecovery, stats.maxStat);
+            stats.temperature = Mathf.Max(stats.temperature - 15f, 0);
+
+            Debug.Log("<color=blue>[ACCIÓN]</color> Tomaste una bebida fría. -$5");
+
+            // Si quieres que la bebida dé un efecto de mareo temporal (como la birra)
+            StartCoroutine(EfectoMareoTemporal(4f));
+        }
+        else
+        {
+            Debug.Log("<color=red>[ACCIÓN]</color> No tienes dinero para beber.");
         }
     }
 
-    void Pelear()
+    // Función pública que pueden llamar otros scripts (como el SunSystem que tenías)
+    public void SetDrunk(bool state)
     {
-        GetComponent<Animator>().SetTrigger("attack");
-        AudioManager.Instance.PlaySFX(AudioManager.Instance.golpePelea);
-        // Lógica de Raycast para empujar NPCs maleducados
+        isDrunkEfecto = state;
+        Debug.Log(state ? "Iniciando efecto mareo..." : "Efecto mareo terminado.");
+    }
+
+    // Corrutina para que el efecto se pase solo después de unos segundos
+    private IEnumerator EfectoMareoTemporal(float tiempo)
+    {
+        isDrunkEfecto = true;
+        yield return new WaitForSeconds(tiempo);
+        isDrunkEfecto = false;
     }
 }

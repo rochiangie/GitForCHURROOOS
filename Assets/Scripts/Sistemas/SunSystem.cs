@@ -2,53 +2,59 @@ using UnityEngine;
 
 public class SunSystem : MonoBehaviour
 {
-    public float heat = 0f;
-    public float heatRate = 2f;
-    private PlayerController player;
+    [Header("Configuración del Sol")]
+    public float heatIntensity = 2.5f; // Intensidad base del calor
 
-    void Start() => player = FindObjectOfType<PlayerController>();
+    private PlayerStats playerStats;
+    private PlayerActions playerActions;
+    private PlayerHealthSystem playerHealth;
 
-    void Update()
+    void Start()
     {
-        // Si el GameManager no existe o el juego terminó, no procesar
-        if (GameManager.Instance != null && GameManager.Instance.juegoTerminado) return;
-
-        // El calor sube constantemente
-        heat += heatRate * Time.deltaTime;
-
-        // Si llega a 100, Game Over a través de eventos o GameManager
-        if (heat >= 100)
-        {
-            if (GameManager.Instance != null) GameManager.Instance.GameOver();
-        }
-
-        // Tecla E para refrescarse
-        if (Input.GetKeyDown(KeyCode.E)) TomarBirra();
-    }
-
-    void TomarBirra()
-    {
-        heat = Mathf.Max(0, heat - 20f);
+        // Buscamos los componentes en el objeto con el Tag "Player"
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         if (player != null)
         {
-            player.SetDrunk(true);
-            // Avisar al sistema de eventos que tomamos una birra
-            GameEvents.TriggerBeerDrunk();
-        }
+            playerStats = player.GetComponent<PlayerStats>();
+            playerActions = player.GetComponent<PlayerActions>();
+            playerHealth = player.GetComponent<PlayerHealthSystem>();
 
-        if (AudioManager.Instance != null)
+            // Sincronizamos la intensidad del calor con el sistema de salud
+            playerHealth.heatGainRate = heatIntensity;
+        }
+        else
         {
-            AudioManager.Instance.PlaySFX(AudioManager.Instance.destapeBirra);
+            Debug.LogError("No se encontró un objeto con el Tag 'Player'.");
         }
-
-        // Se le pasa el efecto en 5 segundos
-        CancelInvoke("PassDrunk"); // Resetear el tiempo si toma otra
-        Invoke("PassDrunk", 5f);
     }
 
-    void PassDrunk()
+    void Update()
     {
-        if (player != null) player.SetDrunk(false);
+        // Si el jugador se desmaya, podrías detener la lógica aquí
+        if (playerStats != null && playerStats.temperature >= playerStats.maxStat)
+        {
+            return;
+        }
+
+        // Tecla E para refrescarse (Usando el sistema de acciones)
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (playerActions != null)
+            {
+                playerActions.TomarBebida();
+                // El efecto de "SetDrunk" ya está manejado dentro de TomarBebida() en PlayerActions
+            }
+        }
+
+        // Aquí podrías añadir lógica de tiempo (ej: a mediodía sube la intensidad)
+        SimularPasoDelTiempo();
+    }
+
+    void SimularPasoDelTiempo()
+    {
+        // Ejemplo: Si quisiéramos que el calor aumente con el tiempo
+        // heatIntensity += Time.deltaTime * 0.01f;
+        // if(playerHealth != null) playerHealth.heatGainRate = heatIntensity;
     }
 }
