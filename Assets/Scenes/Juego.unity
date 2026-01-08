@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 5854657}
   - component: {fileID: 5854658}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: campo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,8 +193,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -211,8 +211,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -249,7 +249,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -27.03875, y: -32.340435, z: -35.521492, w: -32.870636}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1045,13 +1045,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &200772453
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,13 +1323,155 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 1
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
+--- !u!1 &203806588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 203806589}
+  - component: {fileID: 203806591}
+  - component: {fileID: 203806590}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &203806589
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203806588}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 644533827}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &203806590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203806588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'aceptar
+
+'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 10
+  m_fontSizeBase: 10
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &203806591
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203806588}
+  m_CullTransparentMesh: 1
 --- !u!1 &206624587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,13 +1775,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &217609833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1896,13 +2046,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 0
+  nombre: NPC
+  personalidad: 0
   esVendedor: 1
+  esCliente: 0
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos: []
+  dialogoGrito: {fileID: 11400000, guid: 21bd817ab7df1e24fbb1a4b9c82c8dbf, type: 2}
 --- !u!1 &228825872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2267,13 +2420,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 0
+  nombre: NPC
+  personalidad: 0
   esVendedor: 1
+  esCliente: 0
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos: []
+  dialogoGrito: {fileID: 11400000, guid: 21bd817ab7df1e24fbb1a4b9c82c8dbf, type: 2}
 --- !u!1 &254639386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,13 +2748,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 1
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &264279672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2976,13 +3136,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 1
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &293537931
 GameObject:
   m_ObjectHideFlags: 0
@@ -3662,13 +3826,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 1
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &372324006
 GameObject:
   m_ObjectHideFlags: 0
@@ -4280,13 +4448,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 0
+  nombre: NPC
+  personalidad: 0
   esVendedor: 1
+  esCliente: 0
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos: []
+  dialogoGrito: {fileID: 11400000, guid: 21bd817ab7df1e24fbb1a4b9c82c8dbf, type: 2}
 --- !u!1 &435563455
 GameObject:
   m_ObjectHideFlags: 0
@@ -4756,13 +4927,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &467735555
 GameObject:
   m_ObjectHideFlags: 0
@@ -5467,8 +5642,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.089}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.299, y: 3.339}
-  m_SizeDelta: {x: 240.197, y: 124.664}
+  m_AnchoredPosition: {x: 17.588, y: 5.367}
+  m_SizeDelta: {x: 309.595, y: 190.189}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &625350024
 MonoBehaviour:
@@ -5483,7 +5658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.36779106, g: 0.7544658, b: 0.8962264, a: 0.48235294}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5508,6 +5683,127 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625350022}
   m_CullTransparentMesh: 1
+--- !u!1 &644533826
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 644533827}
+  - component: {fileID: 644533829}
+  - component: {fileID: 644533828}
+  - component: {fileID: 644533830}
+  m_Layer: 5
+  m_Name: aceptar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &644533827
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644533826}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 203806589}
+  m_Father: {fileID: 683610607}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 174.0815, y: -6.8059998}
+  m_SizeDelta: {x: 61.063, y: 13.612}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &644533828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644533826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &644533829
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644533826}
+  m_CullTransparentMesh: 1
+--- !u!114 &644533830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644533826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 644533828}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &645322491
 GameObject:
   m_ObjectHideFlags: 0
@@ -5561,6 +5857,71 @@ Transform:
   - {fileID: 482752801}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &683610606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 683610607}
+  - component: {fileID: 683610608}
+  m_Layer: 5
+  m_Name: ContenedorBotones
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &683610607
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683610606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1775903705}
+  - {fileID: 1119273742}
+  - {fileID: 644533827}
+  m_Father: {fileID: 1741366353}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 20.5, y: -110.5}
+  m_SizeDelta: {x: 215.325, y: 96.358}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &683610608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683610606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &694398056
 GameObject:
   m_ObjectHideFlags: 0
@@ -5592,11 +5953,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelDialogo: {fileID: 1741366352}
   textoNombre: {fileID: 1315851634}
-  textoDialogo: {fileID: 5854658}
-  botonContinuar: {fileID: 875670982}
-  botonComprar: {fileID: 1775903708}
-  botonVender: {fileID: 1119273745}
-  botonCerrar: {fileID: 1439823031}
+  textoContenido: {fileID: 5854658}
+  contenedorOpciones: {fileID: 683610606}
+  botonesOpciones:
+  - {fileID: 1775903708}
+  - {fileID: 1119273745}
+  - {fileID: 644533830}
+  textosBotones:
+  - {fileID: 1354554290}
+  - {fileID: 134777632}
+  - {fileID: 203806590}
+  typingSpeed: 0.04
 --- !u!4 &694398058
 Transform:
   m_ObjectHideFlags: 0
@@ -5978,6 +6345,7 @@ MonoBehaviour:
   staminaMax: 100
   temperature: 0
   temperatureMax: 42
+  ebriedad: 0
 --- !u!114 &765166873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6470,13 +6838,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 0
+  nombre: NPC
+  personalidad: 0
   esVendedor: 1
+  esCliente: 0
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos: []
+  dialogoGrito: {fileID: 11400000, guid: 21bd817ab7df1e24fbb1a4b9c82c8dbf, type: 2}
 --- !u!1 &799898177
 GameObject:
   m_ObjectHideFlags: 0
@@ -6818,127 +7189,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &875670978
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 875670979}
-  - component: {fileID: 875670981}
-  - component: {fileID: 875670980}
-  - component: {fileID: 875670982}
-  m_Layer: 5
-  m_Name: Continuar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &875670979
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875670978}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1847558388}
-  m_Father: {fileID: 1741366353}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 70.7, y: -33.7}
-  m_SizeDelta: {x: 61.063, y: 13.612}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &875670980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875670978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &875670981
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875670978}
-  m_CullTransparentMesh: 1
---- !u!114 &875670982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 875670978}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 875670980}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &917997284
 GameObject:
   m_ObjectHideFlags: 0
@@ -7877,13 +8127,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1053803160
 GameObject:
   m_ObjectHideFlags: 0
@@ -8213,17 +8467,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1119273741}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 134777631}
-  m_Father: {fileID: 1741366353}
+  m_Father: {fileID: 683610607}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -59.7, y: -33.7}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 102.3065, y: -6.8059998}
   m_SizeDelta: {x: 61.063, y: 13.612}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1119273743
@@ -8651,13 +8905,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 1
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1168655366
 GameObject:
   m_ObjectHideFlags: 0
@@ -9005,13 +9263,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 0
+  nombre: NPC
+  personalidad: 0
   esVendedor: 1
+  esCliente: 0
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos: []
+  dialogoGrito: {fileID: 11400000, guid: 21bd817ab7df1e24fbb1a4b9c82c8dbf, type: 2}
 --- !u!1 &1201521686
 GameObject:
   m_ObjectHideFlags: 0
@@ -9367,13 +9628,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 1
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1216890477
 GameObject:
   m_ObjectHideFlags: 0
@@ -9757,13 +10022,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 0
+  nombre: NPC
+  personalidad: 0
   esVendedor: 1
+  esCliente: 0
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos: []
+  dialogoGrito: {fileID: 11400000, guid: 21bd817ab7df1e24fbb1a4b9c82c8dbf, type: 2}
 --- !u!1 &1237815403
 GameObject:
   m_ObjectHideFlags: 0
@@ -10096,13 +10364,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1247472496
 GameObject:
   m_ObjectHideFlags: 0
@@ -10273,7 +10545,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 50.653}
+  m_AnchoredPosition: {x: -81.1, y: 87.7}
   m_SizeDelta: {x: 74.356, y: 16.009}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1315851633
@@ -10313,8 +10585,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10331,8 +10603,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11093,142 +11365,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1369183368
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1369183369}
-  - component: {fileID: 1369183371}
-  - component: {fileID: 1369183370}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1369183369
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369183368}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1439823034}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1369183370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369183368}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: x
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1369183371
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369183368}
-  m_CullTransparentMesh: 1
 --- !u!1 &1390751934
 GameObject:
   m_ObjectHideFlags: 0
@@ -11316,127 +11452,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1439823030
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1439823034}
-  - component: {fileID: 1439823033}
-  - component: {fileID: 1439823032}
-  - component: {fileID: 1439823031}
-  m_Layer: 5
-  m_Name: x
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1439823031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439823030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1439823032}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &1439823032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439823030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1439823033
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439823030}
-  m_CullTransparentMesh: 1
---- !u!224 &1439823034
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1439823030}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1369183369}
-  m_Father: {fileID: 1741366353}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 124.159, y: 51.852}
-  m_SizeDelta: {x: 14.932, y: 13.611}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1440209820
 GameObject:
   m_ObjectHideFlags: 0
@@ -12402,13 +12417,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 0
+  nombre: NPC
+  personalidad: 0
   esVendedor: 1
+  esCliente: 0
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos: []
+  dialogoGrito: {fileID: 11400000, guid: 21bd817ab7df1e24fbb1a4b9c82c8dbf, type: 2}
 --- !u!1 &1588702298
 GameObject:
   m_ObjectHideFlags: 0
@@ -12944,13 +12962,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 1
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1663917976
 GameObject:
   m_ObjectHideFlags: 0
@@ -13283,13 +13305,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 1
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1676131094
 GameObject:
   m_ObjectHideFlags: 0
@@ -13683,13 +13709,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1702162664
 GameObject:
   m_ObjectHideFlags: 0
@@ -14043,12 +14073,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 625350023}
-  - {fileID: 1775903705}
-  - {fileID: 1119273742}
-  - {fileID: 875670979}
-  - {fileID: 1439823034}
   - {fileID: 5854656}
   - {fileID: 1315851632}
+  - {fileID: 683610607}
   m_Father: {fileID: 1216890481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -14575,13 +14602,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 0
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1775903704
 GameObject:
   m_ObjectHideFlags: 0
@@ -14608,17 +14639,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775903704}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1354554289}
-  m_Father: {fileID: 1741366353}
+  m_Father: {fileID: 683610607}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -59.699997, y: -33.7}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 30.531502, y: -6.8059998}
   m_SizeDelta: {x: 61.063, y: 13.612}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1775903706
@@ -14971,142 +15002,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1106388640}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1847558387
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1847558388}
-  - component: {fileID: 1847558390}
-  - component: {fileID: 1847558389}
-  m_Layer: 5
-  m_Name: Continuar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1847558388
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847558387}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 875670979}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1847558389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847558387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Continuar
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 10
-  m_fontSizeBase: 10
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_TextWrappingMode: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 0
-  m_ActiveFontFeatures: 6e72656b
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_EmojiFallbackSupport: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &1847558390
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1847558387}
-  m_CullTransparentMesh: 1
 --- !u!1 &1870111753
 GameObject:
   m_ObjectHideFlags: 0
@@ -15751,13 +15646,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 1
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1906176034
 GameObject:
   m_ObjectHideFlags: 0
@@ -16579,13 +16478,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  esCliente: 1
+  nombre: Cliente
+  personalidad: 0
   esVendedor: 0
+  esCliente: 1
   quiereComprar: 1
-  iconoChurro: {fileID: 0}
-  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
-  precioAgua: 10
+  precioBaseAgua: 20
+  pagoBaseChurro: 120
   recuperacionHidratacion: 30
+  poolDialogos:
+  - {fileID: 11400000, guid: 4b5cf072e489f634f8b78fe57ae0be41, type: 2}
+  dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &2070885955
 GameObject:
   m_ObjectHideFlags: 0

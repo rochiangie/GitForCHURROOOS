@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7524864f1b68546996052669978931, type: 3}
   m_Name: ClienteCopado
   m_EditorClassIdentifier: 
-  nombrePersonaje: Copado
-  propuestaInicial: "Holis, est\xE1n frescos?"
-  respuestaAmable: Porsupollo
-  respuestaNeutral: Sip
-  respuestaCerrada: a vos que te parece?
+  nombreNPC: 
+  personalidad: 1
+  propuesta: ASDad
+  opciones:
+  - asda
+  - sad
+  - asd
+  reacciones:
+  - as
+  - asD
+  - ASDa
+  esVenta: 1
+  esGrito: 0

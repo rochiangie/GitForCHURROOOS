@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7524864f1b68546996052669978931, type: 3}
   m_Name: VendedorForro
   m_EditorClassIdentifier: 
-  nombrePersonaje: Forro
-  propuestaInicial: Y esa mierda que vendes?
-  respuestaAmable: se llaman churros
-  respuestaNeutral: mira quien habla
-  respuestaCerrada: "tienen la forma pero ni ah\xED el gusto de los tuyos"
+  nombreNPC: 
+  personalidad: 0
+  propuesta: hey, amigo, tenes churros?
+  opciones:
+  - Si, obvio
+  - No, disculpa
+  - Esto que parece?
+  reacciones:
+  - Genial
+  - Mal ahi
+  - Bueh
+  esVenta: 1
+  esGrito: 0
