@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -7,12 +6,10 @@ public class PlayerMovement : MonoBehaviour
     [Header("Configuracion de Velocidad")]
     public float walkSpeed = 5f;
     public float runSpeed = 8.5f;
-    
-    [Range(0f, 2f)]
-    public float speedModifier = 1f;
 
     private Rigidbody2D rb;
     private PlayerStats stats;
+    private Animator anim;
     private Vector2 moveInput;
     private float currentSpeed;
     private bool isRunning = false;
@@ -21,26 +18,46 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         stats = GetComponent<PlayerStats>();
+        anim = GetComponent<Animator>();
+        
+        rb.gravityScale = 0f;
+        rb.freezeRotation = true;
     }
 
     void Update()
     {
-        if (isRunning && stats != null && stats.stamina > 0)
+        // LEER INPUT
+        float moveX = Input.GetAxisRaw("Horizontal");
+        float moveY = Input.GetAxisRaw("Vertical");
+        moveInput = new Vector2(moveX, moveY).normalized;
+
+        // DETECTAR SI CORRE (Shift izquierdo)
+        isRunning = Input.GetKey(KeyCode.LeftShift);
+
+        // LOGICA DE VELOCIDAD Y STAMINA
+        if (isRunning && stats != null && stats.stamina > 0 && moveInput.magnitude > 0.1f)
         {
             currentSpeed = runSpeed;
-            stats.ConsumirStamina(10f * Time.deltaTime);
+            stats.ConsumirStamina(15f * Time.deltaTime);
         }
         else
         {
             currentSpeed = walkSpeed;
-            if (stats != null && moveInput.magnitude > 0.1f)
+            if (stats != null)
             {
-                stats.RecuperarStamina(5f * Time.deltaTime);
+                float recoveryRate = (moveInput.magnitude > 0.1f) ? 5f : 15f;
+                stats.RecuperarStamina(recoveryRate * Time.deltaTime);
             }
-            else if (stats != null)
-            {
-                stats.RecuperarStamina(15f * Time.deltaTime);
-            }
+        }
+
+        // ANIMACIONES (Usando los parametros originales)
+        if (anim != null)
+        {
+            // isWalking se activa si hay movimiento
+            anim.SetBool("isWalking", moveInput.magnitude > 0.1f);
+            
+            // Si tenias isRunning o velocidad en el Animator, podriamos agregarlos aqui
+            // anim.SetBool("isRunning", isRunning && moveInput.magnitude > 0.1f);
         }
 
         FlipSprite();
@@ -50,8 +67,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (moveInput.magnitude > 0.1f)
         {
-            Vector2 movement = moveInput.normalized * (currentSpeed * speedModifier) * Time.fixedDeltaTime;
-            rb.MovePosition(rb.position + movement);
+            rb.linearVelocity = moveInput * currentSpeed;
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
         }
     }
 
@@ -65,33 +85,5 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-    }
-
-    public void OnMove(InputAction.CallbackContext context)
-    {
-        moveInput = context.ReadValue<Vector2>();
-    }
-
-    public void OnRun(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            isRunning = true;
-        }
-        else if (context.canceled)
-        {
-            isRunning = false;
-        }
-    }
-
-    public void SetSpeedModifier(float modifier)
-    {
-        speedModifier = Mathf.Clamp(modifier, 0f, 2f);
-    }
-
-    public void DetenerMovimiento()
-    {
-        moveInput = Vector2.zero;
-        rb.linearVelocity = Vector2.zero;
     }
 }
