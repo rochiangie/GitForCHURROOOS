@@ -7,155 +7,139 @@ public class DialogoManager : MonoBehaviour
 {
     public static DialogoManager Instance { get; private set; }
 
-    [Header("UI General")]
-    public GameObject panelUI;
+    [Header("UI Componentes")]
+    public GameObject panelDialogo;
     public TextMeshProUGUI textoNombre;
     public TextMeshProUGUI textoContenido;
+    public GameObject contenedorOpciones;
+    public Button[] botonesOpciones;
+    public TextMeshProUGUI[] textosBotones;
 
-    [Header("Opciones de Jugador")]
-    public GameObject contenedorBotones;
-    public Button[] botonesRespuesta = new Button[3];
-    public TextMeshProUGUI[] textosRespuestas = new TextMeshProUGUI[3];
-
-    [Header("Ajustes de Flujo")]
-    public float velocidadEscritura = 0.03f;
+    [Header("Parametros")]
+    public float typingSpeed = 0.04f;
 
     private NPCConversacion npcActual;
-    private Dialogo dialogoData;
+    private Dialogo dialogoActual;
     private PlayerStats stats;
-    private PlayerMovement pMovement;
-    private Coroutine corrutinaEscritura;
-    
+    private PlayerMovement movement;
+    private bool estaEscribiendo = false;
+
     void Awake() { Instance = this; }
 
     void Start()
     {
         GameObject p = GameObject.FindGameObjectWithTag("Player");
-        if (p) {
-            stats = p.GetComponent<PlayerStats>();
-            pMovement = p.GetComponent<PlayerMovement>();
-        }
-        if (panelUI != null) panelUI.SetActive(false);
+        if(p) { stats = p.GetComponent<PlayerStats>(); movement = p.GetComponent<PlayerMovement>(); }
+        panelDialogo.SetActive(false);
     }
 
     public void AbrirPanel(NPCConversacion npc)
     {
-        if (npc == null || npc.archivoDialogo == null) return;
-        
         npcActual = npc;
-        dialogoData = npc.archivoDialogo;
+        dialogoActual = npc.poolDialogos.Count > 0 ? npc.poolDialogos[Random.Range(0, npc.poolDialogos.Count)] : null;
+        
+        if (dialogoActual == null) return;
 
-        if (pMovement) pMovement.enabled = false;
+        if(movement) movement.enabled = false;
+        panelDialogo.SetActive(true);
+        contenedorOpciones.SetActive(false);
+        textoNombre.text = npcActual.nombre;
 
-        if (panelUI != null) panelUI.SetActive(true);
-        if (contenedorBotones != null) contenedorBotones.SetActive(false);
-        if (textoNombre != null) textoNombre.text = dialogoData.nombreNPC;
-
-        if (corrutinaEscritura != null) StopCoroutine(corrutinaEscritura);
-        corrutinaEscritura = StartCoroutine(EscribirTexto(dialogoData.propuesta, true));
+        StartCoroutine(EscribirDialogo(dialogoActual.propuesta, !dialogoActual.esGrito));
     }
 
-    IEnumerator EscribirTexto(string texto, bool mostrarOpciones)
+    IEnumerator EscribirDialogo(string lines, bool mostrarOpciones)
     {
-        if (textoContenido == null) yield break;
-        
+        estaEscribiendo = true;
         textoContenido.text = "";
-        foreach (char c in texto.ToCharArray())
+        foreach (char c in lines)
         {
             textoContenido.text += c;
-            yield return new WaitForSeconds(velocidadEscritura);
+            yield return new WaitForSeconds(typingSpeed);
         }
+        estaEscribiendo = false;
 
-        if (mostrarOpciones) ConfigurarOpciones();
+        if (mostrarOpciones) 
+        {
+            MostrarOpcionesUI();
+        }
+        else 
+        {
+            // Si era un grito, esperamos y cerramos
+            yield return new WaitForSeconds(2f);
+            CerrarPanel();
+        }
     }
 
-    void ConfigurarOpciones()
+    void MostrarOpcionesUI()
     {
-        if (contenedorBotones != null) contenedorBotones.SetActive(true);
-        
+        contenedorOpciones.SetActive(true);
         for (int i = 0; i < 3; i++)
         {
-            // Seguridad: Verificamos que el boton y el texto existan en el inspector
-            if (i < botonesRespuesta.Length && botonesRespuesta[i] != null)
+            if (i < dialogoActual.opciones.Length && !string.IsNullOrEmpty(dialogoActual.opciones[i]))
             {
-                // Y que el dialogo tenga esa opcion
-                if (dialogoData.opciones != null && i < dialogoData.opciones.Length)
-                {
-                    botonesRespuesta[i].gameObject.SetActive(true);
-                    if (i < textosRespuestas.Length && textosRespuestas[i] != null)
-                    {
-                        textosRespuestas[i].text = dialogoData.opciones[i];
-                    }
-                    
-                    int index = i;
-                    botonesRespuesta[i].onClick.RemoveAllListeners();
-                    botonesRespuesta[i].onClick.AddListener(() => SeleccionarOpcion(index));
-                }
-                else
-                {
-                    // Si no hay opcion en el ScriptableObject, ocultamos el boton
-                    botonesRespuesta[i].gameObject.SetActive(false);
-                }
+                botonesOpciones[i].gameObject.SetActive(true);
+                textosBotones[i].text = dialogoActual.opciones[i];
+                int index = i;
+                botonesOpciones[i].onClick.RemoveAllListeners();
+                botonesOpciones[i].onClick.AddListener(() => SeleccionarRespuesta(index));
             }
+            else { botonesOpciones[i].gameObject.SetActive(false); }
         }
     }
 
-    void SeleccionarOpcion(int index)
+    public void SeleccionarRespuesta(int index)
     {
-        if (contenedorBotones != null) contenedorBotones.SetActive(false);
-        
-        ProcesarConsecuencia(index);
+        if (estaEscribiendo) return;
+        contenedorOpciones.SetActive(false);
 
-        if (corrutinaEscritura != null) StopCoroutine(corrutinaEscritura);
-        
-        string reaccion = " (Sin reaccion) ";
-        if (dialogoData.reacciones != null && index < dialogoData.reacciones.Length)
-        {
-            reaccion = dialogoData.reacciones[index];
-        }
-        
-        corrutinaEscritura = StartCoroutine(MostrarReaccionFinal(reaccion));
+        // LOGICA DE NEGOCIACION BASADA EN EBRIEDAD Y PERSONALIDAD
+        CalcularResultado(index);
+
+        StartCoroutine(MostrarReaccion(dialogoActual.reacciones[index]));
     }
 
-    void ProcesarConsecuencia(int index)
+    void CalcularResultado(int index)
     {
-        if (stats == null || npcActual == null) return;
+        if (stats == null) return;
 
-        // Opcion [0] es Trato Hecho
-        if (index == 0)
+        // Opcion [0] suele ser la mejor (Amable/Vender/Comprar)
+        if (index == 0 && dialogoActual.esVenta)
         {
             if (npcActual.esCliente && stats.churrosCantidad > 0)
             {
-                float precioBase = 150f;
-                float multiplicador = 1f;
+                float pago = npcActual.pagoBaseChurro;
+                
+                // EBRIEDAD (40-75: Gana mas por simpatico, 85+: Pierde por borracho)
+                if (stats.ebriedad > 40 && stats.ebriedad < 75) pago *= 1.4f;
+                else if (stats.ebriedad > 85) pago *= 0.5f;
 
-                if (stats.ebriedad > 40 && stats.ebriedad < 75) multiplicador = 1.5f; 
-                else if (stats.ebriedad >= 85) multiplicador = 0.5f; 
+                // PERSONALIDAD (Amable paga mas, Molesto paga menos)
+                if (npcActual.personalidad == PersonalidadNPC.Amable) pago += 20;
+                else if (npcActual.personalidad == PersonalidadNPC.Molesto) pago -= 30;
 
-                stats.AgregarDinero(precioBase * multiplicador);
+                stats.AgregarDinero(pago);
                 stats.churrosCantidad--;
                 npcActual.FinalizarVenta();
             }
             else if (npcActual.esVendedor)
             {
-                if (stats.GastarDinero(npcActual.precioAgua)) {
+                if (stats.GastarDinero(npcActual.precioBaseAgua))
                     stats.RecuperarHidratacion(npcActual.recuperacionHidratacion);
-                }
             }
         }
     }
 
-    IEnumerator MostrarReaccionFinal(string reaccion)
+    IEnumerator MostrarReaccion(string reaccion)
     {
-        yield return StartCoroutine(EscribirTexto(reaccion, false));
+        yield return StartCoroutine(EscribirDialogo(reaccion, false));
         yield return new WaitForSeconds(1.5f);
         CerrarPanel();
     }
 
     public void CerrarPanel()
     {
-        if (panelUI != null) panelUI.SetActive(false);
-        if (pMovement) pMovement.enabled = true;
-        npcActual = null;
+        panelDialogo.SetActive(false);
+        if(movement) movement.enabled = true;
     }
 }
