@@ -1,57 +1,62 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     [Header("UI References")]
-    public Slider heatSlider;
+    public Slider hydrationSlider;
+    public Slider staminaSlider;
+    public Slider temperatureSlider;
     public TextMeshProUGUI churrosText;
-    public TextMeshProUGUI plataText;
+    public TextMeshProUGUI moneyText;
 
-    // Referencias a los scripts modulares
-    private PlayerStats stats;
-    private PlayerInteraction interaction; // Si los churros están aquí
+    private PlayerStats playerStats;
 
     void Start()
     {
-        // Buscamos al jugador por su Tag
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-
         if (player != null)
         {
-            stats = player.GetComponent<PlayerStats>();
-            interaction = player.GetComponent<PlayerInteraction>();
-        }
-        else
-        {
-            Debug.LogError("UIManager: No se encontró al objeto con el Tag 'Player'.");
+            playerStats = player.GetComponent<PlayerStats>();
         }
     }
 
     void Update()
     {
-        if (stats != null)
-        {
-            // La temperatura ahora viene de PlayerStats
-            if (heatSlider != null)
-            {
-                heatSlider.value = stats.temperature / stats.staminaMax;
-            }
+        if (playerStats == null) return;
 
-            // El dinero (plata) ahora viene de PlayerStats
-            if (plataText != null)
-            {
-                plataText.text = "PLATA: $" + stats.money.ToString("F0");
-            }
+        ActualizarUI();
+    }
+
+    private void ActualizarUI()
+    {
+        if (hydrationSlider != null)
+        {
+            hydrationSlider.maxValue = playerStats.hydrationMax;
+            hydrationSlider.value = playerStats.hydration;
         }
 
-        // Para los churros: Si aún no creamos la variable 'churrosCantidad', 
-        // puedes poner un valor temporal o añadir 'public int churrosCantidad' a PlayerStats
-        if (churrosText != null && stats != null)
+        if (staminaSlider != null)
         {
-            // Suponiendo que añadiremos 'churros' a PlayerStats pronto
-            churrosText.text = "CHURROS: " + "10"; // Valor temporal
+            staminaSlider.maxValue = playerStats.staminaMax;
+            staminaSlider.value = playerStats.stamina;
+        }
+
+        if (temperatureSlider != null)
+        {
+            temperatureSlider.maxValue = playerStats.temperatureMax;
+            temperatureSlider.value = playerStats.temperature;
+        }
+
+        if (churrosText != null)
+        {
+            churrosText.text = "CHURROS: " + playerStats.churrosCantidad;
+        }
+
+        if (moneyText != null)
+        {
+            moneyText.text = "$" + playerStats.money.ToString("F2");
         }
     }
 }

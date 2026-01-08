@@ -1,45 +1,82 @@
-using UnityEngine;
+ï»¿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [Header("Configuración")]
+    [Header("Configuracion")]
     public float radioInteraccion = 2.5f;
     public LayerMask capaNPC;
+    public LayerMask capaObjetos;
+
+    [Header("Debug")]
+    public bool mostrarGizmos = true;
+
+    private NPCConversacion npcCercano;
+    private bool hayNPCCercano = false;
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            RealizarInteraccion();
-        }
+        DetectarNPCsCercanos();
     }
 
-    void RealizarInteraccion()
+    private void DetectarNPCsCercanos()
     {
-        // Usamos OverlapCircleAll para capturar todo lo que esté en el radio
         Collider2D[] colisiones = Physics2D.OverlapCircleAll(transform.position, radioInteraccion, capaNPC);
-
-        // Ordenar por distancia para hablar siempre con el más cercano primero
-        System.Array.Sort(colisiones, (a, b) =>
-            Vector2.Distance(transform.position, a.transform.position).CompareTo(
-            Vector2.Distance(transform.position, b.transform.position)));
+        
+        npcCercano = null;
+        hayNPCCercano = false;
 
         foreach (Collider2D col in colisiones)
         {
-            NPCConversacion npc = col.GetComponent<NPCConversacion>();
-
-            // Si el objeto tiene el script y NO es el jugador mismo
-            if (npc != null && col.gameObject != this.gameObject)
+            if (col.gameObject != this.gameObject)
             {
-                npc.Interactuar();
-                return; // Salimos inmediatamente al encontrar el primer NPC válido
+                NPCConversacion npc = col.GetComponent<NPCConversacion>();
+                if (npc != null)
+                {
+                    npcCercano = npc;
+                    hayNPCCercano = true;
+                    return;
+                }
             }
         }
     }
 
-    private void OnDrawGizmosSelected()
+    public void OnInteract(InputAction.CallbackContext context)
     {
-        Gizmos.color = Color.yellow;
+        if (context.performed)
+        {
+            IntentarInteractuar();
+        }
+    }
+
+    private void IntentarInteractuar()
+    {
+        if (hayNPCCercano && npcCercano != null)
+        {
+            npcCercano.Interactuar();
+            Debug.Log("Interactuando con: " + npcCercano.gameObject.name);
+        }
+    }
+
+    public void Interactuar()
+    {
+        IntentarInteractuar();
+    }
+
+    public bool HayNPCCerca()
+    {
+        return hayNPCCercano;
+    }
+
+    public NPCConversacion GetNPCCercano()
+    {
+        return npcCercano;
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!mostrarGizmos) return;
+        Gizmos.color = hayNPCCercano ? Color.green : Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radioInteraccion);
     }
 }

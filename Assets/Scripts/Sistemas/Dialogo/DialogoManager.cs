@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
@@ -6,90 +6,128 @@ public class DialogoManager : MonoBehaviour
 {
     public static DialogoManager Instance { get; private set; }
 
-    [Header("UI Referencias")]
+    [Header("UI del Dialogo")]
     public GameObject panelDialogo;
     public TextMeshProUGUI textoNombre;
-    public TextMeshProUGUI textoPropuestaCliente;
-    public TextMeshProUGUI textoPropuestaVendedor;
-    public Button botonCerrarX;
-    public Button[] botonesRespuesta;
+    public TextMeshProUGUI textoDialogo;
+    public Button botonContinuar;
+    public Button botonComprar;
+    public Button botonCerrar;
 
+    private Dialogo dialogoActual;
     private NPCConversacion npcActual;
+    private int indiceLinea = 0;
     private PlayerStats stats;
-    private PlayerActions actions;
 
-    private void Awake()
+    void Awake()
     {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
+    void Start()
+    {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             stats = player.GetComponent<PlayerStats>();
-            actions = player.GetComponent<PlayerActions>();
         }
 
-        panelDialogo.SetActive(false);
-        if (botonCerrarX != null) botonCerrarX.onClick.AddListener(CerrarPanel);
+        if (panelDialogo != null)
+        {
+            panelDialogo.SetActive(false);
+        }
+
+        ConfigurarBotones();
     }
 
-    public void AbrirPanel(NPCConversacion npc)
+    private void ConfigurarBotones()
     {
+        if (botonContinuar != null)
+        {
+            botonContinuar.onClick.AddListener(MostrarSiguienteLinea);
+        }
+
+        if (botonComprar != null)
+        {
+            botonComprar.onClick.AddListener(ProcesarCompra);
+        }
+
+        if (botonCerrar != null)
+        {
+            botonCerrar.onClick.AddListener(CerrarDialogo);
+        }
+    }
+
+    public void IniciarDialogo(Dialogo dialogo, NPCConversacion npc)
+    {
+        dialogoActual = dialogo;
         npcActual = npc;
-        panelDialogo.SetActive(true);
-        textoNombre.text = npc.archivoDialogo.nombrePersonaje;
+        indiceLinea = 0;
 
-        textoPropuestaCliente.gameObject.SetActive(npc.esCliente);
-        textoPropuestaVendedor.gameObject.SetActive(npc.esVendedor);
+        if (panelDialogo != null)
+        {
+            panelDialogo.SetActive(true);
+        }
 
-        if (npc.esCliente) textoPropuestaCliente.text = npc.archivoDialogo.propuestaInicial;
-        else textoPropuestaVendedor.text = npc.archivoDialogo.propuestaInicial;
+        if (textoNombre != null && dialogo != null)
+        {
+            textoNombre.text = dialogo.nombreNPC;
+        }
 
-        ConfigurarBotones(npc.archivoDialogo);
+        MostrarSiguienteLinea();
     }
 
-    void ConfigurarBotones(Dialogo data)
+    private void MostrarSiguienteLinea()
     {
-        string[] textos = { data.respuestaAmable, data.respuestaNeutral, data.respuestaCerrada };
-        for (int i = 0; i < botonesRespuesta.Length; i++)
+        if (dialogoActual == null || dialogoActual.lineas == null) return;
+
+        if (indiceLinea < dialogoActual.lineas.Length)
         {
-            botonesRespuesta[i].gameObject.SetActive(true);
-            botonesRespuesta[i].GetComponentInChildren<TextMeshProUGUI>().text = textos[i];
-            int indice = i;
-            botonesRespuesta[i].onClick.RemoveAllListeners();
-            botonesRespuesta[i].onClick.AddListener(() => ProcesarEleccion(indice));
+            if (textoDialogo != null)
+            {
+                textoDialogo.text = dialogoActual.lineas[indiceLinea];
+            }
+            indiceLinea++;
+        }
+        else
+        {
+            CerrarDialogo();
         }
     }
 
-    void ProcesarEleccion(int eleccion)
+    private void ProcesarCompra()
     {
-        if (npcActual.esCliente)
-        {
-            // Solo si elige Amable (0) o Neutral (1) se concreta la venta
-            if (eleccion == 0 || eleccion == 1)
-            {
-                if (stats.churrosCantidad > 0)
-                {
-                    stats.churrosCantidad--;
-                    if (eleccion == 0) stats.AddMoney(20f);
-                    else stats.AddMoney(15f);
+        if (npcActual == null || stats == null) return;
 
-                    // AVISAMOS AL NPC QUE TERMINE SU VENTA Y ACTIVE A OTRO
-                    npcActual.FinalizarVenta();
-                }
-            }
-        }
-        else if (npcActual.esVendedor)
+        if (stats.GastarDinero(npcActual.precioAgua))
         {
-            if ((eleccion == 0 || eleccion == 1) && stats.money >= npcActual.precioAgua)
-            {
-                stats.money -= npcActual.precioAgua;
-                if (actions != null) actions.TomarAgua(npcActual.recuperacionHidratacion);
-            }
+            stats.RecuperarHidratacion(npcActual.recuperacionHidratacion);
+            Debug.Log("Compraste agua");
+            npcActual.FinalizarVenta();
+            CerrarDialogo();
         }
-        CerrarPanel();
+        else
+        {
+            Debug.Log("No tienes suficiente dinero");
+        }
     }
 
-    public void CerrarPanel() => panelDialogo.SetActive(false);
+    public void CerrarDialogo()
+    {
+        if (panelDialogo != null)
+        {
+            panelDialogo.SetActive(false);
+        }
+
+        dialogoActual = null;
+        npcActual = null;
+        indiceLinea = 0;
+    }
 }

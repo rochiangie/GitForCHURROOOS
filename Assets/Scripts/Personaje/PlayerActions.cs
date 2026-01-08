@@ -1,35 +1,76 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerActions : MonoBehaviour
 {
+    [Header("Configuracion de Recuperacion")]
+    public float recuperacionAguaBase = 30f;
+    public float reduccionTemperaturaAgua = 20f;
+    public float recuperacionStaminaChurro = 25f;
+
     private PlayerStats stats;
 
     void Start()
     {
         stats = GetComponent<PlayerStats>();
+        if (stats == null)
+        {
+            Debug.LogError("PlayerActions requiere PlayerStats");
+        }
     }
 
-    // Definimos la función con el nombre exacto: TomarAgua
-    public void TomarAgua(float cantidad)
+    public void TomarAgua(float cantidad = 1f)
     {
-        if (stats != null)
-        {
-            // Sumamos a la hidratación actual sin pasarnos del máximo
-            stats.hydration = Mathf.Min(stats.hydration + cantidad, stats.hydrationMax);
+        if (stats == null) return;
 
-            // Efecto extra: bajar un poco la temperatura corporal
-            stats.temperature = Mathf.Max(stats.temperature - 2f, 36f);
-
-            Debug.Log("Tomaste agua. Hidratación actual: " + stats.hydration);
-        }
+        float recuperacion = recuperacionAguaBase * cantidad;
+        stats.RecuperarHidratacion(recuperacion);
+        stats.ReducirTemperatura(reduccionTemperaturaAgua * cantidad);
+        
+        Debug.Log("Tomaste agua. Hidratacion: " + stats.hydration);
     }
 
     public void ComerChurro()
     {
-        if (stats != null && stats.churrosCantidad > 0)
+        if (stats == null) return;
+
+        if (stats.ConsumirChurro())
         {
-            stats.churrosCantidad--;
-            stats.stamina = Mathf.Min(stats.stamina + 20f, stats.staminaMax);
+            stats.RecuperarStamina(recuperacionStaminaChurro);
+            Debug.Log("Comiste un churro. Stamina: " + stats.stamina);
         }
+    }
+
+    public bool VenderChurro(float precio)
+    {
+        if (stats == null) return false;
+
+        if (stats.ConsumirChurro())
+        {
+            stats.AgregarDinero(precio);
+            Debug.Log("Churro vendido por $" + precio);
+            GameEvents.OnChurroVendido?.Invoke();
+            return true;
+        }
+        return false;
+    }
+
+    public bool ComprarChurros(int cantidad, float precioUnitario)
+    {
+        if (stats == null) return false;
+
+        float costoTotal = cantidad * precioUnitario;
+        if (stats.GastarDinero(costoTotal))
+        {
+            stats.AgregarChurros(cantidad);
+            Debug.Log("Compraste " + cantidad + " churros");
+            return true;
+        }
+        return false;
+    }
+
+    public void Descansar()
+    {
+        if (stats == null) return;
+        stats.RecuperarStamina(50f * Time.deltaTime);
     }
 }
