@@ -4,59 +4,57 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("UI References")]
-    public Slider hydrationSlider;
-    public Slider staminaSlider;
-    public Slider temperatureSlider;
-    public TextMeshProUGUI churrosText;
-    public TextMeshProUGUI moneyText;
+    [Header("Sliders de Estado")]
+    public Slider sliderHidratacion;
+    public Slider sliderStamina;
+    public Slider sliderTemperatura;
 
-    private PlayerStats playerStats;
+    [Header("Textos")]
+    public TextMeshProUGUI textoDinero;
+    public TextMeshProUGUI textoChurros;
+    public TextMeshProUGUI textoReloj;
+
+    [Header("Feedback Visual")]
+    public Image overlayCalor; // Imagen roja/naranja que parpadea si hay mucho calor
+
+    private PlayerStats stats;
+    private SunSystem sol;
 
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            playerStats = player.GetComponent<PlayerStats>();
-        }
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        if (p) stats = p.GetComponent<PlayerStats>();
+        sol = FindFirstObjectByType<SunSystem>();
     }
 
     void Update()
     {
-        if (playerStats == null) return;
+        if (stats == null) return;
 
-        ActualizarUI();
-    }
+        // Actualizar Sliders
+        sliderHidratacion.value = stats.hydration / stats.hydrationMax;
+        sliderStamina.value = stats.stamina / stats.staminaMax;
+        sliderTemperatura.value = stats.temperature / stats.temperatureMax;
 
-    private void ActualizarUI()
-    {
-        if (hydrationSlider != null)
+        // Actualizar Textos
+        textoDinero.text = "$" + stats.money.ToString("F0");
+        textoChurros.text = "CHURROS: " + stats.churrosCantidad;
+
+        // Formatear Reloj (Hora:Minutos)
+        if (sol != null)
         {
-            hydrationSlider.maxValue = playerStats.hydrationMax;
-            hydrationSlider.value = playerStats.hydration;
+            int horas = (int)sol.horaActual;
+            int minutos = (int)((sol.horaActual - horas) * 60);
+            textoReloj.text = string.Format("{0:00}:{1:00}", horas, minutos);
         }
 
-        if (staminaSlider != null)
+        // Feedback de Calor Critico
+        if (overlayCalor != null)
         {
-            staminaSlider.maxValue = playerStats.staminaMax;
-            staminaSlider.value = playerStats.stamina;
-        }
-
-        if (temperatureSlider != null)
-        {
-            temperatureSlider.maxValue = playerStats.temperatureMax;
-            temperatureSlider.value = playerStats.temperature;
-        }
-
-        if (churrosText != null)
-        {
-            churrosText.text = "CHURROS: " + playerStats.churrosCantidad;
-        }
-
-        if (moneyText != null)
-        {
-            moneyText.text = "$" + playerStats.money.ToString("F2");
+            float alpha = (stats.temperature > 70) ? (stats.temperature - 70) / 30f : 0f;
+            Color c = overlayCalor.color;
+            c.a = alpha * 0.4f; // Maximo 40% de opacidad
+            overlayCalor.color = c;
         }
     }
 }

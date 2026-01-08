@@ -16,7 +16,7 @@ public class DialogoManager : MonoBehaviour
     public TextMeshProUGUI[] textosBotones;
 
     [Header("Parametros")]
-    public float typingSpeed = 0.04f;
+    public float typingSpeed = 0.035f;
 
     private NPCConversacion npcActual;
     private Dialogo dialogoActual;
@@ -36,19 +36,23 @@ public class DialogoManager : MonoBehaviour
     public void AbrirPanel(NPCConversacion npc)
     {
         npcActual = npc;
+        // Elegimos un dialogo del pool que sea acorde a si es venta o no
         dialogoActual = npc.poolDialogos.Count > 0 ? npc.poolDialogos[Random.Range(0, npc.poolDialogos.Count)] : null;
         
-        if (dialogoActual == null) return;
+        if (dialogoActual == null) {
+            Debug.LogWarning("El NPC " + npc.nombre + " no tiene dialogos asignados.");
+            return;
+        }
 
         if(movement) movement.enabled = false;
         panelDialogo.SetActive(true);
         contenedorOpciones.SetActive(false);
         textoNombre.text = npcActual.nombre;
 
-        StartCoroutine(EscribirDialogo(dialogoActual.propuesta, !dialogoActual.esGrito));
+        StartCoroutine(EscribirDialogo(dialogoActual.propuesta, true));
     }
 
-    IEnumerator EscribirDialogo(string lines, bool mostrarOpciones)
+    IEnumerator EscribirDialogo(string lines, bool permitirOpciones)
     {
         estaEscribiendo = true;
         textoContenido.text = "";
@@ -59,16 +63,8 @@ public class DialogoManager : MonoBehaviour
         }
         estaEscribiendo = false;
 
-        if (mostrarOpciones) 
-        {
-            MostrarOpcionesUI();
-        }
-        else 
-        {
-            // Si era un grito, esperamos y cerramos
-            yield return new WaitForSeconds(2f);
-            CerrarPanel();
-        }
+        if (permitirOpciones && !dialogoActual.esGrito) MostrarOpcionesUI();
+        else if (dialogoActual.esGrito) { yield return new WaitForSeconds(2f); CerrarPanel(); }
     }
 
     void MostrarOpcionesUI()
@@ -93,47 +89,55 @@ public class DialogoManager : MonoBehaviour
         if (estaEscribiendo) return;
         contenedorOpciones.SetActive(false);
 
-        // LOGICA DE NEGOCIACION BASADA EN EBRIEDAD Y PERSONALIDAD
-        CalcularResultado(index);
+        string reaccionFinal = dialogoActual.reacciones[index];
 
-        StartCoroutine(MostrarReaccion(dialogoActual.reacciones[index]));
-    }
-
-    void CalcularResultado(int index)
-    {
-        if (stats == null) return;
-
-        // Opcion [0] suele ser la mejor (Amable/Vender/Comprar)
-        if (index == 0 && dialogoActual.esVenta)
+        // LÓGICA DE TRANSACCIÓN REAL
+        if (index == 0 && dialogoActual.esVenta) // Opcion 0 es intentar el trato
         {
-            if (npcActual.esCliente && stats.churrosCantidad > 0)
+            if (npcActual.esCliente)
             {
-                float pago = npcActual.pagoBaseChurro;
-                
-                // EBRIEDAD (40-75: Gana mas por simpatico, 85+: Pierde por borracho)
-                if (stats.ebriedad > 40 && stats.ebriedad < 75) pago *= 1.4f;
-                else if (stats.ebriedad > 85) pago *= 0.5f;
-
-                // PERSONALIDAD (Amable paga mas, Molesto paga menos)
-                if (npcActual.personalidad == PersonalidadNPC.Amable) pago += 20;
-                else if (npcActual.personalidad == PersonalidadNPC.Molesto) pago -= 30;
-
-                stats.AgregarDinero(pago);
-                stats.churrosCantidad--;
-                npcActual.FinalizarVenta();
+                if (stats.churrosCantidad > 0) {
+                    float pago = CalcularPagoCliente();
+                    stats.AgregarDinero(pago);
+                    stats.churrosCantidad--;
+                    npcActual.FinalizarVenta();
+                    reaccionFinal = "¡Excelente! Estos churros huelen increible.";
+                } else {
+                    reaccionFinal = "¿Me estas cargando? ¡No tenes churros! No me hagas perder el tiempo.";
+                }
             }
             else if (npcActual.esVendedor)
             {
-                if (stats.GastarDinero(npcActual.precioBaseAgua))
+                if (stats.GastarDinero(npcActual.precioBaseAgua)) {
                     stats.RecuperarHidratacion(npcActual.recuperacionHidratacion);
+                    reaccionFinal = "Aca tenes, pibe. Cuidate del sol.";
+                } else {
+                    reaccionFinal = "Aca no fiamos. Volve cuando tengas la plata.";
+                }
             }
         }
+
+        StartCoroutine(MostrarReaccion(reaccionFinal));
+    }
+
+    float CalcularPagoCliente()
+    {
+        float pago = npcActual.pagoBaseChurro;
+        // Ebriedad
+        if (stats.ebriedad > 40 && stats.ebriedad < 75) pago *= 1.4f;
+        else if (stats.ebriedad > 85) pago *= 0.6f;
+
+        // Personalidad
+        if (npcActual.personalidad == PersonalidadNPC.Amable) pago += 25;
+        else if (npcActual.personalidad == PersonalidadNPC.Molesto) pago -= 30;
+
+        return pago;
     }
 
     IEnumerator MostrarReaccion(string reaccion)
     {
         yield return StartCoroutine(EscribirDialogo(reaccion, false));
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.8f);
         CerrarPanel();
     }
 

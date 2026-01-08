@@ -3,9 +3,9 @@
 public class PlayerInteraction : MonoBehaviour
 {
     [Header("Configuracion")]
-    public float radioInteraccion = 3f; // Un poco mas grande para facilitar
+    public float radioInteraccion = 3.5f;
     public LayerMask capaNPC;
-    public KeyCode teclaInteractuar = KeyCode.F; // Cambiado a F
+    public KeyCode teclaInteractuar = KeyCode.F;
 
     private NPCConversacion npcCercano;
 
@@ -20,18 +20,34 @@ public class PlayerInteraction : MonoBehaviour
 
     private void DetectarNPCs()
     {
-        Collider2D col = Physics2D.OverlapCircle(transform.position, radioInteraccion, capaNPC);
-        if (col != null)
+        // Detectamos a todos en el area
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, radioInteraccion, capaNPC);
+        
+        npcCercano = null;
+        float distanciaCercana = Mathf.Infinity;
+
+        foreach (var col in cols)
         {
-            npcCercano = col.GetComponent<NPCConversacion>();
-            if (npcCercano != null) {
-                // Debug opcional para que veas en consola si lo detecta
-                // Debug.Log("Cerca de: " + npcCercano.nombre);
+            NPCConversacion npc = col.GetComponent<NPCConversacion>();
+            if (npc != null)
+            {
+                // PRIORIDAD: 
+                // 1. Cliente que quiere comprar (Hambre activo)
+                // 2. Vendedor (Siempre disponible)
+                // 3. Otros
+                float dist = Vector3.Distance(transform.position, col.transform.position);
+                
+                if (npc.quiereComprar || npc.esVendedor) {
+                    // Si encontramos a alguien con quien realmente podemos tratar, lo elegimos
+                    npcCercano = npc;
+                    return; 
+                }
+
+                if (dist < distanciaCercana) {
+                    distanciaCercana = dist;
+                    npcCercano = npc;
+                }
             }
-        }
-        else
-        {
-            npcCercano = null;
         }
     }
 
