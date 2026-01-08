@@ -65,10 +65,13 @@ public class DialogoManager : MonoBehaviour
         }
     }
 
-    public void IniciarDialogo(Dialogo dialogo, NPCConversacion npc)
+    // Cambiado a AbrirPanel para coincidir con NPCConversacion.cs
+    public void AbrirPanel(NPCConversacion npc)
     {
-        dialogoActual = dialogo;
+        if (npc == null || npc.archivoDialogo == null) return;
+
         npcActual = npc;
+        dialogoActual = npc.archivoDialogo;
         indiceLinea = 0;
 
         if (panelDialogo != null)
@@ -76,15 +79,22 @@ public class DialogoManager : MonoBehaviour
             panelDialogo.SetActive(true);
         }
 
-        if (textoNombre != null && dialogo != null)
+        if (textoNombre != null)
         {
-            textoNombre.text = dialogo.nombreNPC;
+            textoNombre.text = dialogoActual.nombreNPC;
+        }
+
+        // Si es vendedor, mostrar botón de comprar, si es cliente (y quiere comprar) tal vez queramos otra lógica
+        // Por ahora, configuramos la visibilidad según sea necesario
+        if (botonComprar != null)
+        {
+            botonComprar.gameObject.SetActive(npc.esVendedor);
         }
 
         MostrarSiguienteLinea();
     }
 
-    private void MostrarSiguienteLinea()
+    public void MostrarSiguienteLinea()
     {
         if (dialogoActual == null || dialogoActual.lineas == null) return;
 
@@ -98,6 +108,12 @@ public class DialogoManager : MonoBehaviour
         }
         else
         {
+            // Si es un cliente y terminamos de "hablar", tal vez se completa la venta de churros
+            if (npcActual != null && npcActual.esCliente && npcActual.quiereComprar)
+            {
+                // Aquí podrías llamar a una lógica de venta automática o esperar a otra acción
+                // Por ahora, solo cerramos
+            }
             CerrarDialogo();
         }
     }

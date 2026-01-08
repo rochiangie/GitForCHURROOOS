@@ -92,6 +92,6 @@ public class PlayerMovement : MonoBehaviour
     public void DetenerMovimiento()
     {
         moveInput = Vector2.zero;
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
     }
 }
