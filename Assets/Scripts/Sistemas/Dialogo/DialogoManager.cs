@@ -4,70 +4,84 @@ using UnityEngine.UI;
 
 public class DialogoManager : MonoBehaviour
 {
-    public static DialogoManager Instance;
+    public static DialogoManager Instance { get; private set; }
 
-    [Header("UI Canvas Elements")]
+    [Header("UI Referencias")]
     public GameObject panelDialogo;
-    public TextMeshProUGUI nombreTexto;
-    public TextMeshProUGUI dialogoTexto;
+    public TextMeshProUGUI textoNombre;
+    public TextMeshProUGUI textoFrase;
 
-    [Header("Botones")]
-    public Button botonSi;
-    public Button botonNo;
-    public Button botonCerrar; // La "X"
+    [Header("Configuracion de Botones")]
+    public GameObject contenedorBotones;
+    public Button[] botonesRespuesta; // Asigna 3 botones en el Inspector
 
-    private Dialogo dialogoActual;
-    private NPCVendedor npcActual;
-
-    void Awake() => Instance = this;
-
-    void Start()
+    private void Awake()
     {
-        panelDialogo.SetActive(false);
-        // Asignar funciones a los botones por código para evitar errores
-        botonCerrar.onClick.AddListener(CerrarDialogo);
+        if (Instance == null) Instance = this;
+        else Destroy(gameObject);
+
+        if (panelDialogo != null) panelDialogo.SetActive(false);
     }
 
-    public void IniciarDialogo(Dialogo nuevoDialogo, NPCVendedor npc)
+    // VERSION 1: Se usa en PlayerInteraction para ventas rapidas
+    public void IniciarDialogo(Dialogo data)
     {
-        dialogoActual = nuevoDialogo;
-        npcActual = npc;
+        if (panelDialogo == null) return;
 
         panelDialogo.SetActive(true);
-        nombreTexto.text = dialogoActual.nombre;
-        dialogoTexto.text = dialogoActual.frasePregunta;
+        textoNombre.text = data.nombrePersonaje;
+        textoFrase.text = (data.frases != null && data.frases.Length > 0) ? data.frases[0] : "...";
 
-        // Mostrar botones de decisión
-        botonSi.gameObject.SetActive(true);
-        botonNo.gameObject.SetActive(true);
-
-        // Limpiar listeners anteriores para que no se acumulen
-        botonSi.onClick.RemoveAllListeners();
-        botonNo.onClick.RemoveAllListeners();
-
-        // Asignar nuevas acciones
-        botonSi.onClick.AddListener(AlElegirSi);
-        botonNo.onClick.AddListener(AlElegirNo);
+        // Opciones de cortesia marplatense
+        string[] opcionesVenta = { "¡Gracias!", "Disculpe", "Por favor" };
+        ConfigurarBotonesVenta(opcionesVenta);
     }
 
-    void AlElegirSi()
+    // VERSION 2: Se usa en NPCVendedor para misiones (Aceptar/Rechazar)
+    public void IniciarDialogo(Dialogo data, NPCVendedor vendedor)
     {
-        dialogoTexto.text = dialogoActual.respuestaSi;
-        OcultarBotonesDecision();
-        npcActual.EfectoDecision(true); // Ejecuta la consecuencia positiva
+        if (panelDialogo == null) return;
+
+        panelDialogo.SetActive(true);
+        textoNombre.text = data.nombrePersonaje;
+        textoFrase.text = (data.frases != null && data.frases.Length > 0) ? data.frases[0] : "...";
+
+        ConfigurarBotonesMision(vendedor);
     }
 
-    void AlElegirNo()
+    private void ConfigurarBotonesVenta(string[] opciones)
     {
-        dialogoTexto.text = dialogoActual.respuestaNo;
-        OcultarBotonesDecision();
-        npcActual.EfectoDecision(false); // Ejecuta la consecuencia negativa
+        foreach (var b in botonesRespuesta) b.gameObject.SetActive(false);
+
+        for (int i = 0; i < opciones.Length; i++)
+        {
+            if (i >= botonesRespuesta.Length) break;
+            botonesRespuesta[i].gameObject.SetActive(true);
+            botonesRespuesta[i].GetComponentInChildren<TextMeshProUGUI>().text = opciones[i];
+
+            botonesRespuesta[i].onClick.RemoveAllListeners();
+            botonesRespuesta[i].onClick.AddListener(CerrarDialogo);
+        }
     }
 
-    void OcultarBotonesDecision()
+    private void ConfigurarBotonesMision(NPCVendedor vendedor)
     {
-        botonSi.gameObject.SetActive(false);
-        botonNo.gameObject.SetActive(false);
+        foreach (var b in botonesRespuesta) b.gameObject.SetActive(false);
+
+        // Boton Aceptar
+        botonesRespuesta[0].gameObject.SetActive(true);
+        botonesRespuesta[0].GetComponentInChildren<TextMeshProUGUI>().text = "Aceptar";
+        botonesRespuesta[0].onClick.RemoveAllListeners();
+        botonesRespuesta[0].onClick.AddListener(() => { vendedor.EfectoDecision(true); CerrarDialogo(); });
+
+        // Boton Rechazar
+        if (botonesRespuesta.Length > 1)
+        {
+            botonesRespuesta[1].gameObject.SetActive(true);
+            botonesRespuesta[1].GetComponentInChildren<TextMeshProUGUI>().text = "Rechazar";
+            botonesRespuesta[1].onClick.RemoveAllListeners();
+            botonesRespuesta[1].onClick.AddListener(() => { vendedor.EfectoDecision(false); CerrarDialogo(); });
+        }
     }
 
     public void CerrarDialogo()

@@ -1,9 +1,9 @@
-[System.Serializable]
-public class Dialogo
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "NuevoDialogo", menuName = "Sistema/Dialogo")]
+public class Dialogo : ScriptableObject
 {
-    public string nombre;
-    [UnityEngine.TextArea(3, 5)]
-    public string frasePregunta; // La frase que hace el NPC antes de los botones
-    public string respuestaSi;   // Lo que dice si aceptas
-    public string respuestaNo;   // Lo que dice si rechazas
+    public string nombrePersonaje;
+    [TextArea(3, 10)]
+    public string[] frases;
 }

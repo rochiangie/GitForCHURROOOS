@@ -2,98 +2,61 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [Header("Configuración de Interacción")]
-    public float radius = 2.5f;        // Radio del círculo de detección
-    public LayerMask interactionLayer; // Capa donde deben estar los NPCs (Vendedores y Clientes)
-    public KeyCode interactionKey = KeyCode.F;
-
-    [Header("Referencias Modulares")]
+    public float radioInteraccion = 2.5f;
+    public LayerMask capaInteraccion;
     private PlayerStats stats;
-    private PlayerHealthSystem health;
 
     void Start()
     {
-        // Buscamos las referencias en el mismo objeto
         stats = GetComponent<PlayerStats>();
-        health = GetComponent<PlayerHealthSystem>();
-
-        if (stats == null) Debug.LogError("PlayerInteraction: No se encontró PlayerStats en el jugador.");
     }
 
     void Update()
     {
-        // Detectar si se presiona la tecla de interacción
-        if (Input.GetKeyDown(interactionKey))
+        if (Input.GetKeyDown(KeyCode.F))
         {
-            IntentarInteractuar();
+            Interactuar();
         }
     }
 
-    private void IntentarInteractuar()
+    void Interactuar()
     {
-        // Detectar todos los colliders dentro del radio que pertenezcan a la capa seleccionada
-        Collider2D[] cercanos = Physics2D.OverlapCircleAll(transform.position, radius, interactionLayer);
+        Collider2D[] colisiones = Physics2D.OverlapCircleAll(transform.position, radioInteraccion, capaInteraccion);
 
-        Debug.Log($"<color=white>[INTERACCIÓN]</color> Buscando... Objetos detectados en capa: {cercanos.Length}");
-
-        foreach (var col in cercanos)
+        foreach (Collider2D col in colisiones)
         {
-            // --- CASO 1: VENDEDOR ---
-            if (col.CompareTag("Vendedor"))
-            {
-                NPCVendedor npc = col.GetComponent<NPCVendedor>();
-                if (npc != null)
-                {
-                    Debug.Log($"<color=green>[NPC]</color> Hablando con {npc.nombreVendedor}");
-                    npc.AbrirConversacion();
-
-                    // Si el vendedor es Doña Rosa y tienes afinidad, que te cure un poco
-                    if (npc.nombreVendedor == "Doña Rosa" && npc.afinidad > 50)
-                    {
-                        stats.temperature -= 20f;
-                        Debug.Log("Doña Rosa te refrescó por ser buenos amigos.");
-                    }
-
-                    return; // Salimos para no interactuar con dos cosas a la vez
-                }
-            }
-
-            // --- CASO 2: CLIENTE ---
             if (col.CompareTag("Cliente"))
             {
-                if (stats.churrosCantidad > 0)
+                ClientePersonalidad cliente = col.GetComponent<ClientePersonalidad>();
+                ClienteDialogos dialogosExtra = col.GetComponent<ClienteDialogos>();
+
+                if (cliente != null && cliente.quiereComprar && stats.churrosCantidad > 0)
                 {
-                    VenderACliente(col.gameObject);
-                    return;
-                }
-                else
-                {
-                    Debug.Log("<color=red>[AVISO]</color> ¡Te quedaste sin churros! Busca un puesto de recarga.");
+                    // Lógica de venta
+                    cliente.ReaccionarVenta();
+                    stats.churrosCantidad--;
+                    stats.AddMoney(15f);
+
+                    // LLAMADA AL DIALOGO
+                    if (dialogosExtra != null && DialogoManager.Instance != null)
+                    {
+                        string frase = dialogosExtra.ObtenerFrase(cliente.personalidad);
+                        Dialogo d = ScriptableObject.CreateInstance<Dialogo>();
+                        d.nombrePersonaje = cliente.nombreCliente;
+                        d.frases = new string[] { frase };
+
+                        // Esta llamada ahora coincide con la Version 1 del Manager
+                        DialogoManager.Instance.IniciarDialogo(d);
+                    }
+                    break;
                 }
             }
         }
     }
 
-    private void VenderACliente(GameObject cliente)
-    {
-        // Lógica de venta
-        stats.churrosCantidad--;
-        stats.AddMoney(15f);
-
-        // Vender cansa y da calor
-        stats.temperature += 2f;
-        stats.hydration -= 4f;
-
-        Debug.Log($"<color=yellow>[VENTA]</color> Churro entregado a {cliente.name}. Quedan {stats.churrosCantidad} churros.");
-
-        // Aquí podrías añadir un efecto visual o sonido
-        // AudioSource.PlayClipAtPoint(sonidoVenta, transform.position);
-    }
-
-    // Dibuja el círculo de interacción en el Editor para que puedas ajustarlo visualmente
-    private void OnDrawGizmosSelected()
+    void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radius);
+        Gizmos.DrawWireSphere(transform.position, radioInteraccion);
     }
 }
