@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Configuracion de Velocidad")]
@@ -50,14 +51,18 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        // ANIMACIONES (Usando los parametros originales)
+        // --- ANIMACIONES ORIGINALES ---
         if (anim != null)
         {
-            // isWalking se activa si hay movimiento
-            anim.SetBool("isWalking", moveInput.magnitude > 0.1f);
+            // isWalking: true si se esta moviendo
+            bool moving = moveInput.magnitude > 0.1f;
+            anim.SetBool("isWalking", moving);
             
-            // Si tenias isRunning o velocidad en el Animator, podriamos agregarlos aqui
-            // anim.SetBool("isRunning", isRunning && moveInput.magnitude > 0.1f);
+            // Run: true si esta corriendo y moviendose
+            anim.SetBool("Run", isRunning && moving && (stats == null || stats.stamina > 0));
+            
+            // isDrunk: lo sacamos de stats si existe la logica, por ahora lo mantenemos si estaba en el controller
+            // anim.SetBool("isDrunk", stats != null && stats.temperature > 80f); // Ejemplo
         }
 
         FlipSprite();

@@ -8,10 +8,12 @@ public class PlayerActions : MonoBehaviour
     public float recuperacionStaminaChurro = 25f;
 
     private PlayerStats stats;
+    private Animator anim;
 
     void Start()
     {
         stats = GetComponent<PlayerStats>();
+        anim = GetComponent<Animator>();
         if (stats == null)
         {
             Debug.LogError("PlayerActions requiere PlayerStats");
@@ -37,6 +39,9 @@ public class PlayerActions : MonoBehaviour
         {
             stats.RecuperarStamina(recuperacionStaminaChurro);
             Debug.Log("Comiste un churro. Stamina: " + stats.stamina);
+            
+            // Animacion de comer si existiera algun trigger, por ahora usamos attack para feedback
+            if (anim != null) anim.SetTrigger("attack");
         }
     }
 
@@ -48,6 +53,10 @@ public class PlayerActions : MonoBehaviour
         {
             stats.AgregarDinero(precio);
             Debug.Log("Churro vendido por $" + precio);
+            
+            // --- ANIMACION DE VENTA ---
+            if (anim != null) anim.SetTrigger("attack");
+            
             GameEvents.OnChurroVendido?.Invoke();
             return true;
         }

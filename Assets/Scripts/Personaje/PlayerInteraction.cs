@@ -1,15 +1,13 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerInteraction : MonoBehaviour
 {
     [Header("Configuracion")]
     public float radioInteraccion = 2.5f;
     public LayerMask capaNPC;
-    public LayerMask capaObjetos;
 
-    [Header("Debug")]
-    public bool mostrarGizmos = true;
+    [Header("Tecla de Interaccion")]
+    public KeyCode teclaInteractuar = KeyCode.E;
 
     private NPCConversacion npcCercano;
     private bool hayNPCCercano = false;
@@ -17,6 +15,12 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         DetectarNPCsCercanos();
+
+        // INTERACCION DIRECTA CON TECLA
+        if (Input.GetKeyDown(teclaInteractuar))
+        {
+            IntentarInteractuar();
+        }
     }
 
     private void DetectarNPCsCercanos()
@@ -28,24 +32,20 @@ public class PlayerInteraction : MonoBehaviour
 
         foreach (Collider2D col in colisiones)
         {
-            if (col.gameObject != this.gameObject)
+            NPCConversacion npc = col.GetComponent<NPCConversacion>();
+            if (npc != null)
             {
-                NPCConversacion npc = col.GetComponent<NPCConversacion>();
-                if (npc != null)
+                // Prioridad a clientes que quieran comprar
+                if (npc.esCliente && npc.quiereComprar)
                 {
                     npcCercano = npc;
                     hayNPCCercano = true;
                     return;
                 }
+                // Si no hay clientes activos, cualquier NPC/Vendedor sirve
+                npcCercano = npc;
+                hayNPCCercano = true;
             }
-        }
-    }
-
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            IntentarInteractuar();
         }
     }
 
@@ -54,29 +54,6 @@ public class PlayerInteraction : MonoBehaviour
         if (hayNPCCercano && npcCercano != null)
         {
             npcCercano.Interactuar();
-            Debug.Log("Interactuando con: " + npcCercano.gameObject.name);
         }
-    }
-
-    public void Interactuar()
-    {
-        IntentarInteractuar();
-    }
-
-    public bool HayNPCCerca()
-    {
-        return hayNPCCercano;
-    }
-
-    public NPCConversacion GetNPCCercano()
-    {
-        return npcCercano;
-    }
-
-    private void OnDrawGizmos()
-    {
-        if (!mostrarGizmos) return;
-        Gizmos.color = hayNPCCercano ? Color.green : Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radioInteraccion);
     }
 }
