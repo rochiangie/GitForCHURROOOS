@@ -32,7 +32,7 @@ public class PlayerHealthSystem : MonoBehaviour
     {
         if (Mathf.Abs(stats.temperature - lastTempLog) >= 10f)
         {
-            Debug.Log($"[TERMÓMETRO] Temperatura: {stats.temperature.ToString("F1")}°C");
+            //Debug.Log($"[TERMÓMETRO] Temperatura: {stats.temperature.ToString("F1")}°C");
             lastTempLog = Mathf.Round(stats.temperature);
         }
     }
