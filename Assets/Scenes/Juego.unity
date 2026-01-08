@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6119072337134369076, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
       propertyPath: m_LocalPosition.x
@@ -572,7 +572,6 @@ GameObject:
   - component: {fileID: 137052440}
   - component: {fileID: 137052439}
   - component: {fileID: 137052443}
-  - component: {fileID: 137052444}
   - component: {fileID: 137052445}
   m_Layer: 7
   m_Name: gente_11
@@ -951,22 +950,6 @@ PolygonCollider2D:
       - {x: 2.8166668, y: 0.35000002}
       - {x: 2.8500001, y: 0.38333336}
   m_UseDelaunayMesh: 0
---- !u!114 &137052444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 137052438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 3
-  quiereComprar: 0
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
 --- !u!114 &137052445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -976,9 +959,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 137052438}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1001 &140773680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1054,7 +1042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6119072337134369076, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1174,7 +1162,6 @@ GameObject:
   - component: {fileID: 200772457}
   - component: {fileID: 200772456}
   - component: {fileID: 200772459}
-  - component: {fileID: 200772460}
   - component: {fileID: 200772461}
   m_Layer: 7
   m_Name: cliente
@@ -1419,22 +1406,6 @@ PolygonCollider2D:
       - {x: -1.3000001, y: -5.1833334}
       - {x: -1.5000001, y: -4.9833336}
   m_UseDelaunayMesh: 0
---- !u!114 &200772460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 200772453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 1
-  quiereComprar: 1
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 1430134482}
 --- !u!114 &200772461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1444,9 +1415,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 200772453}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 0
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &206624587
 GameObject:
   m_ObjectHideFlags: 0
@@ -1460,7 +1436,6 @@ GameObject:
   - component: {fileID: 206624589}
   - component: {fileID: 206624588}
   - component: {fileID: 206624592}
-  - component: {fileID: 206624593}
   - component: {fileID: 206624594}
   m_Layer: 7
   m_Name: gente_7
@@ -1740,22 +1715,6 @@ PolygonCollider2D:
       - {x: -0.5166667, y: -1.3333334}
       - {x: -0.5833334, y: -1.3333334}
   m_UseDelaunayMesh: 0
---- !u!114 &206624593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 206624587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 3
-  quiereComprar: 0
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
 --- !u!114 &206624594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1765,9 +1724,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 206624587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1001 &213532879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1841,7 +1805,7 @@ GameObject:
   - component: {fileID: 217609837}
   - component: {fileID: 217609835}
   - component: {fileID: 217609839}
-  - component: {fileID: 217609838}
+  - component: {fileID: 217609840}
   m_Layer: 7
   m_Name: vendedores_4
   m_TagString: Vendedor
@@ -1965,22 +1929,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &217609838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 217609833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f6c93e7a28f2e42a3a1311275297bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miHabilidad: 0
-  nombreVendedor: 
-  dialogoMision: {fileID: 0}
-  afinidad: 0
 --- !u!60 &217609839
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2093,6 +2041,23 @@ PolygonCollider2D:
       - {x: -1.6166668, y: -4.8333335}
       - {x: -1.8166667, y: -4.066667}
   m_UseDelaunayMesh: 0
+--- !u!114 &217609840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217609833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esCliente: 0
+  esVendedor: 1
+  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &228825872
 GameObject:
   m_ObjectHideFlags: 0
@@ -2158,21 +2123,19 @@ RectTransform:
   m_GameObject: {fileID: 228825872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1127079320}
-  - {fileID: 1588702299}
-  - {fileID: 1988075551}
-  - {fileID: 945187210}
+  - {fileID: 1440209821}
   - {fileID: 2070885956}
   - {fileID: 1247472497}
   m_Father: {fileID: 1216890481}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1.0180054, y: -1.0180054}
+  m_SizeDelta: {x: -2.713, y: -2.713}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &238624604
 GameObject:
@@ -2186,7 +2149,7 @@ GameObject:
   - component: {fileID: 238624608}
   - component: {fileID: 238624607}
   - component: {fileID: 238624610}
-  - component: {fileID: 238624609}
+  - component: {fileID: 238624611}
   m_Layer: 7
   m_Name: vendedores_13
   m_TagString: Vendedor
@@ -2310,22 +2273,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &238624609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238624604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f6c93e7a28f2e42a3a1311275297bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miHabilidad: 1
-  nombreVendedor: Morocho
-  dialogoMision: {fileID: 0}
-  afinidad: 10
 --- !u!60 &238624610
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2462,6 +2409,23 @@ PolygonCollider2D:
       - {x: -1.0333334, y: -5.316667}
       - {x: -1.2, y: -4.8833337}
   m_UseDelaunayMesh: 0
+--- !u!114 &238624611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238624604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esCliente: 0
+  esVendedor: 1
+  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &254639386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2474,7 +2438,6 @@ GameObject:
   - component: {fileID: 254639388}
   - component: {fileID: 254639390}
   - component: {fileID: 254639389}
-  - component: {fileID: 254639391}
   - component: {fileID: 254639392}
   m_Layer: 7
   m_Name: masGente_5
@@ -2598,7 +2561,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 15, y: 15}
   m_EdgeRadius: 0
 --- !u!60 &254639390
 PolygonCollider2D:
@@ -2770,22 +2733,6 @@ PolygonCollider2D:
       - {x: 0.35000002, y: -2.0500002}
       - {x: 0.21666668, y: -2.0500002}
   m_UseDelaunayMesh: 0
---- !u!114 &254639391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 254639386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 1
-  quiereComprar: 0
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
 --- !u!114 &254639392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2795,9 +2742,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 254639386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &264279672
 GameObject:
   m_ObjectHideFlags: 0
@@ -2810,7 +2762,6 @@ GameObject:
   - component: {fileID: 264279674}
   - component: {fileID: 264279676}
   - component: {fileID: 264279675}
-  - component: {fileID: 264279677}
   - component: {fileID: 264279678}
   m_Layer: 7
   m_Name: masGente_7
@@ -3165,22 +3116,6 @@ PolygonCollider2D:
       - {x: -0.050000004, y: 3.916667}
       - {x: -0.116666675, y: 3.916667}
   m_UseDelaunayMesh: 0
---- !u!114 &264279677
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 264279672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 1
-  quiereComprar: 0
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
 --- !u!114 &264279678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3190,9 +3125,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 264279672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &293537931
 GameObject:
   m_ObjectHideFlags: 0
@@ -3584,7 +3524,6 @@ GameObject:
   - component: {fileID: 362702230}
   - component: {fileID: 362702232}
   - component: {fileID: 362702231}
-  - component: {fileID: 362702233}
   - component: {fileID: 362702234}
   m_Layer: 7
   m_Name: masGente_1
@@ -3862,22 +3801,6 @@ PolygonCollider2D:
       - {x: 3.4166667, y: -1.95}
       - {x: 3.2500002, y: -1.95}
   m_UseDelaunayMesh: 0
---- !u!114 &362702233
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 362702228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 2
-  quiereComprar: 1
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
 --- !u!114 &362702234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3887,9 +3810,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 362702228}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &372324006
 GameObject:
   m_ObjectHideFlags: 0
@@ -4113,11 +4041,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379449905}
   m_CullTransparentMesh: 1
---- !u!1 &384590120 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
-  m_PrefabInstance: {fileID: 213532879}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &384590121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6119072337134369076, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
@@ -4196,7 +4119,7 @@ GameObject:
   - component: {fileID: 412017630}
   - component: {fileID: 412017628}
   - component: {fileID: 412017632}
-  - component: {fileID: 412017631}
+  - component: {fileID: 412017633}
   m_Layer: 7
   m_Name: vendedores_1
   m_TagString: Vendedor
@@ -4320,22 +4243,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &412017631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 412017626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f6c93e7a28f2e42a3a1311275297bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miHabilidad: 0
-  nombreVendedor: Leo
-  dialogoMision: {fileID: 0}
-  afinidad: 10
 --- !u!60 &412017632
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4440,6 +4347,23 @@ PolygonCollider2D:
       - {x: 0.8333334, y: -4.266667}
       - {x: 2, y: -4.2333336}
   m_UseDelaunayMesh: 0
+--- !u!114 &412017633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412017626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esCliente: 0
+  esVendedor: 1
+  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &435563455
 GameObject:
   m_ObjectHideFlags: 0
@@ -4681,7 +4605,6 @@ GameObject:
   - component: {fileID: 462925422}
   - component: {fileID: 462925421}
   - component: {fileID: 462925425}
-  - component: {fileID: 462925426}
   - component: {fileID: 462925427}
   m_Layer: 7
   m_Name: gente_6
@@ -4951,22 +4874,6 @@ PolygonCollider2D:
       - {x: -1.7833334, y: 0.48333335}
       - {x: -1.7166667, y: 0.5166667}
   m_UseDelaunayMesh: 0
---- !u!114 &462925426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 462925420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 3
-  quiereComprar: 1
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
 --- !u!114 &462925427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4976,9 +4883,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 462925420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &467735555
 GameObject:
   m_ObjectHideFlags: 0
@@ -5518,11 +5430,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &574373496 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
-  m_PrefabInstance: {fileID: 5585847}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &574373497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6119072337134369076, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
@@ -5805,7 +5712,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panelDialogo: {fileID: 228825872}
   textoNombre: {fileID: 2070885958}
-  textoFrase: {fileID: 1247472499}
+  textoPropuesta: {fileID: 0}
+  botonCerrarX: {fileID: 1988075548}
+  botonesRespuesta:
+  - {fileID: 1588702300}
+  - {fileID: 945187213}
+  - {fileID: 937245376}
 --- !u!4 &694398058
 Transform:
   m_ObjectHideFlags: 0
@@ -6127,7 +6039,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 384
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -6240,14 +6152,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639e9183b538d374b9916b966c825eb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  temperature: 0
-  hydration: 100
   money: 0
-  maxStat: 100
   churrosCantidad: 20
-  tempSlider: {fileID: 1940376139}
-  drinkSlider: {fileID: 10358200}
-  moneyText: {fileID: 379449907}
+  hydration: 100
+  hydrationMax: 100
+  stamina: 100
+  staminaMax: 100
+  temperature: 0
+  temperatureMax: 42
 --- !u!114 &765166873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6274,11 +6186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd9fb08ed7532e4685cb92d30ff61e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioInteraccion: 2.5
-  capaInteraccion:
+  radioInteraccion: 4
+  capaNPC:
     serializedVersion: 2
-    m_Bits: 0
-  teclaInteractuar: 102
+    m_Bits: 128
 --- !u!114 &765166875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6291,10 +6202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4725890656c2194d8c2d8ed60ce38b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heatGainRate: 2.5
-  thirstRate: 1.8
-  isInsideWater: 0
-  isShadowed: 0
+  health: 100
+  healthMax: 100
 --- !u!114 &765166876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6307,8 +6216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e79b3907d470e49b2fdaed434ecd06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drinkRecovery: 25
-  drinkCost: 5
 --- !u!1001 &769839452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6518,7 +6425,7 @@ GameObject:
   - component: {fileID: 798359313}
   - component: {fileID: 798359311}
   - component: {fileID: 798359315}
-  - component: {fileID: 798359314}
+  - component: {fileID: 798359316}
   m_Layer: 7
   m_Name: vendedores_0
   m_TagString: Vendedor
@@ -6642,22 +6549,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &798359314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798359309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f6c93e7a28f2e42a3a1311275297bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miHabilidad: 3
-  nombreVendedor: Paco
-  dialogoMision: {fileID: 0}
-  afinidad: -5
 --- !u!60 &798359315
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6867,6 +6758,23 @@ PolygonCollider2D:
       - {x: -0.53333336, y: -2.9333334}
       - {x: -1.1, y: -2.9333334}
   m_UseDelaunayMesh: 0
+--- !u!114 &798359316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798359309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esCliente: 0
+  esVendedor: 1
+  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &799898177
 GameObject:
   m_ObjectHideFlags: 0
@@ -6968,7 +6876,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6119072337134369076, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7500,16 +7408,132 @@ Transform:
   m_Children: []
   m_Father: {fileID: 327189159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &931033804 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
-  m_PrefabInstance: {fileID: 190614350}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &931033805 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6119072337134369076, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
   m_PrefabInstance: {fileID: 190614350}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &937245375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 937245379}
+  - component: {fileID: 937245378}
+  - component: {fileID: 937245377}
+  - component: {fileID: 937245376}
+  m_Layer: 5
+  m_Name: Si (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &937245376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937245375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 937245377}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &937245377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937245375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &937245378
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937245375}
+  m_CullTransparentMesh: 1
+--- !u!224 &937245379
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937245375}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1739732409}
+  m_Father: {fileID: 1440209821}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -27.389, y: -150.009}
+  m_SizeDelta: {x: 149.579, y: 18.975}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &945187209
 GameObject:
   m_ObjectHideFlags: 0
@@ -7536,18 +7560,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945187209}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1328529683}
-  m_Father: {fileID: 228825875}
+  m_Father: {fileID: 1440209821}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 77, y: -55}
-  m_SizeDelta: {x: 74.487, y: 30}
+  m_AnchoredPosition: {x: -24.698, y: -196.27}
+  m_SizeDelta: {x: 149.67, y: 18.725}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &945187211
 MonoBehaviour:
@@ -7870,7 +7894,6 @@ GameObject:
   - component: {fileID: 1000565829}
   - component: {fileID: 1000565828}
   - component: {fileID: 1000565832}
-  - component: {fileID: 1000565833}
   - component: {fileID: 1000565834}
   m_Layer: 7
   m_Name: gente_8
@@ -8148,22 +8171,6 @@ PolygonCollider2D:
       - {x: 2.0333335, y: -1.1833334}
       - {x: 1.9333334, y: -1.2166667}
   m_UseDelaunayMesh: 0
---- !u!114 &1000565833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000565827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 3
-  quiereComprar: 0
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
 --- !u!114 &1000565834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8173,9 +8180,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000565827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1001 &1006842098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8237,11 +8249,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
---- !u!1 &1034089692 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
-  m_PrefabInstance: {fileID: 823404752}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1034089693 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6119072337134369076, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
@@ -8647,7 +8654,6 @@ GameObject:
   - component: {fileID: 1160089035}
   - component: {fileID: 1160089033}
   - component: {fileID: 1160089037}
-  - component: {fileID: 1160089038}
   - component: {fileID: 1160089039}
   m_Layer: 7
   m_Name: gente_0
@@ -8700,7 +8706,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 15, y: 15}
   m_EdgeRadius: 0
 --- !u!212 &1160089035
 SpriteRenderer:
@@ -8893,22 +8899,6 @@ PolygonCollider2D:
       - {x: -0.10000001, y: -3.4}
       - {x: -0.06666667, y: -3.4}
   m_UseDelaunayMesh: 0
---- !u!114 &1160089038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160089032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 0
-  quiereComprar: 0
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 931033804}
 --- !u!114 &1160089039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8918,9 +8908,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1160089032}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &1168655366
 GameObject:
   m_ObjectHideFlags: 0
@@ -8934,7 +8929,7 @@ GameObject:
   - component: {fileID: 1168655369}
   - component: {fileID: 1168655368}
   - component: {fileID: 1168655372}
-  - component: {fileID: 1168655371}
+  - component: {fileID: 1168655373}
   m_Layer: 7
   m_Name: vendedores_15
   m_TagString: Vendedor
@@ -9104,22 +9099,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1168655371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168655366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f6c93e7a28f2e42a3a1311275297bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miHabilidad: 0
-  nombreVendedor: 
-  dialogoMision: {fileID: 0}
-  afinidad: 0
 --- !u!60 &1168655372
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -9319,6 +9298,23 @@ PolygonCollider2D:
       - {x: 3.266667, y: 3.216667}
       - {x: 3.0000002, y: 3.216667}
   m_UseDelaunayMesh: 0
+--- !u!114 &1168655373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168655366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esCliente: 0
+  esVendedor: 1
+  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &1201521686
 GameObject:
   m_ObjectHideFlags: 0
@@ -9331,7 +9327,6 @@ GameObject:
   - component: {fileID: 1201521689}
   - component: {fileID: 1201521687}
   - component: {fileID: 1201521691}
-  - component: {fileID: 1201521692}
   - component: {fileID: 1201521693}
   m_Layer: 7
   m_Name: gente_11 (1)
@@ -9664,22 +9659,6 @@ PolygonCollider2D:
       - {x: 2.8166668, y: 0.35000002}
       - {x: 2.8500001, y: 0.38333336}
   m_UseDelaunayMesh: 0
---- !u!114 &1201521692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201521686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 3
-  quiereComprar: 0
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
 --- !u!114 &1201521693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9689,9 +9668,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1201521686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &1216890477
 GameObject:
   m_ObjectHideFlags: 0
@@ -9823,7 +9807,7 @@ GameObject:
   - component: {fileID: 1228108368}
   - component: {fileID: 1228108366}
   - component: {fileID: 1228108370}
-  - component: {fileID: 1228108369}
+  - component: {fileID: 1228108371}
   m_Layer: 7
   m_Name: vendedores_14
   m_TagString: Vendedor
@@ -9947,22 +9931,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1228108369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1228108364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f6c93e7a28f2e42a3a1311275297bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miHabilidad: 0
-  nombreVendedor: 
-  dialogoMision: {fileID: 0}
-  afinidad: 0
 --- !u!60 &1228108370
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -10076,6 +10044,23 @@ PolygonCollider2D:
       - {x: 2.4666667, y: -4.6000004}
       - {x: 2.3333335, y: -4.5}
   m_UseDelaunayMesh: 0
+--- !u!114 &1228108371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228108364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esCliente: 0
+  esVendedor: 1
+  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &1237815403
 GameObject:
   m_ObjectHideFlags: 0
@@ -10184,7 +10169,6 @@ GameObject:
   - component: {fileID: 1239838715}
   - component: {fileID: 1239838714}
   - component: {fileID: 1239838718}
-  - component: {fileID: 1239838719}
   - component: {fileID: 1239838720}
   m_Layer: 7
   m_Name: gente_5
@@ -10445,22 +10429,6 @@ PolygonCollider2D:
       - {x: 2.95, y: 1.2500001}
       - {x: 2.8500001, y: 1.2166667}
   m_UseDelaunayMesh: 0
---- !u!114 &1239838719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1239838713}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 0
-  quiereComprar: 1
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 384590120}
 --- !u!114 &1239838720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10470,9 +10438,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1239838713}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &1247472496
 GameObject:
   m_ObjectHideFlags: 0
@@ -10507,8 +10480,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.41, y: 50.126}
-  m_SizeDelta: {x: 261.219, y: 145.148}
+  m_AnchoredPosition: {x: -4.91, y: 39.837}
+  m_SizeDelta: {x: 297.438, y: 119.732}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1247472498
 CanvasRenderer:
@@ -10565,10 +10538,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 36
+  m_fontSize: 15
+  m_fontSizeBase: 15
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -10609,11 +10582,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &1255800596 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
-  m_PrefabInstance: {fileID: 180842725}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1255800597 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6119072337134369076, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
@@ -10703,8 +10671,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10926,8 +10894,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11062,8 +11030,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11293,16 +11261,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1430134482 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
-  m_PrefabInstance: {fileID: 1006842098}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1430134483 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6119072337134369076, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
   m_PrefabInstance: {fileID: 1006842098}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1440209820
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1440209821}
+  m_Layer: 5
+  m_Name: ContenedorBotnoes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1440209821
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440209820}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1588702299}
+  - {fileID: 937245379}
+  - {fileID: 1988075551}
+  - {fileID: 945187210}
+  m_Father: {fileID: 228825875}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 26.515251, y: 46.49975}
+  m_SizeDelta: {x: 279.44952, y: 232.9995}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1451522109
 GameObject:
   m_ObjectHideFlags: 0
@@ -11747,7 +11749,7 @@ GameObject:
   - component: {fileID: 1586222251}
   - component: {fileID: 1586222250}
   - component: {fileID: 1586222254}
-  - component: {fileID: 1586222253}
+  - component: {fileID: 1586222255}
   m_Layer: 7
   m_Name: vendedores_2
   m_TagString: Vendedor
@@ -11917,22 +11919,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1586222253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1586222248}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f6c93e7a28f2e42a3a1311275297bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miHabilidad: 0
-  nombreVendedor: 
-  dialogoMision: {fileID: 0}
-  afinidad: 0
 --- !u!60 &1586222254
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -12233,6 +12219,23 @@ PolygonCollider2D:
       - {x: 2.9833336, y: 1.3833334}
       - {x: 2.95, y: 1.4166667}
   m_UseDelaunayMesh: 0
+--- !u!114 &1586222255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586222248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  esCliente: 0
+  esVendedor: 1
+  archivoDialogo: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &1588702298
 GameObject:
   m_ObjectHideFlags: 0
@@ -12259,18 +12262,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588702298}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1339807147}
-  m_Father: {fileID: 228825875}
+  m_Father: {fileID: 1440209821}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -75.966, y: -55}
-  m_SizeDelta: {x: 74.487, y: 30}
+  m_AnchoredPosition: {x: -27.298, y: -95.2}
+  m_SizeDelta: {x: 149.67, y: 21.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1588702300
 MonoBehaviour:
@@ -12453,7 +12456,6 @@ GameObject:
   - component: {fileID: 1623144840}
   - component: {fileID: 1623144842}
   - component: {fileID: 1623144841}
-  - component: {fileID: 1623144843}
   - component: {fileID: 1623144844}
   m_Layer: 7
   m_Name: masGente_8
@@ -12758,22 +12760,6 @@ PolygonCollider2D:
       - {x: -1.7500001, y: -3.9833336}
       - {x: -1.7500001, y: -4.016667}
   m_UseDelaunayMesh: 0
---- !u!114 &1623144843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1623144838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 1
-  quiereComprar: 0
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
 --- !u!114 &1623144844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12783,9 +12769,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1623144838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1001 &1642918647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12859,7 +12850,6 @@ GameObject:
   - component: {fileID: 1663917978}
   - component: {fileID: 1663917980}
   - component: {fileID: 1663917979}
-  - component: {fileID: 1663917981}
   - component: {fileID: 1663917982}
   m_Layer: 7
   m_Name: masGente_4
@@ -13169,22 +13159,6 @@ PolygonCollider2D:
       - {x: 2.45, y: -3.516667}
       - {x: -0.75000006, y: -3.516667}
   m_UseDelaunayMesh: 0
---- !u!114 &1663917981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1663917976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 2
-  quiereComprar: 1
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
 --- !u!114 &1663917982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13194,9 +13168,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1663917976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &1676131094
 GameObject:
   m_ObjectHideFlags: 0
@@ -13210,7 +13189,6 @@ GameObject:
   - component: {fileID: 1676131096}
   - component: {fileID: 1676131095}
   - component: {fileID: 1676131099}
-  - component: {fileID: 1676131100}
   - component: {fileID: 1676131101}
   m_Layer: 7
   m_Name: gente_3
@@ -13580,22 +13558,6 @@ PolygonCollider2D:
       - {x: 2.0500002, y: -0.016666668}
       - {x: 2.0833335, y: -0.016666668}
   m_UseDelaunayMesh: 0
---- !u!114 &1676131100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1676131094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 0
-  quiereComprar: 1
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 1034089692}
 --- !u!114 &1676131101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13605,9 +13567,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1676131094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!4 &1682902217 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6119072337134369076, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
@@ -13799,6 +13766,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715753215}
   m_CullTransparentMesh: 1
+--- !u!1 &1739732408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1739732409}
+  - component: {fileID: 1739732411}
+  - component: {fileID: 1739732410}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1739732409
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739732408}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937245379}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1739732410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739732408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Otro
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 6
+  m_fontSizeBase: 6
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1739732411
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739732408}
+  m_CullTransparentMesh: 1
 --- !u!1 &1747731687
 GameObject:
   m_ObjectHideFlags: 0
@@ -13899,7 +14002,6 @@ GameObject:
   - component: {fileID: 1762116596}
   - component: {fileID: 1762116595}
   - component: {fileID: 1762116599}
-  - component: {fileID: 1762116600}
   - component: {fileID: 1762116601}
   m_Layer: 7
   m_Name: gente_4
@@ -14270,22 +14372,6 @@ PolygonCollider2D:
       - {x: 3.8333335, y: 0.8166667}
       - {x: 3.8333335, y: 0.75000006}
   m_UseDelaunayMesh: 0
---- !u!114 &1762116600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1762116594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 0
-  quiereComprar: 1
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 1255800596}
 --- !u!114 &1762116601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14295,9 +14381,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1762116594}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &1778962931
 GameObject:
   m_ObjectHideFlags: 0
@@ -14863,7 +14954,6 @@ GameObject:
   - component: {fileID: 1899959046}
   - component: {fileID: 1899959048}
   - component: {fileID: 1899959047}
-  - component: {fileID: 1899959049}
   - component: {fileID: 1899959050}
   m_Layer: 7
   m_Name: masGente_2
@@ -14987,7 +15077,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 15, y: 15}
   m_EdgeRadius: 0
 --- !u!60 &1899959048
 PolygonCollider2D:
@@ -15200,22 +15290,6 @@ PolygonCollider2D:
       - {x: 3.8833334, y: -2.8833334}
       - {x: 3.716667, y: -2.8833334}
   m_UseDelaunayMesh: 0
---- !u!114 &1899959049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899959044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 2
-  quiereComprar: 1
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
 --- !u!114 &1899959050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15225,9 +15299,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1899959044}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &1906176034
 GameObject:
   m_ObjectHideFlags: 0
@@ -15767,19 +15846,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1988075547}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1316983937}
-  m_Father: {fileID: 228825875}
+  m_Father: {fileID: 1440209821}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 140.24, y: 147.193}
-  m_SizeDelta: {x: 52, y: 31.613}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 91, y: 90.524}
+  m_SizeDelta: {x: 32.509, y: 21.444}
+  m_Pivot: {x: 0.5, y: 0.49999985}
 --- !u!1 &2000576160
 GameObject:
   m_ObjectHideFlags: 0
@@ -15909,7 +15988,6 @@ GameObject:
   - component: {fileID: 2059876724}
   - component: {fileID: 2059876726}
   - component: {fileID: 2059876725}
-  - component: {fileID: 2059876727}
   - component: {fileID: 2059876728}
   m_Layer: 7
   m_Name: masGente_3
@@ -16171,22 +16249,6 @@ PolygonCollider2D:
       - {x: -0.7166667, y: -4.016667}
       - {x: -0.6833334, y: -4.016667}
   m_UseDelaunayMesh: 0
---- !u!114 &2059876727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059876722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa23f22eb00a1ea4b8250b2f0450570d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  personalidad: 2
-  quiereComprar: 1
-  nombreCliente: Turista
-  iconoDeseo: {fileID: 574373496}
 --- !u!114 &2059876728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16196,9 +16258,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2059876722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47b3c333748c0642849cd0d2be7fc5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  esCliente: 1
+  esVendedor: 0
+  archivoDialogo: {fileID: 11400000, guid: 6dcf969158b6e5747a1bc260462c7d60, type: 2}
+  precioAgua: 10
+  recuperacionHidratacion: 30
 --- !u!1 &2070885955
 GameObject:
   m_ObjectHideFlags: 0
@@ -16233,8 +16300,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -122.8, y: 149.8}
-  m_SizeDelta: {x: 73.873, y: 26.398}
+  m_AnchoredPosition: {x: -64, y: 140}
+  m_SizeDelta: {x: 109.74, y: 26.398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2070885957
 CanvasRenderer:
@@ -16291,7 +16358,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.1
+  m_fontSize: 23.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -16329,7 +16396,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -0.000068710855, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

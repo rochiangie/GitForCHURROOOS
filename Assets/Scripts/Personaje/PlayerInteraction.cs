@@ -2,59 +2,55 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    [Header("Configuración de Interacción")]
+    [Tooltip("El alcance del churrero para hablar con la gente.")]
     public float radioInteraccion = 2.5f;
-    public LayerMask capaInteraccion;
-    private PlayerStats stats;
 
-    void Start()
-    {
-        stats = GetComponent<PlayerStats>();
-    }
+    [Tooltip("Asegurate de que los NPCs estén en esta capa.")]
+    public LayerMask capaNPC;
 
     void Update()
     {
+        // Detectamos la tecla F
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Interactuar();
+            RealizarInteraccion();
         }
     }
 
-    void Interactuar()
+    void RealizarInteraccion()
     {
-        Collider2D[] colisiones = Physics2D.OverlapCircleAll(transform.position, radioInteraccion, capaInteraccion);
+        // Detectamos colisiones en un círculo alrededor del jugador
+        Collider2D[] colisiones = Physics2D.OverlapCircleAll(transform.position, radioInteraccion, capaNPC);
+
+        bool encontreAlguien = false;
 
         foreach (Collider2D col in colisiones)
         {
-            if (col.CompareTag("Cliente"))
+            // Buscamos el componente unificado en el objeto que tocamos
+            NPCConversacion npc = col.GetComponent<NPCConversacion>();
+
+            if (npc != null)
             {
-                ClientePersonalidad cliente = col.GetComponent<ClientePersonalidad>();
-                ClienteDialogos dialogosExtra = col.GetComponent<ClienteDialogos>();
+                // Le pedimos al NPC que se encargue de hablar con el Manager
+                npc.Interactuar();
+                encontreAlguien = true;
 
-                if (cliente != null && cliente.quiereComprar && stats.churrosCantidad > 0)
-                {
-                    // Lógica de venta
-                    cliente.ReaccionarVenta();
-                    stats.churrosCantidad--;
-                    stats.AddMoney(15f);
-
-                    // LLAMADA AL DIALOGO
-                    if (dialogosExtra != null && DialogoManager.Instance != null)
-                    {
-                        string frase = dialogosExtra.ObtenerFrase(cliente.personalidad);
-                        Dialogo d = ScriptableObject.CreateInstance<Dialogo>();
-                        d.nombrePersonaje = cliente.nombreCliente;
-                        d.frases = new string[] { frase };
-
-                        // Esta llamada ahora coincide con la Version 1 del Manager
-                        DialogoManager.Instance.IniciarDialogo(d);
-                    }
-                    break;
-                }
+                // Usamos break para que si hay dos personas pegadas, 
+                // solo hablemos con la primera y no se abran dos paneles.
+                break;
             }
+        }
+
+        if (!encontreAlguien)
+        {
+            Debug.Log("No hay nadie cerca en la capa NPC para hablar.");
         }
     }
 
-    void OnDrawGizmosSelected()
+    // Esto sirve para que en la pestaña "Scene" de Unity veas el círculo amarillo
+    // y sepas si el radio es muy chico o muy grande.
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radioInteraccion);

@@ -36,7 +36,7 @@ public class UIManager : MonoBehaviour
             // La temperatura ahora viene de PlayerStats
             if (heatSlider != null)
             {
-                heatSlider.value = stats.temperature / stats.maxStat;
+                heatSlider.value = stats.temperature / stats.staminaMax;
             }
 
             // El dinero (plata) ahora viene de PlayerStats

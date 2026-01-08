@@ -1,31 +1,24 @@
 using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    [Header("Atributos")]
-    public float temperature = 0f;
-    public float hydration = 100f;
     public float money = 0f;
-    public float maxStat = 100f;
-    public int churrosCantidad = 20; // Nueva variable para los churros
+    public int churrosCantidad = 10;
 
-    [Header("UI Elements")]
-    public Slider tempSlider;
-    public Slider drinkSlider;
-    public TextMeshProUGUI moneyText;
+    [Header("Límites (No dejar en 0)")]
+    public float hydration = 100f;
+    public float hydrationMax = 100f;
+    public float stamina = 100f;
+    public float staminaMax = 100f;
+    public float temperature = 36f;
+    public float temperatureMax = 42f;
+
+    public void AddMoney(float amount) => money += amount;
 
     void Update()
     {
-        // El Slider se actualiza aquí
-        if (tempSlider) tempSlider.value = temperature / maxStat;
-        if (drinkSlider) drinkSlider.value = hydration / maxStat;
-        if (moneyText) moneyText.text = "$" + money.ToString("F0");
-    }
-
-    public void AddMoney(float amount)
-    {
-        money += amount;
+        hydration = Mathf.Clamp(hydration, 0, hydrationMax);
+        stamina = Mathf.Clamp(stamina, 0, staminaMax);
+        temperature = Mathf.Clamp(temperature, 30, temperatureMax);
     }
 }

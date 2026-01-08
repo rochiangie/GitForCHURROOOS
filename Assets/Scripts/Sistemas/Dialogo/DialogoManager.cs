@@ -9,83 +9,90 @@ public class DialogoManager : MonoBehaviour
     [Header("UI Referencias")]
     public GameObject panelDialogo;
     public TextMeshProUGUI textoNombre;
-    public TextMeshProUGUI textoFrase;
 
-    [Header("Configuracion de Botones")]
-    public GameObject contenedorBotones;
-    public Button[] botonesRespuesta; // Asigna 3 botones en el Inspector
+    // Aquí separamos los dos objetos de texto
+    public TextMeshProUGUI textoPropuestaCliente;
+    public TextMeshProUGUI textoPropuestaVendedor;
+
+    public Button botonCerrarX;
+    public Button[] botonesRespuesta;
+
+    private NPCConversacion npcActual;
+    private PlayerStats stats;
+    private PlayerActions actions;
 
     private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
 
-        if (panelDialogo != null) panelDialogo.SetActive(false);
-    }
-
-    // VERSION 1: Se usa en PlayerInteraction para ventas rapidas
-    public void IniciarDialogo(Dialogo data)
-    {
-        if (panelDialogo == null) return;
-
-        panelDialogo.SetActive(true);
-        textoNombre.text = data.nombrePersonaje;
-        textoFrase.text = (data.frases != null && data.frases.Length > 0) ? data.frases[0] : "...";
-
-        // Opciones de cortesia marplatense
-        string[] opcionesVenta = { "¡Gracias!", "Disculpe", "Por favor" };
-        ConfigurarBotonesVenta(opcionesVenta);
-    }
-
-    // VERSION 2: Se usa en NPCVendedor para misiones (Aceptar/Rechazar)
-    public void IniciarDialogo(Dialogo data, NPCVendedor vendedor)
-    {
-        if (panelDialogo == null) return;
-
-        panelDialogo.SetActive(true);
-        textoNombre.text = data.nombrePersonaje;
-        textoFrase.text = (data.frases != null && data.frases.Length > 0) ? data.frases[0] : "...";
-
-        ConfigurarBotonesMision(vendedor);
-    }
-
-    private void ConfigurarBotonesVenta(string[] opciones)
-    {
-        foreach (var b in botonesRespuesta) b.gameObject.SetActive(false);
-
-        for (int i = 0; i < opciones.Length; i++)
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
         {
-            if (i >= botonesRespuesta.Length) break;
-            botonesRespuesta[i].gameObject.SetActive(true);
-            botonesRespuesta[i].GetComponentInChildren<TextMeshProUGUI>().text = opciones[i];
-
-            botonesRespuesta[i].onClick.RemoveAllListeners();
-            botonesRespuesta[i].onClick.AddListener(CerrarDialogo);
+            stats = player.GetComponent<PlayerStats>();
+            actions = player.GetComponent<PlayerActions>();
         }
-    }
 
-    private void ConfigurarBotonesMision(NPCVendedor vendedor)
-    {
-        foreach (var b in botonesRespuesta) b.gameObject.SetActive(false);
-
-        // Boton Aceptar
-        botonesRespuesta[0].gameObject.SetActive(true);
-        botonesRespuesta[0].GetComponentInChildren<TextMeshProUGUI>().text = "Aceptar";
-        botonesRespuesta[0].onClick.RemoveAllListeners();
-        botonesRespuesta[0].onClick.AddListener(() => { vendedor.EfectoDecision(true); CerrarDialogo(); });
-
-        // Boton Rechazar
-        if (botonesRespuesta.Length > 1)
-        {
-            botonesRespuesta[1].gameObject.SetActive(true);
-            botonesRespuesta[1].GetComponentInChildren<TextMeshProUGUI>().text = "Rechazar";
-            botonesRespuesta[1].onClick.RemoveAllListeners();
-            botonesRespuesta[1].onClick.AddListener(() => { vendedor.EfectoDecision(false); CerrarDialogo(); });
-        }
-    }
-
-    public void CerrarDialogo()
-    {
         panelDialogo.SetActive(false);
+
+        if (botonCerrarX != null)
+        {
+            botonCerrarX.onClick.RemoveAllListeners();
+            botonCerrarX.onClick.AddListener(CerrarPanel);
+        }
     }
+
+    public void AbrirPanel(NPCConversacion npc)
+    {
+        npcActual = npc;
+        panelDialogo.SetActive(true);
+        textoNombre.text = npc.archivoDialogo.nombrePersonaje; // Usamos el nombre del personaje
+
+        // LÓGICA DE VISIBILIDAD: Apagamos ambos y prendemos solo el que corresponde
+        textoPropuestaCliente.gameObject.SetActive(npc.esCliente);
+        textoPropuestaVendedor.gameObject.SetActive(npc.esVendedor);
+
+        // Asignamos el texto al que esté activo
+        if (npc.esCliente)
+            textoPropuestaCliente.text = npc.archivoDialogo.propuestaInicial;
+        else
+            textoPropuestaVendedor.text = npc.archivoDialogo.propuestaInicial;
+
+        ConfigurarBotones(npc.archivoDialogo);
+    }
+
+    void ConfigurarBotones(Dialogo data)
+    {
+        string[] textos = { data.respuestaAmable, data.respuestaNeutral, data.respuestaCerrada };
+
+        for (int i = 0; i < botonesRespuesta.Length; i++)
+        {
+            botonesRespuesta[i].gameObject.SetActive(true);
+            botonesRespuesta[i].GetComponentInChildren<TextMeshProUGUI>().text = textos[i];
+
+            int indice = i;
+            botonesRespuesta[i].onClick.RemoveAllListeners();
+            botonesRespuesta[i].onClick.AddListener(() => ProcesarEleccion(indice));
+        }
+    }
+
+    void ProcesarEleccion(int eleccion)
+    {
+        if (npcActual.esCliente)
+        {
+            if (eleccion == 0) stats.AddMoney(20f);
+            else if (eleccion == 1) stats.AddMoney(15f);
+        }
+        else if (npcActual.esVendedor)
+        {
+            if ((eleccion == 0 || eleccion == 1) && stats.money >= npcActual.precioAgua)
+            {
+                stats.money -= npcActual.precioAgua;
+                if (actions != null) actions.TomarAgua(npcActual.recuperacionHidratacion);
+            }
+        }
+        CerrarPanel();
+    }
+
+    public void CerrarPanel() => panelDialogo.SetActive(false);
 }

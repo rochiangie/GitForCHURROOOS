@@ -5,10 +5,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Configuración de Velocidad")]
     public float walkSpeed = 5f;
-    public float runSpeed = 8f;
+    public float runSpeed = 8.5f;
     private float currentSpeed;
 
-    [Header("Referencias")]
     private Rigidbody2D rb;
     private Animator anim;
     private Vector2 moveInput;
@@ -22,45 +21,41 @@ public class PlayerMovement : MonoBehaviour
 
         rb.gravityScale = 0;
         rb.freezeRotation = true;
-        currentSpeed = walkSpeed;
     }
 
     void Update()
     {
-        // 1. Capturar Movimiento
         moveInput.x = Input.GetAxisRaw("Horizontal");
         moveInput.y = Input.GetAxisRaw("Vertical");
 
-        // 2. Lógica de Correr (Shift)
-        // Solo puede correr si se está moviendo y tiene suficiente hidratación
-        if (Input.GetKey(KeyCode.LeftShift) && moveInput.sqrMagnitude > 0 && stats.hydration > 10f)
+        // Lógica de Correr: Necesita Shift, estarse moviendo y tener Stamina > 5
+        if (Input.GetKey(KeyCode.LeftShift) && moveInput.sqrMagnitude > 0 && stats.stamina > 5f)
         {
             currentSpeed = runSpeed;
-            anim.SetBool("Run", true); // Activamos tu nueva animación
-
-            // Correr cansa más rápido (opcional, pero realista)
-            stats.hydration -= Time.deltaTime * 2f;
+            if (anim != null) anim.SetBool("Run", true);
+            stats.stamina -= 15f * Time.deltaTime; // Consume energía
         }
         else
         {
             currentSpeed = walkSpeed;
-            anim.SetBool("Run", false);
+            if (anim != null) anim.SetBool("Run", false);
+
+            // Recupera energía si no corre
+            if (stats.stamina < stats.staminaMax)
+                stats.stamina += 10f * Time.deltaTime;
         }
 
-        // 3. Animación de Velocidad Base
-        anim.SetFloat("Speed", moveInput.sqrMagnitude);
+        if (anim != null) anim.SetFloat("Speed", moveInput.sqrMagnitude);
 
-        // 4. Volteo (Flip) por Escala
+        // Volteo (Flip)
         if (moveInput.x > 0) transform.localScale = new Vector3(1, 1, 1);
         else if (moveInput.x < 0) transform.localScale = new Vector3(-1, 1, 1);
     }
 
     void FixedUpdate()
     {
-        // Aplicar modificador de cansancio extremo
-        float exhaustionMod = (stats.hydration <= 20f) ? 0.5f : 1f;
-
-        Vector2 force = moveInput.normalized * (currentSpeed * exhaustionMod);
-        rb.MovePosition(rb.position + force * Time.fixedDeltaTime);
+        // Aplicar cansancio extremo si no hay hidratación
+        float mod = (stats.hydration <= 10f) ? 0.5f : 1f;
+        rb.MovePosition(rb.position + moveInput.normalized * (currentSpeed * mod) * Time.fixedDeltaTime);
     }
 }

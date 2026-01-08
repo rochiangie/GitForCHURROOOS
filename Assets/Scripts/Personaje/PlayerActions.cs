@@ -1,70 +1,35 @@
 using UnityEngine;
-using System.Collections;
 
 public class PlayerActions : MonoBehaviour
 {
     private PlayerStats stats;
-    private PlayerHealthSystem health;
-    private Animator anim;
-
-    [Header("Configuración de Acciones")]
-    public float drinkRecovery = 25f;
-    public float drinkCost = 5f;
-
-    private bool isDrunkEfecto = false;
 
     void Start()
     {
         stats = GetComponent<PlayerStats>();
-        health = GetComponent<PlayerHealthSystem>();
-        anim = GetComponent<Animator>();
     }
 
-    void Update()
+    // Definimos la función con el nombre exacto: TomarAgua
+    public void TomarAgua(float cantidad)
     {
-        // Tecla E para refrescarse con una bebida (si tiene dinero)
-        if (Input.GetKeyDown(KeyCode.E))
+        if (stats != null)
         {
-            TomarBebida();
-        }
+            // Sumamos a la hidratación actual sin pasarnos del máximo
+            stats.hydration = Mathf.Min(stats.hydration + cantidad, stats.hydrationMax);
 
-        // Actualizar el parámetro en el Animator
-        // Es "Drunk" si tiene poca hidratación O si activó el efecto por script
-        bool currentDrunkState = (stats.hydration <= 20f || isDrunkEfecto);
-        anim.SetBool("setdrunk", currentDrunkState);
-    }
+            // Efecto extra: bajar un poco la temperatura corporal
+            stats.temperature = Mathf.Max(stats.temperature - 2f, 36f);
 
-    public void TomarBebida()
-    {
-        if (stats.money >= drinkCost)
-        {
-            stats.money -= drinkCost;
-            stats.hydration = Mathf.Min(stats.hydration + drinkRecovery, stats.maxStat);
-            stats.temperature = Mathf.Max(stats.temperature - 15f, 0);
-
-            Debug.Log("<color=blue>[ACCIÓN]</color> Tomaste una bebida fría. -$5");
-
-            // Si quieres que la bebida dé un efecto de mareo temporal (como la birra)
-            StartCoroutine(EfectoMareoTemporal(4f));
-        }
-        else
-        {
-            Debug.Log("<color=red>[ACCIÓN]</color> No tienes dinero para beber.");
+            Debug.Log("Tomaste agua. Hidratación actual: " + stats.hydration);
         }
     }
 
-    // Función pública que pueden llamar otros scripts (como el SunSystem que tenías)
-    public void SetDrunk(bool state)
+    public void ComerChurro()
     {
-        isDrunkEfecto = state;
-        Debug.Log(state ? "Iniciando efecto mareo..." : "Efecto mareo terminado.");
-    }
-
-    // Corrutina para que el efecto se pase solo después de unos segundos
-    private IEnumerator EfectoMareoTemporal(float tiempo)
-    {
-        isDrunkEfecto = true;
-        yield return new WaitForSeconds(tiempo);
-        isDrunkEfecto = false;
+        if (stats != null && stats.churrosCantidad > 0)
+        {
+            stats.churrosCantidad--;
+            stats.stamina = Mathf.Min(stats.stamina + 20f, stats.staminaMax);
+        }
     }
 }
