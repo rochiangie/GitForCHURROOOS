@@ -2,55 +2,67 @@ using UnityEngine;
 
 public class NPCVendedor : MonoBehaviour
 {
-    public enum TipoVendedor { Amistoso, Rival, Neutro }
-    public TipoVendedor personalidad;
-    public string nombreVendedor;
+    public enum Especialidad { RegalarBebida, DarInformacion, Sabotear, GuardarMercancia }
+    public Especialidad miHabilidad;
 
-    [Range(-100, 100)]
+    public string nombreVendedor;
+    public Dialogo dialogoMision;
     public float afinidad = 0;
 
-    private Transform playerTransform;
+    private PlayerStats pStats;
+    private PlayerHealthSystem pHealth;
 
     void Start()
     {
-        // Buscamos al jugador por su Tag para saber hacia dónde mirar
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null) playerTransform = player.transform;
-    }
-
-    void Update()
-    {
-        // Ejemplo: El NPC siempre mira hacia donde está el jugador cuando está cerca
-        if (playerTransform != null)
+        if (player != null)
         {
-            float distancia = Vector2.Distance(transform.position, playerTransform.position);
-
-            if (distancia < 5f) // Si el jugador está a menos de 5 metros
-            {
-                MirarObjetivo(playerTransform.position);
-            }
+            pStats = player.GetComponent<PlayerStats>();
+            pHealth = player.GetComponent<PlayerHealthSystem>();
         }
     }
 
-    public void MirarObjetivo(Vector3 objetivo)
+    public void AbrirConversacion()
     {
-        // Si el objetivo está a la derecha
-        if (objetivo.x > transform.position.x)
+        DialogoManager.Instance.IniciarDialogo(dialogoMision, this);
+    }
+
+    public void EfectoDecision(bool acepto)
+    {
+        if (acepto)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            EjecutarHabilidadEspecial();
+            afinidad += 15;
         }
-        // Si el objetivo está a la izquierda
-        else if (objetivo.x < transform.position.x)
+        else
         {
-            // Volteamos TODO el objeto, incluyendo sus colliders
-            transform.localScale = new Vector3(-1, 1, 1);
+            afinidad -= 10;
+            Debug.Log(nombreVendedor + " se molestó contigo.");
         }
     }
 
-    public void Interactuar(float cantidad)
+    void EjecutarHabilidadEspecial()
     {
-        afinidad += cantidad;
-        afinidad = Mathf.Clamp(afinidad, -100, 100);
-        Debug.Log($"{nombreVendedor} ahora tiene {afinidad} de afinidad.");
+        switch (miHabilidad)
+        {
+            case Especialidad.RegalarBebida:
+                // Doña Rosa te quita el calor de golpe
+                pStats.hydration = 100;
+                pStats.temperature = 0;
+                Debug.Log("¡Doña Rosa te refrescó gratis!");
+                break;
+
+            case Especialidad.DarInformacion:
+                // El Rayo te dice dónde hay más dinero (Sube el precio del próximo churro)
+                Debug.Log("El Rayo te pasó un dato: Próxima venta vale el doble.");
+                // Aquí podrías activar un multiplicador de dinero
+                break;
+
+            case Especialidad.Sabotear:
+                // Un rival te quita dinero o te empuja
+                pStats.money -= 20;
+                Debug.Log("¡Te robaron mientras hablabas!");
+                break;
+        }
     }
 }
