@@ -3,57 +3,41 @@
 public class PlayerInteraction : MonoBehaviour
 {
     [Header("Configuracion")]
-    public float radioInteraccion = 2.5f;
+    public float radioInteraccion = 3f; // Un poco mas grande para facilitar
     public LayerMask capaNPC;
-
-    [Header("Tecla de Interaccion")]
-    public KeyCode teclaInteractuar = KeyCode.E;
+    public KeyCode teclaInteractuar = KeyCode.F; // Cambiado a F
 
     private NPCConversacion npcCercano;
-    private bool hayNPCCercano = false;
 
     void Update()
     {
-        DetectarNPCsCercanos();
-
-        // INTERACCION DIRECTA CON TECLA
-        if (Input.GetKeyDown(teclaInteractuar))
-        {
-            IntentarInteractuar();
-        }
-    }
-
-    private void DetectarNPCsCercanos()
-    {
-        Collider2D[] colisiones = Physics2D.OverlapCircleAll(transform.position, radioInteraccion, capaNPC);
-        
-        npcCercano = null;
-        hayNPCCercano = false;
-
-        foreach (Collider2D col in colisiones)
-        {
-            NPCConversacion npc = col.GetComponent<NPCConversacion>();
-            if (npc != null)
-            {
-                // Prioridad a clientes que quieran comprar
-                if (npc.esCliente && npc.quiereComprar)
-                {
-                    npcCercano = npc;
-                    hayNPCCercano = true;
-                    return;
-                }
-                // Si no hay clientes activos, cualquier NPC/Vendedor sirve
-                npcCercano = npc;
-                hayNPCCercano = true;
-            }
-        }
-    }
-
-    private void IntentarInteractuar()
-    {
-        if (hayNPCCercano && npcCercano != null)
+        DetectarNPCs();
+        if (Input.GetKeyDown(teclaInteractuar) && npcCercano != null)
         {
             npcCercano.Interactuar();
         }
+    }
+
+    private void DetectarNPCs()
+    {
+        Collider2D col = Physics2D.OverlapCircle(transform.position, radioInteraccion, capaNPC);
+        if (col != null)
+        {
+            npcCercano = col.GetComponent<NPCConversacion>();
+            if (npcCercano != null) {
+                // Debug opcional para que veas en consola si lo detecta
+                // Debug.Log("Cerca de: " + npcCercano.nombre);
+            }
+        }
+        else
+        {
+            npcCercano = null;
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, radioInteraccion);
     }
 }

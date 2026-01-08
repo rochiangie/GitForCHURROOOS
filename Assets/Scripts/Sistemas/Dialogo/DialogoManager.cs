@@ -1,106 +1,161 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class DialogoManager : MonoBehaviour
 {
     public static DialogoManager Instance { get; private set; }
 
-    [Header("UI del Dialogo")]
-    public GameObject panelDialogo;
+    [Header("UI General")]
+    public GameObject panelUI;
     public TextMeshProUGUI textoNombre;
-    public TextMeshProUGUI textoDialogo;
-    public Button botonContinuar;
-    public Button botonComprar; // Para agua (Vendedores)
-    public Button botonVender;   // Para churros (Clientes)
-    public Button botonCerrar;
+    public TextMeshProUGUI textoContenido;
 
-    private Dialogo dialogoActual;
+    [Header("Opciones de Jugador")]
+    public GameObject contenedorBotones;
+    public Button[] botonesRespuesta = new Button[3];
+    public TextMeshProUGUI[] textosRespuestas = new TextMeshProUGUI[3];
+
+    [Header("Ajustes de Flujo")]
+    public float velocidadEscritura = 0.03f;
+
     private NPCConversacion npcActual;
-    private int indiceLinea = 0;
-    
+    private Dialogo dialogoData;
     private PlayerStats stats;
-    private PlayerActions actions;
-
+    private PlayerMovement pMovement;
+    private Coroutine corrutinaEscritura;
+    
     void Awake() { Instance = this; }
 
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            stats = player.GetComponent<PlayerStats>();
-            actions = player.GetComponent<PlayerActions>();
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        if (p) {
+            stats = p.GetComponent<PlayerStats>();
+            pMovement = p.GetComponent<PlayerMovement>();
         }
-        if (panelDialogo != null) panelDialogo.SetActive(false);
-        ConfigurarBotones();
-    }
-
-    private void ConfigurarBotones()
-    {
-        if (botonContinuar != null) botonContinuar.onClick.AddListener(MostrarSiguienteLinea);
-        if (botonComprar != null) botonComprar.onClick.AddListener(ProcesarCompraAgua);
-        if (botonVender != null) botonVender.onClick.AddListener(ProcesarVentaChurro);
-        if (botonCerrar != null) botonCerrar.onClick.AddListener(CerrarDialogo);
+        if (panelUI != null) panelUI.SetActive(false);
     }
 
     public void AbrirPanel(NPCConversacion npc)
     {
         if (npc == null || npc.archivoDialogo == null) return;
+        
         npcActual = npc;
-        dialogoActual = npc.archivoDialogo;
-        indiceLinea = 0;
+        dialogoData = npc.archivoDialogo;
 
-        panelDialogo.SetActive(true);
-        textoNombre.text = dialogoActual.nombreNPC;
+        if (pMovement) pMovement.enabled = false;
+
+        if (panelUI != null) panelUI.SetActive(true);
+        if (contenedorBotones != null) contenedorBotones.SetActive(false);
+        if (textoNombre != null) textoNombre.text = dialogoData.nombreNPC;
+
+        if (corrutinaEscritura != null) StopCoroutine(corrutinaEscritura);
+        corrutinaEscritura = StartCoroutine(EscribirTexto(dialogoData.propuesta, true));
+    }
+
+    IEnumerator EscribirTexto(string texto, bool mostrarOpciones)
+    {
+        if (textoContenido == null) yield break;
         
-        ActualizarBotonesAccion();
-        MostrarSiguienteLinea();
+        textoContenido.text = "";
+        foreach (char c in texto.ToCharArray())
+        {
+            textoContenido.text += c;
+            yield return new WaitForSeconds(velocidadEscritura);
+        }
+
+        if (mostrarOpciones) ConfigurarOpciones();
     }
 
-    private void ActualizarBotonesAccion()
+    void ConfigurarOpciones()
     {
-        // Solo mostrar boton de comprar si es vendedor
-        if (botonComprar != null) botonComprar.gameObject.SetActive(npcActual.esVendedor);
+        if (contenedorBotones != null) contenedorBotones.SetActive(true);
         
-        // Solo mostrar boton de vender si es cliente y tiene hambre
-        if (botonVender != null) botonVender.gameObject.SetActive(npcActual.esCliente && npcActual.quiereComprar);
-    }
-
-    public void MostrarSiguienteLinea()
-    {
-        if (dialogoActual == null) return;
-
-        if (indiceLinea < dialogoActual.lineas.Length)
+        for (int i = 0; i < 3; i++)
         {
-            textoDialogo.text = dialogoActual.lineas[indiceLinea];
-            indiceLinea++;
+            // Seguridad: Verificamos que el boton y el texto existan en el inspector
+            if (i < botonesRespuesta.Length && botonesRespuesta[i] != null)
+            {
+                // Y que el dialogo tenga esa opcion
+                if (dialogoData.opciones != null && i < dialogoData.opciones.Length)
+                {
+                    botonesRespuesta[i].gameObject.SetActive(true);
+                    if (i < textosRespuestas.Length && textosRespuestas[i] != null)
+                    {
+                        textosRespuestas[i].text = dialogoData.opciones[i];
+                    }
+                    
+                    int index = i;
+                    botonesRespuesta[i].onClick.RemoveAllListeners();
+                    botonesRespuesta[i].onClick.AddListener(() => SeleccionarOpcion(index));
+                }
+                else
+                {
+                    // Si no hay opcion en el ScriptableObject, ocultamos el boton
+                    botonesRespuesta[i].gameObject.SetActive(false);
+                }
+            }
         }
     }
 
-    private void ProcesarCompraAgua()
+    void SeleccionarOpcion(int index)
     {
-        if (npcActual == null || stats == null) return;
-        if (stats.GastarDinero(npcActual.precioAgua))
+        if (contenedorBotones != null) contenedorBotones.SetActive(false);
+        
+        ProcesarConsecuencia(index);
+
+        if (corrutinaEscritura != null) StopCoroutine(corrutinaEscritura);
+        
+        string reaccion = " (Sin reaccion) ";
+        if (dialogoData.reacciones != null && index < dialogoData.reacciones.Length)
         {
-            stats.RecuperarHidratacion(npcActual.recuperacionHidratacion);
-            CerrarDialogo();
+            reaccion = dialogoData.reacciones[index];
+        }
+        
+        corrutinaEscritura = StartCoroutine(MostrarReaccionFinal(reaccion));
+    }
+
+    void ProcesarConsecuencia(int index)
+    {
+        if (stats == null || npcActual == null) return;
+
+        // Opcion [0] es Trato Hecho
+        if (index == 0)
+        {
+            if (npcActual.esCliente && stats.churrosCantidad > 0)
+            {
+                float precioBase = 150f;
+                float multiplicador = 1f;
+
+                if (stats.ebriedad > 40 && stats.ebriedad < 75) multiplicador = 1.5f; 
+                else if (stats.ebriedad >= 85) multiplicador = 0.5f; 
+
+                stats.AgregarDinero(precioBase * multiplicador);
+                stats.churrosCantidad--;
+                npcActual.FinalizarVenta();
+            }
+            else if (npcActual.esVendedor)
+            {
+                if (stats.GastarDinero(npcActual.precioAgua)) {
+                    stats.RecuperarHidratacion(npcActual.recuperacionHidratacion);
+                }
+            }
         }
     }
 
-    private void ProcesarVentaChurro()
+    IEnumerator MostrarReaccionFinal(string reaccion)
     {
-        if (npcActual == null || actions == null) return;
-        // Precio fijo de venta (ejemplo 100 pesos)
-        if (actions.VenderChurro(100f))
-        {
-            npcActual.FinalizarVenta();
-            CerrarDialogo();
-        }
+        yield return StartCoroutine(EscribirTexto(reaccion, false));
+        yield return new WaitForSeconds(1.5f);
+        CerrarPanel();
     }
 
-    public void CerrarDialogo()
+    public void CerrarPanel()
     {
-        panelDialogo.SetActive(false);
+        if (panelUI != null) panelUI.SetActive(false);
+        if (pMovement) pMovement.enabled = true;
+        npcActual = null;
     }
 }
