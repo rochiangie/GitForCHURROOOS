@@ -9,11 +9,8 @@ public class DialogoManager : MonoBehaviour
     [Header("UI Referencias")]
     public GameObject panelDialogo;
     public TextMeshProUGUI textoNombre;
-
-    // Aquí separamos los dos objetos de texto
     public TextMeshProUGUI textoPropuestaCliente;
     public TextMeshProUGUI textoPropuestaVendedor;
-
     public Button botonCerrarX;
     public Button[] botonesRespuesta;
 
@@ -34,29 +31,20 @@ public class DialogoManager : MonoBehaviour
         }
 
         panelDialogo.SetActive(false);
-
-        if (botonCerrarX != null)
-        {
-            botonCerrarX.onClick.RemoveAllListeners();
-            botonCerrarX.onClick.AddListener(CerrarPanel);
-        }
+        if (botonCerrarX != null) botonCerrarX.onClick.AddListener(CerrarPanel);
     }
 
     public void AbrirPanel(NPCConversacion npc)
     {
         npcActual = npc;
         panelDialogo.SetActive(true);
-        textoNombre.text = npc.archivoDialogo.nombrePersonaje; // Usamos el nombre del personaje
+        textoNombre.text = npc.archivoDialogo.nombrePersonaje;
 
-        // LÓGICA DE VISIBILIDAD: Apagamos ambos y prendemos solo el que corresponde
         textoPropuestaCliente.gameObject.SetActive(npc.esCliente);
         textoPropuestaVendedor.gameObject.SetActive(npc.esVendedor);
 
-        // Asignamos el texto al que esté activo
-        if (npc.esCliente)
-            textoPropuestaCliente.text = npc.archivoDialogo.propuestaInicial;
-        else
-            textoPropuestaVendedor.text = npc.archivoDialogo.propuestaInicial;
+        if (npc.esCliente) textoPropuestaCliente.text = npc.archivoDialogo.propuestaInicial;
+        else textoPropuestaVendedor.text = npc.archivoDialogo.propuestaInicial;
 
         ConfigurarBotones(npc.archivoDialogo);
     }
@@ -64,12 +52,10 @@ public class DialogoManager : MonoBehaviour
     void ConfigurarBotones(Dialogo data)
     {
         string[] textos = { data.respuestaAmable, data.respuestaNeutral, data.respuestaCerrada };
-
         for (int i = 0; i < botonesRespuesta.Length; i++)
         {
             botonesRespuesta[i].gameObject.SetActive(true);
             botonesRespuesta[i].GetComponentInChildren<TextMeshProUGUI>().text = textos[i];
-
             int indice = i;
             botonesRespuesta[i].onClick.RemoveAllListeners();
             botonesRespuesta[i].onClick.AddListener(() => ProcesarEleccion(indice));
@@ -80,8 +66,19 @@ public class DialogoManager : MonoBehaviour
     {
         if (npcActual.esCliente)
         {
-            if (eleccion == 0) stats.AddMoney(20f);
-            else if (eleccion == 1) stats.AddMoney(15f);
+            // Solo si elige Amable (0) o Neutral (1) se concreta la venta
+            if (eleccion == 0 || eleccion == 1)
+            {
+                if (stats.churrosCantidad > 0)
+                {
+                    stats.churrosCantidad--;
+                    if (eleccion == 0) stats.AddMoney(20f);
+                    else stats.AddMoney(15f);
+
+                    // AVISAMOS AL NPC QUE TERMINE SU VENTA Y ACTIVE A OTRO
+                    npcActual.FinalizarVenta();
+                }
+            }
         }
         else if (npcActual.esVendedor)
         {

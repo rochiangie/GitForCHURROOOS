@@ -1,2 +1,13 @@
 fileFormatVersion: 2
 guid: 91245402c41c34c45a599ca11e5690cc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - iconoChurro: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
+  - archivoDialogo: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
