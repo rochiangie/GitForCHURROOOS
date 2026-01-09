@@ -7,7 +7,7 @@ public class DialogoManager : MonoBehaviour
 {
     public static DialogoManager Instance { get; private set; }
 
-    [Header("UI Premium")]
+    [Header("UI Componentes")]
     public GameObject panelUI;
     public TextMeshProUGUI textoNombre;
     public TextMeshProUGUI textoCuerpo;
@@ -25,10 +25,13 @@ public class DialogoManager : MonoBehaviour
     private PlayerStats stats;
     private bool escribiendo = false;
 
-    void Awake() { Instance = this; }
+    void Awake() { 
+        if (Instance == null) Instance = this; 
+    }
 
     void Start() {
-        stats = FindFirstObjectByType<PlayerStats>();
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        if(p) stats = p.GetComponent<PlayerStats>();
         if(panelUI != null) panelUI.SetActive(false);
     }
 
@@ -53,7 +56,7 @@ public class DialogoManager : MonoBehaviour
         escribiendo = true;
         textoCuerpo.text = "";
         
-        float speed = (npcActual.personalidad == PersonalidadNPC.Molesto) ? 0.02f : typingSpeed;
+        float speed = (npcActual != null && npcActual.personalidad == PersonalidadNPC.Molesto) ? 0.02f : typingSpeed;
 
         foreach(char c in text) {
             textoCuerpo.text += c;
@@ -78,23 +81,40 @@ public class DialogoManager : MonoBehaviour
                 textosBotones[i].text = dialogoData.opciones[i];
                 int idx = i;
                 botones[i].onClick.RemoveAllListeners();
-                botonesOpcionesFix(botones[i], idx);
+                botones[i].onClick.AddListener(() => Seleccionar(idx));
             } else {
                 botones[i].gameObject.SetActive(false);
             }
         }
     }
 
-    void botonesOpcionesFix(Button b, int i) {
-        b.onClick.AddListener(() => Seleccionar(i));
-    }
-
     void Seleccionar(int idx) {
         if(escribiendo) return;
         groupOpciones.SetActive(false);
         
-        AplicarConsecuencia(idx);
-        StartCoroutine(ReaccionFinal(dialogoData.reacciones[idx]));
+        string reaccion = dialogoData.reacciones[idx];
+
+        // LOGICA DE RECURSOS
+        if (dialogoData.esVenta && idx == 0) {
+            if (npcActual.esCliente) {
+                if (stats.churrosCantidad > 0) {
+                    AplicarConsecuencia(idx);
+                    npcActual.FinalizarVenta();
+                } else {
+                    reaccion = "¡No tenes churros! No me hagas perder el tiempo.";
+                }
+            } else if (npcActual.esVendedor) {
+                if (stats.money >= npcActual.precioBaseAgua) {
+                    AplicarConsecuencia(idx);
+                } else {
+                    reaccion = "No tenes suficiente plata, pibe.";
+                }
+            }
+        } else {
+            AplicarConsecuencia(idx);
+        }
+
+        StartCoroutine(ReaccionFinal(reaccion));
     }
 
     void AplicarConsecuencia(int idx) {
@@ -102,17 +122,23 @@ public class DialogoManager : MonoBehaviour
 
         Consecuencia c = dialogoData.impactos[idx];
         
-        // Multiplicador por ebriedad
         float mod = 1f;
         if(stats.ebriedad > 40 && stats.ebriedad < 75) mod = 1.4f;
         else if(stats.ebriedad >= 85) mod = 0.5f;
 
-        stats.AgregarDinero(c.dinero * mod);
+        // Si es venta de churros (cliente), el dinero del impacto se multiplica por ebriedad
+        float dineroFinal = c.dinero;
+        if (npcActual != null && npcActual.esCliente && c.dinero > 0) dineroFinal *= mod;
+
+        stats.AgregarDinero(dineroFinal);
         stats.RecuperarStamina(c.stamina);
         stats.RecuperarHidratacion(c.hidratacion);
         
-        if (dialogoData.esVenta && idx == 0) {
-            if (npcActual.esCliente) npcActual.FinalizarVenta();
+        // Manejo de churros
+        if (c.churros < 0) {
+            for(int i=0; i < Mathf.Abs(c.churros); i++) stats.ConsumirChurro();
+        } else {
+            stats.AgregarChurros(c.churros);
         }
     }
 

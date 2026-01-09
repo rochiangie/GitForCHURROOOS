@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 104405
+  controlID: 109164
   draggingID: 0
 --- !u!114 &2
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 104406
+  controlID: 109165
   draggingID: 0
 --- !u!114 &4
 MonoBehaviour:
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 104282
+  controlID: 109112
   draggingID: 0
 --- !u!114 &5
 MonoBehaviour:
@@ -245,10 +245,10 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 14}
-      m_SelectedIDs: 50eafbff
-      m_LastClickedID: -267696
-      m_ExpandedIDs: de4afcfface5fdffd2e6fdfffae9fdff1209feffa80cfeff9e0dfeff4c0ffeffee69ffff04fbffff7cc2000092c20000a0c20000d2c20000e0c200000ec300004cc30000c0c30000dcc3000006c4000020c4000056c4000072c4000080c40000a0c40000ecc400001cc500002cc500003cc500004ac5000076c50000aec50000dac50000f0c50000
+      scrollPos: {x: 0, y: 46}
+      m_SelectedIDs: b6c6fbff
+      m_LastClickedID: -276810
+      m_ExpandedIDs: acc3fbfface5fdffd2e6fdfffae9fdff1209feffa80cfeff9e0dfeffee69ffff04fbffff7cc2000092c20000a0c20000d2c20000e0c200000ec300004cc3000086c30000c0c3000006c4000020c4000056c4000072c4000080c40000a0c40000ecc400001cc500002cc500003cc500004ac5000076c50000aec50000dac50000f0c50000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -977,9 +977,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: 52.31301, y: 47.029556, z: 90}
+    m_Target: {x: 25.262981, y: -79.63816, z: 229.96118}
     speed: 2
-    m_Value: {x: 52.31301, y: 47.029556, z: 90}
+    m_Value: {x: 25.262981, y: -79.63816, z: 229.96118}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1029,9 +1029,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 63.708706
+    m_Target: 272.0956
     speed: 2
-    m_Value: 63.708706
+    m_Value: 272.0956
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 50}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 104407
+  controlID: 109166
   draggingID: 0
 --- !u!114 &11
 MonoBehaviour:
@@ -1228,7 +1228,7 @@ MonoBehaviour:
     m_OverlaysVisible: 1
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -267696
+  m_LastSelectedObjectID: 50262
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1276,7 +1276,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts/Sistemas
+    - Assets/Dialogos
     m_Globs: []
     m_ProductIds: 
     m_AnyWithAssetOrigin: 0
@@ -1286,15 +1286,15 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 78
   m_LastFolders:
-  - Assets/Scripts/Sistemas
+  - Assets/Dialogos
   m_LastFoldersGridSize: 78
   m_LastProjectPath: O:\CHURROOOS\GitForCHURROOOS
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 138}
-    m_SelectedIDs: d6c80000
-    m_LastClickedID: 51414
+    scrollPos: {x: 0, y: 18}
+    m_SelectedIDs: c6ee0000
+    m_LastClickedID: 61126
     m_ExpandedIDs: 0000000054c8000056c8000058c800005ac800005cc80000c6c80000cac80000d6c8000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1350,8 +1350,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 50eafbff
-    m_LastClickedInstanceID: -267696
+    m_SelectedInstanceIDs: b6c6fbff
+    m_LastClickedInstanceID: -276810
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000e038010008bd00000237010010c900007ce700007a8b010050b5000054b5000084b20000460101004a07010066c60000f6c300007ac80000c2c5000044c9000038c900001ecd0100
     m_RenameOverlay:
@@ -1370,7 +1370,7 @@ MonoBehaviour:
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
