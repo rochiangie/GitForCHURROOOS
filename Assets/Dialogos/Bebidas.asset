@@ -10,31 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d7524864f1b68546996052669978931, type: 3}
-  m_Name: TestVenta
+  m_Name: Bebidas
   m_EditorClassIdentifier: 
   nombreNPC: 
   personalidad: 0
-  propuesta: tenes churros?
+  propuesta: Bebidaaaaaaaaaaas
   opciones:
-  - sip
-  - obvio
-  - no
+  - 
+  - 
+  - 
   reacciones:
-  - dame 1
-  - dame 5
-  - que lastima
+  - 
+  - 
+  - 
   impactos:
-  - dinero: 10
-    churros: -1
-    stamina: 0
-    hidratacion: 0
-  - dinero: 50
-    churros: -5
+  - dinero: 0
+    churros: 0
     stamina: 0
     hidratacion: 0
   - dinero: 0
     churros: 0
     stamina: 0
     hidratacion: 0
-  esVenta: 1
-  esGrito: 0
+  - dinero: 0
+    churros: 0
+    stamina: 0
+    hidratacion: 0
+  esVenta: 0
+  esGrito: 1
