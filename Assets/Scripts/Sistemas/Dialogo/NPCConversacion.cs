@@ -8,7 +8,7 @@ public class NPCConversacion : MonoBehaviour
     public PersonalidadNPC personalidad;
     public bool esVendedor;
     public bool esCliente;
-    public bool quiereComprar; // Para los clientes con hambre
+    public bool quiereComprar;
 
     [Header("Economia Individual")]
     public float precioBaseAgua = 20f;
@@ -17,7 +17,7 @@ public class NPCConversacion : MonoBehaviour
 
     [Header("Dialogos por Situacion")]
     public List<Dialogo> poolDialogos;
-    public Dialogo dialogoGrito; // Lo que grita si es un "griton"
+    public Dialogo dialogoGrito;
 
     public void Interactuar()
     {
@@ -25,6 +25,15 @@ public class NPCConversacion : MonoBehaviour
         {
             DialogoManager.Instance.AbrirPanel(this);
         }
+    }
+
+    public Dialogo ObtenerDialogoDinamico()
+    {
+        if (poolDialogos != null && poolDialogos.Count > 0)
+        {
+            return poolDialogos[Random.Range(0, poolDialogos.Count)];
+        }
+        return dialogoGrito;
     }
 
     public void FinalizarVenta()

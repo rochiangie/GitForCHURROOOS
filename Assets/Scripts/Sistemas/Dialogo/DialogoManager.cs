@@ -11,16 +11,14 @@ public class DialogoManager : MonoBehaviour
     public GameObject panelUI;
     public TextMeshProUGUI textoNombre;
     public TextMeshProUGUI textoCuerpo;
-    public Image avatarNPC; // Por si quieres ponerle caras
 
     [Header("Contenedores")]
     public GameObject groupOpciones;
     public Button[] botones;
     public TextMeshProUGUI[] textosBotones;
 
-    [Header("Audios")]
-    public AudioClip soundTyping;
-    public AudioClip soundOption;
+    [Header("Ajustes")]
+    public float typingSpeed = 0.04f;
 
     private NPCConversacion npcActual;
     private Dialogo dialogoData;
@@ -31,14 +29,16 @@ public class DialogoManager : MonoBehaviour
 
     void Start() {
         stats = FindFirstObjectByType<PlayerStats>();
-        panelUI.SetActive(false);
+        if(panelUI != null) panelUI.SetActive(false);
     }
 
     public void AbrirPanel(NPCConversacion npc) {
+        if (npc == null) return;
         npcActual = npc;
         dialogoData = npc.ObtenerDialogoDinamico();
         
-        // Bloquear al player
+        if (dialogoData == null) return;
+
         var move = FindFirstObjectByType<PlayerMovement>();
         if(move) move.enabled = false;
 
@@ -53,57 +53,67 @@ public class DialogoManager : MonoBehaviour
         escribiendo = true;
         textoCuerpo.text = "";
         
-        // Efecto de personalidad: Los molestos escriben MAS RAPIDO y NERVIOSO
-        float speed = (npcActual.personalidad == PersonalidadNPC.Molesto) ? 0.02f : 0.04f;
+        float speed = (npcActual.personalidad == PersonalidadNPC.Molesto) ? 0.02f : typingSpeed;
 
         foreach(char c in text) {
             textoCuerpo.text += c;
-            if (soundTyping) AudioManager.Instance.PlaySFX(soundTyping);
             yield return new WaitForSeconds(speed);
         }
         escribiendo = false;
-        MostrarOpciones();
+        
+        if (!dialogoData.esGrito) MostrarOpciones();
+        else StartCoroutine(AutoCerrarGrito());
+    }
+
+    IEnumerator AutoCerrarGrito() {
+        yield return new WaitForSeconds(2f);
+        Cerrar();
     }
 
     void MostrarOpciones() {
         groupOpciones.SetActive(true);
         for(int i=0; i<3; i++) {
-            if(i < dialogoData.opciones.Length) {
+            if(i < dialogoData.opciones.Length && !string.IsNullOrEmpty(dialogoData.opciones[i])) {
                 botones[i].gameObject.SetActive(true);
                 textosBotones[i].text = dialogoData.opciones[i];
                 int idx = i;
                 botones[i].onClick.RemoveAllListeners();
-                botones[i].onClick.AddListener(() => Seleccionar(idx));
+                botonesOpcionesFix(botones[i], idx);
             } else {
                 botones[i].gameObject.SetActive(false);
             }
         }
     }
 
+    void botonesOpcionesFix(Button b, int i) {
+        b.onClick.AddListener(() => Seleccionar(i));
+    }
+
     void Seleccionar(int idx) {
         if(escribiendo) return;
         groupOpciones.SetActive(false);
         
-        // APLICAR CONSECUENCIAS AL JUEGO
-        AplicarEfectos(dialogoData.impactos[idx]);
-
+        AplicarConsecuencia(idx);
         StartCoroutine(ReaccionFinal(dialogoData.reacciones[idx]));
     }
 
-    void AplicarEfectos(Consecuencia c) {
-        if(!stats) return;
+    void AplicarConsecuencia(int idx) {
+        if(stats == null || dialogoData.impactos == null || idx >= dialogoData.impactos.Length) return;
 
-        // Bonificacion por Ebriedad (Lore: estas borracho, sos mas convincente o mas tonto)
+        Consecuencia c = dialogoData.impactos[idx];
+        
+        // Multiplicador por ebriedad
         float mod = 1f;
-        if(stats.ebriedad > 50) mod = 1.3f; // Convences mas
-        if(stats.ebriedad > 85) mod = 0.5f; // Te estafan
+        if(stats.ebriedad > 40 && stats.ebriedad < 75) mod = 1.4f;
+        else if(stats.ebriedad >= 85) mod = 0.5f;
 
         stats.AgregarDinero(c.dinero * mod);
         stats.RecuperarStamina(c.stamina);
         stats.RecuperarHidratacion(c.hidratacion);
         
-        // La reputacion podria afectar futuros precios (Siguiente fase)
-        Debug.Log("Impacto de dialogo: $" + c.dinero + " | Reputacion: " + c.reputacion);
+        if (dialogoData.esVenta && idx == 0) {
+            if (npcActual.esCliente) npcActual.FinalizarVenta();
+        }
     }
 
     IEnumerator ReaccionFinal(string r) {
