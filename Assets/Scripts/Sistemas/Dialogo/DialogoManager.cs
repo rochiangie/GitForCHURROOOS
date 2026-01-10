@@ -97,6 +97,13 @@ public class DialogoManager : MonoBehaviour
             return;
         }
 
+        // Validar stock antes de procesar
+        if (ramaElegida.impacto.churros < 0 && stats.churrosCantidad < Mathf.Abs(ramaElegida.impacto.churros)) {
+            string msjError = "¡Uy! Solo tengo " + stats.churrosCantidad + " churros...";
+            StartCoroutine(ReaccionFinal(msjError));
+            return;
+        }
+
         // Si es el final, aplicamos el impacto (dinero, churros, etc)
         ProcesarImpacto(ramaElegida.impacto);
         
@@ -107,11 +114,9 @@ public class DialogoManager : MonoBehaviour
         StartCoroutine(ReaccionFinal(ramaElegida.reaccionSiTermina));
     }
 
-    void ProcesarImpacto(Consecuencia c) {
-        // Solo sumamos dinero si tenemos los churros suficientes para el trato (si el trato pide quitar churros)
+    bool ProcesarImpacto(Consecuencia c) {
         if (c.churros < 0 && stats.churrosCantidad < Mathf.Abs(c.churros)) {
-            Debug.Log("[Dialogo] No hay churros para cumplir el trato de este dialogo.");
-            return; 
+            return false; 
         }
 
         stats.AgregarDinero(c.dinero); 
@@ -123,6 +128,7 @@ public class DialogoManager : MonoBehaviour
         } else {
             stats.AgregarChurros(c.churros);
         }
+        return true;
     }
 
     IEnumerator EscribirLetras(string frase) {
@@ -155,19 +161,25 @@ public class DialogoManager : MonoBehaviour
         foreach(var b in botones) b.gameObject.SetActive(false);
         
         ConfigurarBotonBebida(0, "Agua ($3)", () => { 
-            if(stats.GastarDinero(3)){ 
+            if (stats.money >= 3) {
+                stats.GastarDinero(3);
                 stats.RecuperarHidratacion(40); 
                 stats.ReducirTemperatura(15);
                 Cerrar();
-            } 
+            } else {
+                StartCoroutine(ReaccionFinal("¡No te alcanza, pibe! Son $3."));
+            }
         });
 
         ConfigurarBotonBebida(1, "Birra ($5)", () => { 
-            if(stats.GastarDinero(5)){ 
-                stats.ebriedad += 20; // Te emborracha
-                stats.RecuperarHidratacion(15); // Menos que el agua
+            if (stats.money >= 5) {
+                stats.GastarDinero(5);
+                stats.ebriedad += 20; 
+                stats.RecuperarHidratacion(15); 
                 Cerrar();
-            } 
+            } else {
+                StartCoroutine(ReaccionFinal("¡Faltan monedas! La birra sale $5."));
+            }
         });
     }
 

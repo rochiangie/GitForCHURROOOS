@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad6077106649984ca415d2f35c00310, type: 3}
   m_Name: Nivel1
   m_EditorClassIdentifier: 
-  metaDinero: 50
-  duracionDiaMinutos: 2
+  metaDinero: 15
+  duracionDiaMinutos: 5
   probabilidadCompra: 80
   porcentajeAmigables: 1
   minChurrosPorPedido: 1
