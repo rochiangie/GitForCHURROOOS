@@ -1271,7 +1271,7 @@ MonoBehaviour:
     sonidoEspecial: {fileID: 0}
   - personaje: Jeni
     texto: Mejor voy yendo...
-    esBurbujaIzquierda: 1
+    esBurbujaIzquierda: 0
     sonidoEspecial: {fileID: 0}
 --- !u!4 &564526268
 Transform:

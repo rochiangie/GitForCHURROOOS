@@ -38,6 +38,7 @@ public class DialogoManager : MonoBehaviour
         var move = FindFirstObjectByType<PlayerMovement>();
         if(move) move.enabled = false;
 
+        Time.timeScale = 0f; // Pausar tiempo durante charla
         panelUI.SetActive(true);
         groupOpciones.SetActive(false);
         
@@ -59,7 +60,7 @@ public class DialogoManager : MonoBehaviour
         yield return StartCoroutine(EscribirLetras(dialogoActual.propuesta));
         
         if (dialogoActual.esGrito) {
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSecondsRealtime(1.5f);
             Cerrar();
         } else {
             MostrarOpciones();
@@ -136,7 +137,7 @@ public class DialogoManager : MonoBehaviour
         textoCuerpo.text = "";
         foreach(char c in frase) {
             textoCuerpo.text += c;
-            yield return new WaitForSeconds(typingSpeed);
+            yield return new WaitForSecondsRealtime(typingSpeed);
         }
         escribiendo = false;
     }
@@ -144,11 +145,12 @@ public class DialogoManager : MonoBehaviour
     IEnumerator ReaccionFinal(string r) {
         if(string.IsNullOrEmpty(r)) r = "...";
         yield return StartCoroutine(EscribirLetras(r));
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSecondsRealtime(1.2f);
         Cerrar();
     }
 
     public void Cerrar() {
+        Time.timeScale = 1f; // Reanudar tiempo
         panelUI.SetActive(false);
         var move = FindFirstObjectByType<PlayerMovement>();
         if(move) move.enabled = true;

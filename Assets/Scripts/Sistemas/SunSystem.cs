@@ -57,8 +57,8 @@ public class SunSystem : MonoBehaviour
             float cercaniaPico = 1f - Mathf.Abs(horaActual - horaPico) / 6f;
             float calorActual = Mathf.Clamp01(cercaniaPico);
             
-            // Incrementamos la velocidad de calentamiento (subimos de 1.5 a 2.5)
-            float factorDeshidratacion = (0.7f + (calorActual * 3.0f)) * multEfectos;
+            // Balanceo: Bajamos la deshidratacion para que no sea tan extrema
+            float factorDeshidratacion = (0.3f + (calorActual * 1.8f)) * multEfectos;
             stats.ReducirHidratacion(factorDeshidratacion * Time.deltaTime);
             
             float factorCalor = (0.2f + (calorActual * 2.8f)) * multEfectos;
