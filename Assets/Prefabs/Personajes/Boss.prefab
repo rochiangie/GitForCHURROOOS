@@ -105,7 +105,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_Sprite: {fileID: -6248741079362886434, guid: 7e6ed42c999d363478752aa0ea7090ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.75, y: 3.23}
@@ -284,10 +284,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocidadChase: 3.5
+  velocidadHuida: 5
   distanciaRobo: 1.2
   intervaloRobo: 3
-  roboDineroMin: 50
-  roboDineroMax: 150
+  vidaMax: 100
+  vidaActual: 0
+  danioAlJugador: 10
+  probabilidadBloqueo: 20
+  cooldownBloqueo: 1
 --- !u!50 &5506868622396194263
 Rigidbody2D:
   serializedVersion: 5
@@ -313,5 +317,5 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4

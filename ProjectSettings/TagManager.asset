@@ -9,11 +9,14 @@ TagManager:
   - Vendedor
   - Shadow
   - Boss
+  - SpawnBoss
+  - limites
+  - churro
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Proyectil
   - Water
   - UI
   - Custom

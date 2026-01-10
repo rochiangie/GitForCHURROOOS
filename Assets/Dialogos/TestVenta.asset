@@ -15,26 +15,25 @@ MonoBehaviour:
   nombreNPC: 
   personalidad: 0
   propuesta: tenes churros?
-  opciones:
-  - sip
-  - obvio
-  - no
-  reacciones:
-  - dame 1
-  - dame 5
-  - que lastima
-  impactos:
-  - dinero: 10
-    churros: -1
-    stamina: 0
-    hidratacion: 0
-  - dinero: 50
-    churros: -5
-    stamina: 0
-    hidratacion: 0
-  - dinero: 0
-    churros: 0
-    stamina: 0
-    hidratacion: 0
+  respuestas:
+  - textoOpcion: Si, claro
+    siguienteDialogo: {fileID: 11400000, guid: 5571a32bff7695e479718a0f1c94503b, type: 2}
+    reaccionSiTermina: 
+    impacto:
+      dinero: 0
+      churros: 0
+      stamina: 0
+      hidratacion: 0
+      reputacion: 0
+  - textoOpcion: No, disculpa
+    siguienteDialogo: {fileID: 0}
+    reaccionSiTermina: Uh, bueno, gracias
+    impacto:
+      dinero: 0
+      churros: 0
+      stamina: 0
+      hidratacion: 0
+      reputacion: 0
+  soloPostVenta: 0
   esVenta: 1
   esGrito: 0

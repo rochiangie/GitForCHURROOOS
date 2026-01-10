@@ -59,20 +59,22 @@ public class UIManager : MonoBehaviour
             textoReloj.text = string.Format("{0:00}:{1:00}", horas, minutos);
         }
 
-        // --- CALCULO DE CALOR SEGUN TU MAXIMO (42) ---
+        // --- EFECTO VISUAL DE CALOR / ROJO ---
         if (overlayCalor != null)
         {
-            // Si la temperatura es 42 y el maximo es 42, el factor es 1
-            float factorCalor = stats.temperature / stats.temperatureMax; 
+            float factorCalor = stats.temperature / stats.temperatureMax; // 20/42 = 0.47 aprox
             
-            // Hacemos que el efecto empiece a notarse fuerte despues del 50% de temp
-            float intensidadEfecto = Mathf.Clamp01((factorCalor - 0.5f) * 2f);
+            // Empezamos a teñir desde el 40% de la barra (aprox 17 grados) para que sea progresivo
+            float intensidadEfecto = Mathf.Clamp01((factorCalor - 0.4f) / 0.6f);
             
-            // Pulso de "sofoco"
-            float pulso = Mathf.Sin(Time.time * 2.5f) * 0.1f;
+            // Pulso de "sofoco" mas rapido e intenso
+            float pulso = Mathf.Sin(Time.time * 3.5f) * 0.15f;
+            
+            // Forzamos que el color sea rojo tirando a naranja
+            overlayCalor.color = new Color(1f, 0.2f, 0f, 0f); 
             
             Color c = overlayCalor.color;
-            c.a = Mathf.Clamp01((intensidadEfecto * opacidadMaxima) + (intensidadEfecto > 0.1f ? pulso : 0f));
+            c.a = Mathf.Clamp01((intensidadEfecto * opacidadMaxima) + (intensidadEfecto > 0.2f ? pulso : 0f));
             overlayCalor.color = c;
         }
     }

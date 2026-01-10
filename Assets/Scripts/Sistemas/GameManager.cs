@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("Configuracion de Niveles")]
     public List<NivelData> niveles;
     public int nivelActualIndex = 0;
+    public List<Dialogo> dialogosPostVentaGlobal; // Lista de posibles dialogos tras vender
     public bool juegoTerminado = false;
     public bool enPausa = false;
 
@@ -41,6 +42,16 @@ public class GameManager : MonoBehaviour
             AlternarPausa();
         }
 
+        // Shortcut de Debug: U (Ganar) - I (Perder)
+        if (Input.GetKeyDown(KeyCode.U)) {
+            Debug.Log("<color=green>DEBUG: Ganaste nivel forzadamente (U)</color>");
+            FinalizarNivel();
+        }
+        if (Input.GetKeyDown(KeyCode.I)) {
+            Debug.Log("<color=red>DEBUG: Perdiste nivel forzadamente (I)</color>");
+            PerderNivel("Debug Check (Te rendiste).");
+        }
+
         if (juegoTerminado || enPausa) return;
         if (niveles == null || niveles.Count == 0 || nivelActualIndex >= niveles.Count) return;
 
@@ -65,7 +76,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void CargarNivel(int index) {
-        if (niveles == null || index < 0 || index >= niveles.Count) return;
+        if (niveles == null || niveles.Count == 0) {
+            Debug.LogError("[GameManager] ¡No hay niveles configurados en la lista!");
+            return;
+        }
+
+        if (index < 0 || index >= niveles.Count) {
+            Debug.LogWarning($"[GameManager] Intentando cargar nivel {index}, pero solo hay {niveles.Count}. Reseteando a 0.");
+            nivelActualIndex = 0;
+            index = 0;
+        }
         
         nivelActualIndex = index;
         NivelData data = niveles[nivelActualIndex];
@@ -78,7 +98,7 @@ public class GameManager : MonoBehaviour
         
         if (stats != null) {
             stats.money = 0; 
-            stats.temperature = 0;
+            stats.temperature = 20f; // Empieza con calor base
             stats.hydration = 100;
         }
 
@@ -98,23 +118,63 @@ public class GameManager : MonoBehaviour
 
     void ActualizarAmbientacion(NivelData data) {
         GameObject[] clientes = GameObject.FindGameObjectsWithTag("Cliente");
+        int countAmables = 0;
+        int countMolestos = 0;
+        string nombresAmables = "";
+        
         foreach (var c in clientes) {
             NPCConversacion npc = c.GetComponent<NPCConversacion>();
             if (npc != null && !npc.esVendedorBebidas) {
+                npc.yaCompro = false; // Reset de memoria para el nuevo dia
                 float rng = Random.value;
                 npc.personalidad = (rng < data.porcentajeAmigables) ? PersonalidadNPC.Amable : PersonalidadNPC.Molesto;
+                
+                if (npc.personalidad == PersonalidadNPC.Amable) {
+                    countAmables++;
+                    nombresAmables += npc.nombre + ", ";
+                } else countMolestos++;
+
                 npc.quiereComprar = (Random.value * 100 < data.probabilidadCompra);
                 npc.churrosDeseados = Random.Range(1, data.maxChurrosPorPedido + 1);
                 npc.pagoBaseChurro = Random.Range(15f, 25f);
+
+                // Inyectamos un dialogo aleatorio del pool global post-venta
+                if (dialogosPostVentaGlobal != null && dialogosPostVentaGlobal.Count > 0 && npc.poolYaCompro.Count == 0) {
+                    Dialogo elegido = dialogosPostVentaGlobal[Random.Range(0, dialogosPostVentaGlobal.Count)];
+                    npc.poolYaCompro.Add(elegido);
+                }
             }
         }
         
+        // --- REPORTE DETALLADO DEL NIVEL ---
+        Debug.Log("<color=yellow><b>========= REPORTE DE NIVEL " + (nivelActualIndex + 1) + " =========</b></color>");
+        Debug.Log($"<color=cyan>👥 Clientes Totales:</color> {clientes.Length}");
+        Debug.Log($"<color=green>😊 Amables ({countAmables}):</color> {nombresAmables.TrimEnd(' ', ',')}");
+        Debug.Log($"<color=red>😠 Molestos:</color> {countMolestos}");
+        Debug.Log($"<color=orange>💰 Meta:</color> ${data.metaDinero}");
+        Debug.Log($"<color=white>🕒 Duracion Real:</color> {data.duracionDiaMinutos} minutos (12h de juego)");
+        Debug.Log($"<color=magenta>🔥 Dificultad Ambiental:</color> x{1f + (nivelActualIndex * 0.25f)} (Sed y Calor)");
+        if (data.esNivelBoss) Debug.Log("<color=red><b>⚠️ NIVEL BOSS DETECTADO</b></color>");
+        Debug.Log("<color=yellow><b>===========================================</b></color>");
+
         if (data.esNivelBoss && data.prefabBoss != null) {
-            Instantiate(data.prefabBoss, Vector3.zero, Quaternion.identity);
+            Vector3 spawnPos = Vector3.zero;
+            GameObject spawnPoint = GameObject.FindGameObjectWithTag("SpawnBoss");
+            
+            if (spawnPoint != null) {
+                spawnPos = spawnPoint.transform.position;
+            } else {
+                // Si no hay punto, que aparezca lejos del player para que no sea injusto
+                GameObject p = GameObject.FindGameObjectWithTag("Player");
+                if(p) spawnPos = p.transform.position + new Vector3(10, 10, 0); 
+            }
+
+            Instantiate(data.prefabBoss, spawnPos, Quaternion.identity);
+            Debug.Log($"<color=red><b>[BOSS]</b></color> ¡Apareció en {spawnPos}!");
         }
     }
 
-    void FinalizarNivel() {
+    public void FinalizarNivel() {
         if (juegoTerminado) return;
         juegoTerminado = true;
         Time.timeScale = 0f;

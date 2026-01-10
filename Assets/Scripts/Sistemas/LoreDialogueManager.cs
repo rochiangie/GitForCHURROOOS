@@ -11,6 +11,7 @@ public struct LoreLine
     [TextArea(3, 10)]
     public string texto;
     public bool esBurbujaIzquierda; // [x] Izquierda / [ ] Derecha
+    public AudioClip sonidoEspecial; // Opcional: Sonido que suena al empezar la linea
 }
 
 public class LoreDialogueManager : MonoBehaviour
@@ -22,7 +23,13 @@ public class LoreDialogueManager : MonoBehaviour
     public GameObject burbujaEl;
     public TextMeshProUGUI textoEl;
 
-    [Header("Configuracion")]
+    [Header("Configuracion Sonido")]
+    public AudioSource audioSource;
+    public AudioClip clipEscribir;
+    public AudioClip clipSiguiente;
+    public AudioClip clipFinal;
+
+    [Header("Ajustes")]
     public float typingSpeed = 0.04f;
     public string nombreEscenaSiguiente = "Juego";
 
@@ -37,6 +44,9 @@ public class LoreDialogueManager : MonoBehaviour
 
     void Start()
     {
+        // Si no asignaste AudioSource, intentamos buscar uno
+        if (audioSource == null) audioSource = GetComponent<AudioSource>();
+
         burbujaElla.SetActive(false);
         burbujaEl.SetActive(false);
         
@@ -69,11 +79,12 @@ public class LoreDialogueManager : MonoBehaviour
         indiceActual++;
         if (indiceActual < conversacion.Count)
         {
+            if(audioSource && clipSiguiente) audioSource.PlayOneShot(clipSiguiente);
             MostrarLinea(indiceActual);
         }
         else
         {
-            FinalizarLore();
+            StartCoroutine(SecuenciaFinal());
         }
     }
 
@@ -98,6 +109,12 @@ public class LoreDialogueManager : MonoBehaviour
             tmpActivo = textoEl;
         }
 
+        // Si la linea tiene un sonido especial (ej: grito de ella), lo tocamos
+        if (linea.sonidoEspecial && audioSource)
+        {
+            audioSource.PlayOneShot(linea.sonidoEspecial);
+        }
+
         corrutinaActual = StartCoroutine(EscribirTexto(tmpActivo, linea.texto));
     }
 
@@ -105,9 +122,19 @@ public class LoreDialogueManager : MonoBehaviour
     {
         escribiendo = true;
         tmp.text = "";
+        
+        int charIndex = 0;
         foreach (char c in frase)
         {
             tmp.text += c;
+            
+            // Tocar sonido de escritura cada 2 letras para que no sea molesto
+            if (charIndex % 2 == 0 && audioSource && clipEscribir)
+            {
+                audioSource.PlayOneShot(clipEscribir, 0.5f);
+            }
+            
+            charIndex++;
             yield return new WaitForSeconds(typingSpeed);
         }
         escribiendo = false;
@@ -120,8 +147,15 @@ public class LoreDialogueManager : MonoBehaviour
         escribiendo = false;
     }
 
-    void FinalizarLore()
+    IEnumerator SecuenciaFinal()
     {
+        // Tocar sonido final (portazo/suspiro)
+        if (audioSource && clipFinal) 
+        {
+            audioSource.PlayOneShot(clipFinal);
+            yield return new WaitForSeconds(clipFinal.length);
+        }
+        
         SceneManager.LoadScene(nombreEscenaSiguiente);
     }
 }
