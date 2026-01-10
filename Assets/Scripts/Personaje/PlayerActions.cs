@@ -26,9 +26,16 @@ public class PlayerActions : MonoBehaviour
     }
 
     void Update() {
+        if (GameManager.Instance != null && (GameManager.Instance.juegoTerminado || GameManager.Instance.enPausa)) return;
+
         // Lanzar Churro con Espacio
         if (Input.GetKeyDown(KeyCode.Space)) {
             LanzarChurro();
+        }
+
+        // Patada con F
+        if (Input.GetKeyDown(KeyCode.F)) {
+            RealizarAtaque();
         }
     }
 

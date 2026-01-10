@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d7524864f1b68546996052669978931, type: 3}
-  m_Name: Parejita
+  m_Name: MalaOndaNocompra
   m_EditorClassIdentifier: 
-  nombreNPC: Parejita
-  personalidad: 0
-  propuesta: Hola compa, tenes churros?
+  nombreNPC: 
+  personalidad: 3
+  propuesta: Que es eso ahi?
   respuestas:
-  - textoOpcion: Si, claro, cuantos queres?
-    siguienteDialogo: {fileID: 11400000, guid: 5da4aa2016faeb149b7c5497987a7a2d, type: 2}
+  - textoOpcion: Son churros, queres?
+    siguienteDialogo: {fileID: 11400000, guid: e74d3acb627def845bfbcf126af2466e, type: 2}
     reaccionSiTermina: 
     impacto:
       dinero: 0
@@ -25,9 +25,9 @@ MonoBehaviour:
       stamina: 0
       hidratacion: 0
       reputacion: 0
-  - textoOpcion: No, disculpa
-    siguienteDialogo: {fileID: 11400000, guid: f9811849916e76644a7291103a4ec6c0, type: 2}
-    reaccionSiTermina: Uh, bueno, gracias igual
+  - textoOpcion: que te parece?
+    siguienteDialogo: {fileID: 0}
+    reaccionSiTermina: "Bueh, dejalo ah\xED"
     impacto:
       dinero: 0
       churros: 0

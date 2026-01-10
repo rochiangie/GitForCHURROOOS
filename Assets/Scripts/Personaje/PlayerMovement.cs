@@ -36,12 +36,6 @@ public class PlayerMovement : MonoBehaviour
         moveY = Input.GetAxisRaw("Vertical");
         moveInput = new Vector2(moveX, moveY).normalized;
 
-        // Ataque (Tecla F)
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (actions != null) actions.RealizarAtaque();
-        }
-
         // Gestion de Velocidad y Stamina
         bool isRunning = Input.GetKey(KeyCode.LeftShift) && stats.stamina > 0 && moveInput.magnitude > 0.1f;
         

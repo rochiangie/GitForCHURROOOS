@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI textoDinero;
     public TextMeshProUGUI textoChurros;
     public TextMeshProUGUI textoReloj;
+    public TextMeshProUGUI textoNivel; // Nueva referencia para el nombre del nivel
 
     [Header("Efecto Calor (Overlay)")]
     public Image overlayCalor; 
@@ -57,6 +58,10 @@ public class UIManager : MonoBehaviour
             int horas = (int)sol.horaActual;
             int minutos = (int)((sol.horaActual - horas) * 60);
             textoReloj.text = string.Format("{0:00}:{1:00}", horas, minutos);
+        }
+
+        if (textoNivel != null && GameManager.Instance != null) {
+            textoNivel.text = "NIVEL " + (GameManager.Instance.nivelActualIndex + 1);
         }
 
         // --- EFECTO VISUAL DE CALOR / ROJO ---

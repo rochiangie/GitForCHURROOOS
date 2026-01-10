@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombreNPC: 
   personalidad: 0
-  propuesta: test mala onda
+  propuesta: seguro estan feos
   respuestas:
-  - textoOpcion: test q onda
+  - textoOpcion: para nada, queres uno?
     siguienteDialogo: {fileID: 11400000, guid: 5da4aa2016faeb149b7c5497987a7a2d, type: 2}
     reaccionSiTermina: 
     impacto:
@@ -25,6 +25,15 @@ MonoBehaviour:
       stamina: 0
       hidratacion: 0
       reputacion: 0
+  - textoOpcion: nada que ver, toma uno gratis
+    siguienteDialogo: {fileID: 0}
+    reaccionSiTermina: Gracias!
+    impacto:
+      dinero: 0
+      churros: -1
+      stamina: 0
+      hidratacion: 0
+      reputacion: 20
   soloPostVenta: 0
   esVenta: 1
   esGrito: 0

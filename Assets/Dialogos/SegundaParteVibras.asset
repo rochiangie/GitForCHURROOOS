@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d7524864f1b68546996052669978931, type: 3}
-  m_Name: Dialogo_Turista_Exigente
+  m_Name: SegundaParteVibras
   m_EditorClassIdentifier: 
   nombreNPC: 
   personalidad: 0
-  propuesta: test
-  opciones:
-  - sadaD
-  - adsDsa
-  - asddsa
-  reacciones:
-  - dsasd
-  - Dsad
-  - asdasd
+  propuesta: no, pero se ven feos
+  respuestas:
+  - textoOpcion: si quieres te regalo uno
+    siguienteDialogo: {fileID: 0}
+    reaccionSiTermina: Gracias
+    impacto:
+      dinero: 0
+      churros: -1
+      stamina: 0
+      hidratacion: 0
+      reputacion: 0
+  soloPostVenta: 0
   esVenta: 1
   esGrito: 0

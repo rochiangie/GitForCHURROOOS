@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d7524864f1b68546996052669978931, type: 3}
-  m_Name: Parejita
+  m_Name: SegundaParte
   m_EditorClassIdentifier: 
-  nombreNPC: Parejita
+  nombreNPC: 
   personalidad: 0
-  propuesta: Hola compa, tenes churros?
+  propuesta: "cu\xE1nto valen?"
   respuestas:
-  - textoOpcion: Si, claro, cuantos queres?
+  - textoOpcion: cuestan 10
     siguienteDialogo: {fileID: 11400000, guid: 5da4aa2016faeb149b7c5497987a7a2d, type: 2}
     reaccionSiTermina: 
     impacto:
@@ -25,15 +25,15 @@ MonoBehaviour:
       stamina: 0
       hidratacion: 0
       reputacion: 0
-  - textoOpcion: No, disculpa
-    siguienteDialogo: {fileID: 11400000, guid: f9811849916e76644a7291103a4ec6c0, type: 2}
-    reaccionSiTermina: Uh, bueno, gracias igual
+  - textoOpcion: para vos mil pe
+    siguienteDialogo: {fileID: 0}
+    reaccionSiTermina: "Raja de ac\xE1"
     impacto:
       dinero: 0
       churros: 0
       stamina: 0
       hidratacion: 0
-      reputacion: -5
+      reputacion: 0
   soloPostVenta: 0
   esVenta: 1
   esGrito: 0

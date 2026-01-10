@@ -1,10 +1,14 @@
 using UnityEngine;
+using UnityEngine.AI; // Necesario para NavMesh
 
 public class BossRival : MonoBehaviour
 {
-    [Header("Configuracion Base")]
+    [Header("Configuracion NavMesh")]
+    private NavMeshAgent agent;
     public float velocidadChase = 3.5f;
     public float velocidadHuida = 5f;
+
+    [Header("Configuracion Base")]
     public float distanciaRobo = 1.2f;
     public float intervaloRobo = 3f;
     
@@ -35,12 +39,21 @@ public class BossRival : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         if (sr != null) baseColor = sr.color;
 
+        rb = GetComponent<Rigidbody2D>();
+        agent = GetComponent<NavMeshAgent>();
+
+        // Configuración para que el NavMeshAgent funcione bien en 2D
+        if (agent != null) {
+            agent.updateRotation = false; // El sprite no debe girar como un avion
+            agent.updateUpAxis = false;   // No queremos que se incline en 3D
+            agent.speed = velocidadChase;
+        }
+
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         if(p) {
             player = p.transform;
             stats = p.GetComponent<PlayerStats>();
         }
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -55,20 +68,28 @@ public class BossRival : MonoBehaviour
 
         if (player == null) return;
 
+        // Si estamos bajo efecto de empuje o bloqueo, pausamos el agente
         if (knockbackTimer > 0) {
             knockbackTimer -= Time.deltaTime;
+            if(agent != null) agent.isStopped = true;
             return;
         }
+
+        if(agent != null) agent.isStopped = false;
 
         float distancia = Vector2.Distance(transform.position, player.position);
         
         if (distancia > distanciaRobo)
         {
-            Vector2 direccion = (player.position - transform.position).normalized;
-            rb.linearVelocity = direccion * velocidadChase;
+            // --- MOVIMIENTO CON NAVMESH ---
+            if (agent != null && agent.enabled) {
+                agent.SetDestination(player.position);
+                agent.speed = velocidadChase;
+            }
         }
         else
         {
+            if(agent != null) agent.isStopped = true;
             rb.linearVelocity = Vector2.zero;
             ManejarRobo();
         }
@@ -96,7 +117,7 @@ public class BossRival : MonoBehaviour
             StartCoroutine(EfectoColor(Color.blue, 0.2f));
         }
         knockbackTimer = 0.2f; 
-        rb.linearVelocity = Vector2.zero;
+        if(agent != null) agent.isStopped = true;
     }
 
     System.Collections.IEnumerator EfectoColor(Color c, float dur) {
@@ -113,7 +134,6 @@ public class BossRival : MonoBehaviour
 
         if (sr != null) {
             StopAllCoroutines();
-            // Rojo claro si es poco daño (<10), Rojo oscuro si es mucho
             Color colorHit = (danio < 10f) ? new Color(1f, 0.5f, 0.5f) : new Color(0.6f, 0f, 0f);
             StartCoroutine(EfectoColor(colorHit, 0.15f));
         }
@@ -142,6 +162,8 @@ public class BossRival : MonoBehaviour
 
     void Derrota() {
         derrotado = true;
+        if(agent != null) agent.enabled = false; // Apagamos el agente para que no luche contra la fisica
+        
         StopAllCoroutines();
         Debug.Log("<color=red><b>[BOSS] ¡Derrotado! Escapando...</b></color>");
         
@@ -165,6 +187,7 @@ public class BossRival : MonoBehaviour
 
     void ManejarHuida() {
         if (metaHuida != null) {
+            // En huida usamos velocidad directa porque ya es trigger y no necesita esquivar
             Vector2 direccion = (metaHuida.position - transform.position).normalized;
             rb.linearVelocity = direccion * velocidadHuida;
 

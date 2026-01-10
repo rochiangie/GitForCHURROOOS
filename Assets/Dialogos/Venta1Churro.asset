@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombreNPC: 
   personalidad: 0
-  propuesta: uno solo
+  propuesta: dame uno
   respuestas:
   - textoOpcion: serian 10 pesos
     siguienteDialogo: {fileID: 0}
@@ -25,5 +25,6 @@ MonoBehaviour:
       stamina: 0
       hidratacion: 0
       reputacion: 5
+  soloPostVenta: 0
   esVenta: 1
   esGrito: 0

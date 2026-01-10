@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestVenta 1
   m_EditorClassIdentifier: 
   nombreNPC: 
-  personalidad: 0
+  personalidad: 1
   propuesta: que queres vos? vendes churros?
   respuestas:
   - textoOpcion: Si, querias alguno?

@@ -108,8 +108,10 @@ public class DialogoManager : MonoBehaviour
         // Si es el final, aplicamos el impacto (dinero, churros, etc)
         ProcesarImpacto(ramaElegida.impacto);
         
-        // Si el dialogo estaba marcado como venta, marcamos al NPC como "ya vendido"
-        if (dialogoActual.esVenta) npcActual.FinalizarVenta();
+        // Solo marcamos como "vendido" si la rama elegida realmente involucró entregar churros
+        if (dialogoActual.esVenta && ramaElegida.impacto.churros < 0) {
+            npcActual.FinalizarVenta();
+        }
 
         // Mostramos la reaccion final que escribiste y cerramos
         StartCoroutine(ReaccionFinal(ramaElegida.reaccionSiTermina));
