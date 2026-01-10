@@ -13,17 +13,28 @@ public class BossRival : MonoBehaviour
     public float vidaActual;
     public float danioAlJugador = 10f;
 
+    [Header("Defensa")]
+    [Range(0, 100)]
+    public float probabilidadBloqueo = 20f; 
+    public float cooldownBloqueo = 1f;
+    private float lastBlockTime;
+
     private Transform player;
     private PlayerStats stats;
     private float timerRobo;
     private Rigidbody2D rb;
+    private SpriteRenderer sr;
     private float knockbackTimer = 0f;
     private bool derrotado = false;
     private Transform metaHuida;
+    private Color baseColor;
 
     void Start()
     {
         vidaActual = vidaMax;
+        sr = GetComponent<SpriteRenderer>();
+        if (sr != null) baseColor = sr.color;
+
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         if(p) {
             player = p.transform;
@@ -34,6 +45,7 @@ public class BossRival : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance == null) return;
         if (GameManager.Instance.juegoTerminado) return;
 
         if (derrotado) {
@@ -43,13 +55,11 @@ public class BossRival : MonoBehaviour
 
         if (player == null) return;
 
-        // Si estamos bajo efecto de empuje, no sobreescribimos la velocidad
         if (knockbackTimer > 0) {
             knockbackTimer -= Time.deltaTime;
             return;
         }
 
-        // Persecucion simple
         float distancia = Vector2.Distance(transform.position, player.position);
         
         if (distancia > distanciaRobo)
@@ -64,11 +74,49 @@ public class BossRival : MonoBehaviour
         }
     }
 
+    public void RecibirImpactoProyectil(float danio, Vector2 origenImpacto) {
+        if (derrotado) return;
+
+        float azar = Random.Range(0, 100);
+        if (azar < probabilidadBloqueo && Time.time > lastBlockTime + cooldownBloqueo) {
+            BloquearAtaque();
+            return;
+        }
+
+        Vector2 dirEmpuje = ((Vector2)transform.position - origenImpacto).normalized;
+        RecibirEmpuje(0.3f, danio);
+        rb.AddForce(dirEmpuje * 5f, ForceMode2D.Impulse);
+    }
+
+    void BloquearAtaque() {
+        lastBlockTime = Time.time;
+        Debug.Log("<color=blue>[BOSS] ¡BLOQUEADO!</color>");
+        if (sr != null) {
+            StopAllCoroutines();
+            StartCoroutine(EfectoColor(Color.blue, 0.2f));
+        }
+        knockbackTimer = 0.2f; 
+        rb.linearVelocity = Vector2.zero;
+    }
+
+    System.Collections.IEnumerator EfectoColor(Color c, float dur) {
+        sr.color = c;
+        yield return new WaitForSeconds(dur);
+        if (!derrotado) sr.color = baseColor;
+        else sr.color = Color.gray;
+    }
+
     public void TomarDanio(float danio) {
         if (derrotado) return;
 
         vidaActual -= danio;
-        Debug.Log($"[BOSS] ¡Auch! Vida restante: {vidaActual}");
+
+        if (sr != null) {
+            StopAllCoroutines();
+            // Rojo claro si es poco daño (<10), Rojo oscuro si es mucho
+            Color colorHit = (danio < 10f) ? new Color(1f, 0.5f, 0.5f) : new Color(0.6f, 0f, 0f);
+            StartCoroutine(EfectoColor(colorHit, 0.15f));
+        }
 
         if (vidaActual <= 0) {
             Derrota();
@@ -87,27 +135,21 @@ public class BossRival : MonoBehaviour
         {
             timerRobo = 0;
             if (stats != null) {
-                // Ahora tambien hace daño de vida si queremos
                 stats.RecibirDanio(danioAlJugador);
-                Debug.Log("¡El Boss te golpeó!");
             }
         }
     }
 
     void Derrota() {
         derrotado = true;
-        Debug.Log("<color=red><b>[BOSS] ¡Derrrotado! Escapando de la playa...</b></color>");
+        StopAllCoroutines();
+        Debug.Log("<color=red><b>[BOSS] ¡Derrotado! Escapando...</b></color>");
         
-        // --- SOLUCION PARA NO TRABARSE ---
-        // Convertimos el collider en Trigger para que atraviese paredes y NPCs
-        Collider2D col = GetComponent<Collider2D>();
-        if (col != null) col.isTrigger = true;
+        Collider2D[] todosLosColliders = GetComponents<Collider2D>();
+        foreach (Collider2D col in todosLosColliders) col.isTrigger = true;
 
-        // Cambiamos color o transparencia para feedbak visual (opcional)
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        if (sr != null) sr.color = new Color(1, 1, 1, 0.5f); 
+        if (sr != null) sr.color = Color.gray; 
 
-        // Buscar el limite mas cercano
         GameObject[] limites = GameObject.FindGameObjectsWithTag("limites");
         float minDist = Mathf.Infinity;
         foreach (GameObject l in limites) {
@@ -127,7 +169,7 @@ public class BossRival : MonoBehaviour
             rb.linearVelocity = direccion * velocidadHuida;
 
             if (Vector2.Distance(transform.position, metaHuida.position) < 1f) {
-                GameManager.Instance.PresionarBoton_SiguienteNivel();
+                GameManager.Instance.FinalizarNivel();
                 Destroy(gameObject);
             }
         }
@@ -135,7 +177,7 @@ public class BossRival : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (derrotado && other.CompareTag("limites")) {
-            GameManager.Instance.PresionarBoton_SiguienteNivel();
+            GameManager.Instance.FinalizarNivel();
             Destroy(gameObject);
         }
     }

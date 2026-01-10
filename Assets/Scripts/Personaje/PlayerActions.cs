@@ -35,7 +35,7 @@ public class PlayerActions : MonoBehaviour
     public void LanzarChurro() {
         if (stats == null || stats.churrosCantidad <= 0 || Time.time < lastShootTime + cooldownLanzamiento) return;
 
-        stats.churrosCantidad--;
+        stats.ConsumirChurro(); // Usamos el metodo oficial para descontar
         lastShootTime = Time.time;
 
         if (anim != null) anim.SetTrigger("attack");

@@ -35,20 +35,24 @@ public class DialogoManager : MonoBehaviour
         if (npc == null || stats == null) return;
         npcActual = npc;
         
-        dialogoActual = npcActual.ObtenerDialogoDinamico();
-        if (dialogoActual == null) return;
-
         var move = FindFirstObjectByType<PlayerMovement>();
         if(move) move.enabled = false;
 
         panelUI.SetActive(true);
         groupOpciones.SetActive(false);
         
-        // El nombre puede venir del archivo de dialogo o del NPC
-        textoNombre.text = !string.IsNullOrEmpty(dialogoActual.nombreNPC) ? dialogoActual.nombreNPC : npcActual.nombre;
-        
-        if (npcActual.esVendedorBebidas) StartCoroutine(MenuBebidas());
-        else StartCoroutine(CicloDeDialogo());
+        if (npcActual.esVendedorBebidas) {
+            textoNombre.text = npcActual.nombre;
+            StartCoroutine(MenuBebidas());
+        } else {
+            dialogoActual = npcActual.ObtenerDialogoDinamico();
+            if (dialogoActual == null) {
+                Cerrar();
+                return;
+            }
+            textoNombre.text = !string.IsNullOrEmpty(dialogoActual.nombreNPC) ? dialogoActual.nombreNPC : npcActual.nombre;
+            StartCoroutine(CicloDeDialogo());
+        }
     }
 
     IEnumerator CicloDeDialogo() {
@@ -149,9 +153,22 @@ public class DialogoManager : MonoBehaviour
         yield return StartCoroutine(EscribirLetras("¿Qué vas a llevar fresco?"));
         groupOpciones.SetActive(true);
         foreach(var b in botones) b.gameObject.SetActive(false);
-        ConfigurarBotonBebida(0, "Agua ($8)", () => { if(stats.GastarDinero(8)){ stats.RecuperarHidratacion(30); Cerrar();} });
-        ConfigurarBotonBebida(1, "Birra ($15)", () => { if(stats.GastarDinero(15)){ stats.ebriedad += 25; Cerrar();} });
-        ConfigurarBotonBebida(2, "Gaseosa ($12)", () => { if(stats.GastarDinero(12)){ stats.RecuperarHidratacion(15); Cerrar();} });
+        
+        ConfigurarBotonBebida(0, "Agua ($3)", () => { 
+            if(stats.GastarDinero(3)){ 
+                stats.RecuperarHidratacion(40); 
+                stats.ReducirTemperatura(15);
+                Cerrar();
+            } 
+        });
+
+        ConfigurarBotonBebida(1, "Birra ($5)", () => { 
+            if(stats.GastarDinero(5)){ 
+                stats.ebriedad += 20; // Te emborracha
+                stats.RecuperarHidratacion(15); // Menos que el agua
+                Cerrar();
+            } 
+        });
     }
 
     void ConfigurarBotonBebida(int i, string txt, UnityEngine.Events.UnityAction accion) {

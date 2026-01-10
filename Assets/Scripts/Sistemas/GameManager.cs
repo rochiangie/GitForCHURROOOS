@@ -42,6 +42,16 @@ public class GameManager : MonoBehaviour
             AlternarPausa();
         }
 
+        // Shortcut de Debug: U (Ganar) - I (Perder)
+        if (Input.GetKeyDown(KeyCode.U)) {
+            Debug.Log("<color=green>DEBUG: Ganaste nivel forzadamente (U)</color>");
+            FinalizarNivel();
+        }
+        if (Input.GetKeyDown(KeyCode.I)) {
+            Debug.Log("<color=red>DEBUG: Perdiste nivel forzadamente (I)</color>");
+            PerderNivel("Debug Check (Te rendiste).");
+        }
+
         if (juegoTerminado || enPausa) return;
         if (niveles == null || niveles.Count == 0 || nivelActualIndex >= niveles.Count) return;
 
@@ -88,7 +98,7 @@ public class GameManager : MonoBehaviour
         
         if (stats != null) {
             stats.money = 0; 
-            stats.temperature = 0;
+            stats.temperature = 20f; // Empieza con calor base
             stats.hydration = 100;
         }
 
@@ -115,6 +125,7 @@ public class GameManager : MonoBehaviour
         foreach (var c in clientes) {
             NPCConversacion npc = c.GetComponent<NPCConversacion>();
             if (npc != null && !npc.esVendedorBebidas) {
+                npc.yaCompro = false; // Reset de memoria para el nuevo dia
                 float rng = Random.value;
                 npc.personalidad = (rng < data.porcentajeAmigables) ? PersonalidadNPC.Amable : PersonalidadNPC.Molesto;
                 
@@ -163,7 +174,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void FinalizarNivel() {
+    public void FinalizarNivel() {
         if (juegoTerminado) return;
         juegoTerminado = true;
         Time.timeScale = 0f;

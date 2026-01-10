@@ -1362,10 +1362,9 @@ MonoBehaviour:
   quiereComprar: 0
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -2002,10 +2001,9 @@ MonoBehaviour:
   quiereComprar: 1
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -2330,10 +2328,9 @@ MonoBehaviour:
   quiereComprar: 0
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -2607,7 +2604,6 @@ MonoBehaviour:
   pagoBaseChurro: 120
   precioAgua: 8
   precioBirra: 15
-  precioGaseosa: 12
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -3103,10 +3099,9 @@ MonoBehaviour:
   quiereComprar: 1
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables:
   - {fileID: 11400000, guid: e3306d2a8e23c044ca1701fbdeee166b, type: 2}
   poolMolestos: []
@@ -3495,10 +3490,9 @@ MonoBehaviour:
   quiereComprar: 1
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -3655,7 +3649,7 @@ RectTransform:
   m_Father: {fileID: 1451522110}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4058,7 +4052,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Jeni est\xE1 feliz"
+  m_text: Seguro se fue atras de mi jermu, mejor me voy a casa con la familia y cuido
+    de los mios por un rato
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
   m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
@@ -4444,10 +4439,9 @@ MonoBehaviour:
   quiereComprar: 1
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -5159,9 +5153,7 @@ MonoBehaviour:
   pagoBaseChurro: 120
   precioAgua: 8
   precioBirra: 15
-  precioGaseosa: 12
-  poolAmables:
-  - {fileID: 11400000, guid: 877e331b78ef54546a7efdf5368c4021, type: 2}
+  poolAmables: []
   poolMolestos: []
   poolYaCompro: []
 --- !u!1 &435563455
@@ -5651,11 +5643,11 @@ MonoBehaviour:
   quiereComprar: 0
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
-  poolAmables: []
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
+  poolAmables:
+  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   poolMolestos: []
   poolYaCompro: []
 --- !u!1 &467735555
@@ -7141,7 +7133,7 @@ RectTransform:
   m_Father: {fileID: 1715668224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8185,7 +8177,6 @@ MonoBehaviour:
   pagoBaseChurro: 120
   precioAgua: 8
   precioBirra: 15
-  precioGaseosa: 12
   poolAmables:
   - {fileID: 11400000, guid: ea81eb3c71b73f24bb8573ee30833e9b, type: 2}
   poolMolestos: []
@@ -8294,7 +8285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &831948646
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9015,9 +9006,10 @@ GameObject:
   - component: {fileID: 921405660}
   - component: {fileID: 921405659}
   - component: {fileID: 921405658}
-  m_Layer: 0
+  - component: {fileID: 921405661}
+  m_Layer: 7
   m_Name: Square
-  m_TagString: Untagged
+  m_TagString: limites
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9138,6 +9130,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 327189159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &921405661
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921405657}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1001 &921834453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9216,7 +9254,7 @@ PrefabInstance:
       objectReference: {fileID: 606435070}
     - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
       propertyPath: nivelActualIndex
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
       propertyPath: niveles.Array.size
@@ -9250,6 +9288,18 @@ PrefabInstance:
       propertyPath: 'niveles.Array.data[4]'
       value: 
       objectReference: {fileID: 11400000, guid: 7f373ab8a01dccf4c8df20dcbbf1f0d3, type: 2}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: dialogoPostVentaGlobal
+      value: 
+      objectReference: {fileID: 11400000, guid: 4251ddffcc46a8547ae0a7f577159636, type: 2}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: dialogosPostVentaGlobal.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: 'dialogosPostVentaGlobal.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 4251ddffcc46a8547ae0a7f577159636, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9818,9 +9868,10 @@ GameObject:
   - component: {fileID: 973349810}
   - component: {fileID: 973349809}
   - component: {fileID: 973349808}
-  m_Layer: 0
+  - component: {fileID: 973349811}
+  m_Layer: 7
   m_Name: Square (2)
-  m_TagString: Untagged
+  m_TagString: limites
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9941,6 +9992,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 327189159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &973349811
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973349807}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1000565827
 GameObject:
   m_ObjectHideFlags: 0
@@ -10202,10 +10299,9 @@ MonoBehaviour:
   quiereComprar: 0
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -10307,9 +10403,10 @@ GameObject:
   - component: {fileID: 1053803163}
   - component: {fileID: 1053803162}
   - component: {fileID: 1053803161}
-  m_Layer: 0
+  - component: {fileID: 1053803164}
+  m_Layer: 7
   m_Name: Square (1)
-  m_TagString: Untagged
+  m_TagString: limites
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10430,6 +10527,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 327189159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1053803164
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1053803160}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1057267566
 GameObject:
   m_ObjectHideFlags: 0
@@ -11449,14 +11592,12 @@ MonoBehaviour:
   quiereComprar: 1
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables:
   - {fileID: 11400000, guid: 88183d22a6788224aa997e0449ea3683, type: 2}
-  poolMolestos:
-  - {fileID: 11400000, guid: 4251ddffcc46a8547ae0a7f577159636, type: 2}
+  poolMolestos: []
   poolYaCompro: []
 --- !u!1 &1168655366
 GameObject:
@@ -11815,7 +11956,6 @@ MonoBehaviour:
   pagoBaseChurro: 120
   precioAgua: 8
   precioBirra: 15
-  precioGaseosa: 12
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -12317,10 +12457,9 @@ MonoBehaviour:
   quiereComprar: 1
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -12798,7 +12937,6 @@ MonoBehaviour:
   pagoBaseChurro: 120
   precioAgua: 8
   precioBirra: 15
-  precioGaseosa: 12
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -13228,10 +13366,9 @@ MonoBehaviour:
   quiereComprar: 0
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -16560,7 +16697,6 @@ MonoBehaviour:
   pagoBaseChurro: 120
   precioAgua: 8
   precioBirra: 15
-  precioGaseosa: 12
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -17106,10 +17242,9 @@ MonoBehaviour:
   quiereComprar: 1
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -17146,7 +17281,7 @@ RectTransform:
   m_Father: {fileID: 867263191}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -17527,10 +17662,9 @@ MonoBehaviour:
   quiereComprar: 1
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -18021,10 +18155,9 @@ MonoBehaviour:
   quiereComprar: 0
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -18139,7 +18272,7 @@ RectTransform:
   m_Father: {fileID: 1875208454}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19269,10 +19402,9 @@ MonoBehaviour:
   quiereComprar: 0
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -20460,7 +20592,7 @@ RectTransform:
   m_Father: {fileID: 2119372269}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21042,10 +21174,9 @@ MonoBehaviour:
   quiereComprar: 1
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables:
   - {fileID: 11400000, guid: 6ea21aa8759881443bd9fc36e4c9a721, type: 2}
   poolMolestos: []
@@ -21219,7 +21350,7 @@ RectTransform:
   m_Father: {fileID: 1709212701}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21659,9 +21790,10 @@ GameObject:
   - component: {fileID: 1946904383}
   - component: {fileID: 1946904382}
   - component: {fileID: 1946904381}
-  m_Layer: 0
+  - component: {fileID: 1946904384}
+  m_Layer: 7
   m_Name: Square (3)
-  m_TagString: Untagged
+  m_TagString: limites
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21782,6 +21914,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 327189159}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1946904384
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946904380}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1988075547
 GameObject:
   m_ObjectHideFlags: 0
@@ -22025,6 +22203,37 @@ Transform:
   - {fileID: 217609834}
   - {fileID: 1228108365}
   - {fileID: 1168655367}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2002147774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2002147775}
+  m_Layer: 0
+  m_Name: SpawnBoss
+  m_TagString: SpawnBoss
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2002147775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2002147774}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.5, y: -37.4, z: -0.4629781}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2018172235
@@ -22592,10 +22801,9 @@ MonoBehaviour:
   quiereComprar: 1
   churrosDeseados: 1
   yaCompro: 0
-  pagoBaseChurro: 120
-  precioAgua: 8
-  precioBirra: 15
-  precioGaseosa: 12
+  pagoBaseChurro: 10
+  precioAgua: 3
+  precioBirra: 5
   poolAmables: []
   poolMolestos: []
   poolYaCompro: []
@@ -23511,6 +23719,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1974411575927568764, guid: dc97daa8b78ca6c4a800d071451e6d51, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 6.5555553
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974411575927568764, guid: dc97daa8b78ca6c4a800d071451e6d51, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 9.222222
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053943148118689692, guid: dc97daa8b78ca6c4a800d071451e6d51, type: 3}
+      propertyPath: danioPatada
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2053943148118689692, guid: dc97daa8b78ca6c4a800d071451e6d51, type: 3}
+      propertyPath: prefabChurro
+      value: 
+      objectReference: {fileID: 4657405433928893135, guid: 057b52b7a472d9948946aeff45ca0e50, type: 3}
     - target: {fileID: 3198217367497431733, guid: dc97daa8b78ca6c4a800d071451e6d51, type: 3}
       propertyPath: m_Name
       value: Churrero
@@ -23519,6 +23743,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 8535882636780454244, guid: 7b93c71a5515d8a4aa986dc8e9b8ddc0, type: 3}
+    - target: {fileID: 3936373074952073406, guid: dc97daa8b78ca6c4a800d071451e6d51, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 6.5555553
+      objectReference: {fileID: 0}
+    - target: {fileID: 3936373074952073406, guid: dc97daa8b78ca6c4a800d071451e6d51, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 9.222222
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23538,6 +23770,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1106146940106449999, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769426037385537467, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: probabilidadBloqueo
+      value: 70.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6019539658944251599, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7555675508651875755, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
@@ -23610,3 +23850,4 @@ SceneRoots:
   - {fileID: 1810846148}
   - {fileID: 1560673727}
   - {fileID: 1220262144}
+  - {fileID: 2002147775}

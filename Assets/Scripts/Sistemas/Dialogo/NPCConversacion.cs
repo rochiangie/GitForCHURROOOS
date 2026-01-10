@@ -18,9 +18,8 @@ public class NPCConversacion : MonoBehaviour
     public float pagoBaseChurro = 20f; 
     
     [Header("Precios (Si es Vendedor)")]
-    public float precioAgua = 8f;
-    public float precioBirra = 15f;
-    public float precioGaseosa = 12f;
+    public float precioAgua = 3f;
+    public float precioBirra = 5f;
 
     [Header("Pools de Diálogos")]
     public List<Dialogo> poolAmables = new List<Dialogo>();

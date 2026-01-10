@@ -25,5 +25,6 @@ MonoBehaviour:
       stamina: 0
       hidratacion: 0
       reputacion: -10
+  soloPostVenta: 1
   esVenta: 1
   esGrito: 0

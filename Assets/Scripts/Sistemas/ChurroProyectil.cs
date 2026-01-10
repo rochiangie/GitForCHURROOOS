@@ -2,44 +2,72 @@ using UnityEngine;
 
 public class ChurroProyectil : MonoBehaviour
 {
-    public float velocidad = 12f;
+    public float velocidad = 15f;
     public float danio = 15f;
     public float vidaUtil = 2f;
     public LayerMask capaNPC;
 
-    private Vector2 direccion;
+    private Rigidbody2D rb;
+
+    void Awake() {
+        rb = GetComponent<Rigidbody2D>();
+        // Si no tiene RB, se lo agregamos para que vuele con fisica
+        if (rb == null) rb = gameObject.AddComponent<Rigidbody2D>();
+        
+        rb.gravityScale = 0f;
+        rb.linearDamping = 0f; // Importante para que no pierda velocidad
+        rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+    }
 
     public void Lanzar(Vector2 dir) {
-        direccion = dir.normalized;
-        // Rotar el churro para que apunte a donde vuela
-        float angle = Mathf.Atan2(direccion.y, direccion.x) * Mathf.Rad2Deg;
+        // Aseguramos que la direccion sea pura (Derecha o Izquierda)
+        Vector2 pureDir = dir.normalized;
+        
+        // Aplicamos velocidad al Rigidbody directamente
+        rb.linearVelocity = pureDir * velocidad;
+
+        // Rotar el churro visualmente
+        float angle = Mathf.Atan2(pureDir.y, pureDir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
+
         Destroy(gameObject, vidaUtil);
     }
 
-    void Update() {
-        transform.Translate(Vector2.right * velocidad * Time.deltaTime);
+    private void OnTriggerEnter2D(Collider2D other) {
+        ProcesarImpacto(other.gameObject, other.transform.position);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        // Si golpea un NPC o Boss
-        if (((1 << other.gameObject.layer) & capaNPC) != 0) {
+    private void OnCollisionEnter2D(Collision2D collision) {
+        ProcesarImpacto(collision.gameObject, collision.contacts[0].point);
+    }
+
+    void ProcesarImpacto(GameObject target, Vector3 puntoImpacto) {
+        if (target.CompareTag("Player")) return;
+
+        // Detectar impacto en NPCs o Boss
+        if (((1 << target.layer) & capaNPC) != 0) {
             
-            BossRival boss = other.GetComponent<BossRival>();
+            BossRival boss = target.GetComponent<BossRival>();
             if (boss != null) {
-                boss.RecibirEmpuje(0.3f, danio);
+                boss.RecibirImpactoProyectil(danio, puntoImpacto);
+                Debug.Log($"<color=green>[PROYECTIL]</color> Impacto confirmado en BOSS: {target.name}");
             } else {
-                // Si es un NPC comun, solo lo empujamos
-                Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-                if (rb != null) {
-                    Vector2 forceDir = (other.transform.position - transform.position).normalized;
-                    rb.AddForce(forceDir * 10f, ForceMode2D.Impulse);
+                Rigidbody2D rbNPC = target.GetComponent<Rigidbody2D>();
+                if (rbNPC != null) {
+                    Vector2 forceDir = (target.transform.position - transform.position).normalized;
+                    rbNPC.AddForce(forceDir * 8f, ForceMode2D.Impulse);
                 }
             }
-
-            // Efecto de impacto y destruir
-            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.golpePelea);
-            Destroy(gameObject);
+            ImpactoVisual();
+        } 
+        else if (target.CompareTag("limites")) {
+            ImpactoVisual();
         }
+    }
+
+    void ImpactoVisual() {
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.golpePelea);
+        // Aqui podrias instanciar chispas de azucar o migas
+        Destroy(gameObject);
     }
 }
