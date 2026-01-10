@@ -1,19 +1,21 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NuevoNivel", menuName = "Sistema/Datos de Nivel")]
+[CreateAssetMenu(fileName = "NuevoNivel", menuName = "Sistema/NivelData")]
 public class NivelData : ScriptableObject
 {
-    [Header("Objetivos")]
     public float metaDinero;
-    public float duracionDiaHoras = 12f; // De 8 AM a 8 PM por ejemplo
-
+    public float duracionDiaHoras = 12f; 
+    
     [Header("Dificultad Clientes")]
-    [Range(0, 100)] public float probabilidadCompra;
-    [Range(0, 1)] public float porcentajeAmigables; // 1 = todos amigos, 0 = todos molestos
-    public int maxChurrosPorPedido = 5;
+    public float probabilidadCompra = 50f;
+    public float porcentajeAmigables = 0.8f; 
+    public int maxChurrosPorPedido = 3;
 
-    [Header("Ambiente")]
+    [Header("Dificultad Ambiente")]
     public float multiplicadorCalor = 1f;
+    public float velocidadReloj = 0.2f; // <--- AGREGADO: Velocidad base del tiempo para este nivel
+
+    [Header("Boss")]
     public bool esNivelBoss = false;
     public GameObject prefabBoss;
 }

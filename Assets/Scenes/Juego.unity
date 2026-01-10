@@ -1017,8 +1017,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &159213379
 GameObject:
@@ -1569,8 +1568,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!114 &203806590 stripped
 MonoBehaviour:
@@ -1896,8 +1894,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &217609833
 GameObject:
@@ -2579,8 +2576,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &264279672
 GameObject:
@@ -2969,8 +2965,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &271172928
 GameObject:
@@ -3917,8 +3912,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &372324006
 GameObject:
@@ -5033,8 +5027,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &467735555
 GameObject:
@@ -5983,7 +5976,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horaActual: 8
-  velocidadTiempo: 0.3
   horaPico: 14
 --- !u!4 &615749790
 Transform:
@@ -8768,8 +8760,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1053803160
 GameObject:
@@ -9753,8 +9744,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1168655366
 GameObject:
@@ -10616,8 +10606,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1216890477
 GameObject:
@@ -11360,8 +11349,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1247472496
 GameObject:
@@ -14278,8 +14266,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1646125619
 GameObject:
@@ -14698,8 +14685,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1676131094
 GameObject:
@@ -15104,8 +15090,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1683762287
 GameObject:
@@ -16177,8 +16162,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!114 &1775903708 stripped
 MonoBehaviour:
@@ -17340,8 +17324,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &1900543052
 GameObject:
@@ -18714,8 +18697,7 @@ MonoBehaviour:
   precioAgua: 3
   precioBirra: 5
   precioGaseosa: 4
-  poolDialogos:
-  - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
+  poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
 --- !u!1 &2070885955
 GameObject:
@@ -18910,7 +18892,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reponer
+  m_text: 'Presiona E
+
+    para reponer'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
   m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
@@ -18937,14 +18921,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2
+  m_fontSize: 0.95
   m_fontSizeBase: 2
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 2
+  m_fontSizeMin: 0.5
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -19050,12 +19034,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 498184464946650321, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 66.672
+      objectReference: {fileID: 0}
+    - target: {fileID: 498184464946650321, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 29.089
+      objectReference: {fileID: 0}
+    - target: {fileID: 498184464946650321, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 32.366
+      value: 33.33599
       objectReference: {fileID: 0}
     - target: {fileID: 498184464946650321, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -46.656834
+      value: -57.85917
       objectReference: {fileID: 0}
     - target: {fileID: 1492829233639648001, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -19066,12 +19058,48 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1492829233639648001, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 66.672
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492829233639648001, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 28.701
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492829233639648001, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 32.366
+      value: 33.336
       objectReference: {fileID: 0}
     - target: {fileID: 1492829233639648001, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -83.42616
+      value: -100.591835
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250918535977343252, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_fontSize
+      value: 18.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250918535977343252, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250918535977343252, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307671493836630212, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 57.922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307671493836630212, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 128.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307671493836630212, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 68.394
+      objectReference: {fileID: 0}
+    - target: {fileID: 3307671493836630212, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -25.336
       objectReference: {fileID: 0}
     - target: {fileID: 4277481350858980828, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -19082,12 +19110,44 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4277481350858980828, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 68.295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277481350858980828, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 29.477
+      objectReference: {fileID: 0}
+    - target: {fileID: 4277481350858980828, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 33.5655
+      value: 34.1475
       objectReference: {fileID: 0}
     - target: {fileID: 4277481350858980828, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -9.8875
+      value: -14.7385
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543803007935942057, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_fontSize
+      value: 18.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543803007935942057, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4543803007935942057, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378155268431615807, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_fontSize
+      value: 21.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378155268431615807, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6378155268431615807, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9054460238025676266, guid: 43580493bc3c89f4d88bf7e11132f81e, type: 3}
       propertyPath: m_Pivot.x
@@ -19226,6 +19286,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Churrero
       objectReference: {fileID: 0}
+    - target: {fileID: 3310186975883176022, guid: dc97daa8b78ca6c4a800d071451e6d51, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 8535882636780454244, guid: 7b93c71a5515d8a4aa986dc8e9b8ddc0, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

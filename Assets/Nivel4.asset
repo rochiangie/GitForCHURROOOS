@@ -18,5 +18,6 @@ MonoBehaviour:
   porcentajeAmigables: 0.277
   maxChurrosPorPedido: 3
   multiplicadorCalor: 1.6
+  velocidadReloj: 0.8
   esNivelBoss: 0
   prefabBoss: {fileID: 0}

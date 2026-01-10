@@ -28,9 +28,12 @@ public class NPCConversacion : MonoBehaviour
     }
 
     public Dialogo ObtenerDialogoDinamico() {
+        // Primero intentamos usar los dialogos asignados a mano
         if (poolDialogos != null && poolDialogos.Count > 0) 
             return poolDialogos[Random.Range(0, poolDialogos.Count)];
-        return dialogoGrito;
+
+        // Si no hay ninguno, usamos la Biblioteca Automatica (procedimental)
+        return BibliotecaDialogos.GenerarDialogoAleatorio(personalidad, quiereComprar);
     }
 
     public void FinalizarVenta() {

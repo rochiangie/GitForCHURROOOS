@@ -4,7 +4,6 @@ public class SunSystem : MonoBehaviour
 {
     [Header("Configuracion de Tiempo")]
     public float horaActual = 8f; 
-    public float velocidadTiempo = 0.3f; // Un poco mas lento para dar tiempo
     
     [Header("Mecanica de Calor")]
     public float horaPico = 14f;
@@ -21,12 +20,18 @@ public class SunSystem : MonoBehaviour
     {
         if (GameManager.Instance != null && GameManager.Instance.juegoTerminado) return;
 
-        // Pasar el tiempo
-        horaActual += Time.deltaTime * velocidadTiempo;
+        // ECONOMIA INCREMENTAL: El tiempo, calor y deshidratacion se ajustan segun el NivelData
+        if (GameManager.Instance == null || GameManager.Instance.niveles == null || GameManager.Instance.nivelActualIndex >= GameManager.Instance.niveles.Count) return;
+
+        NivelData dataNivel = GameManager.Instance.niveles[GameManager.Instance.nivelActualIndex];
         
-        // ECONOMIA INCREMENTAL: El calor y la deshidratacion suben con el nivel
-        int nivel = (GameManager.Instance != null) ? GameManager.Instance.nivelActualIndex : 0;
-        float multDificultad = 1f + (nivel * 0.2f); // 20% mas dificil por nivel
+        // Usamos la velocidad definida especificamente en el Asset del Nivel
+        float velocidadActual = dataNivel.velocidadReloj;
+
+        // Pasar el tiempo
+        horaActual += Time.deltaTime * velocidadActual;
+        
+        float multEfectos = 1f + (GameManager.Instance.nivelActualIndex * 0.25f); 
 
         // Afectar al Jugador
         if (stats != null)
@@ -35,11 +40,11 @@ public class SunSystem : MonoBehaviour
             float calorActual = Mathf.Clamp01(cercaniaPico);
             
             // Perdida de hidratacion base + impacto del nivel
-            float factorDeshidratacion = (0.5f + (calorActual * 2.5f)) * multDificultad;
+            float factorDeshidratacion = (0.5f + (calorActual * 2.5f)) * multEfectos;
             stats.ReducirHidratacion(factorDeshidratacion * Time.deltaTime);
             
             // Aumento de temperatura con impacto del nivel
-            float factorCalor = calorActual * 1.5f * multDificultad;
+            float factorCalor = calorActual * 1.5f * multEfectos;
             stats.AumentarTemperatura(factorCalor * Time.deltaTime);
         }
     }

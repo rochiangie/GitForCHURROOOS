@@ -10,7 +10,7 @@ public class BotonEmpezar : MonoBehaviour
         Time.timeScale = 1f;
 
         // Cargamos la escena del juego
-        SceneManager.LoadScene("Juego");
+        SceneManager.LoadScene("Lore");
     }
 
     public void SalirDelJuego()
