@@ -6,6 +6,10 @@ public class PlayerStats : MonoBehaviour
     public float money = 0f;
     public int churrosCantidad = 20;
 
+    [Header("Salud")]
+    public float vida = 100f;
+    public float vidaMax = 100f;
+
     [Header("Limites")]
     public float hydration = 100f;
     public float hydrationMax = 100f;
@@ -29,6 +33,7 @@ public class PlayerStats : MonoBehaviour
         if (GameManager.Instance != null && GameManager.Instance.juegoTerminado) return;
 
         // Limites
+        vida = Mathf.Clamp(vida, 0f, vidaMax);
         hydration = Mathf.Clamp(hydration, 0f, hydrationMax);
         stamina = Mathf.Clamp(stamina, 0f, staminaMax);
         temperature = Mathf.Clamp(temperature, 0f, temperatureMax);
@@ -39,8 +44,15 @@ public class PlayerStats : MonoBehaviour
         else if (estaEnSombra) ReducirTemperatura(enfriamientoShadow * Time.deltaTime);
 
         // Chequeo de derrota
+        if (vida <= 0) GameManager.Instance.PerderNivel("Te derrotaron en pelea.");
         if (hydration <= 0) GameManager.Instance.PerderNivel("Te moriste de sed.");
         if (temperature >= temperatureMax) GameManager.Instance.PerderNivel("Te desmayaste por el calor.");
+    }
+
+    public void RecibirDanio(float cant) {
+        vida -= cant;
+        Debug.Log($"[JUGADOR] ¡Auch! Salud: {vida}");
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.golpePelea);
     }
 
     public void AgregarDinero(float cant) { money += cant; }

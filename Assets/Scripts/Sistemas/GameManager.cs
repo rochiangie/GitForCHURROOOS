@@ -147,7 +147,19 @@ public class GameManager : MonoBehaviour
         Debug.Log("<color=yellow><b>===========================================</b></color>");
 
         if (data.esNivelBoss && data.prefabBoss != null) {
-            Instantiate(data.prefabBoss, Vector3.zero, Quaternion.identity);
+            Vector3 spawnPos = Vector3.zero;
+            GameObject spawnPoint = GameObject.FindGameObjectWithTag("SpawnBoss");
+            
+            if (spawnPoint != null) {
+                spawnPos = spawnPoint.transform.position;
+            } else {
+                // Si no hay punto, que aparezca lejos del player para que no sea injusto
+                GameObject p = GameObject.FindGameObjectWithTag("Player");
+                if(p) spawnPos = p.transform.position + new Vector3(10, 10, 0); 
+            }
+
+            Instantiate(data.prefabBoss, spawnPos, Quaternion.identity);
+            Debug.Log($"<color=red><b>[BOSS]</b></color> ¡Apareció en {spawnPos}!");
         }
     }
 
