@@ -2,58 +2,41 @@
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [Header("Configuracion")]
-    public float radioInteraccion = 3.5f;
+    public float radio = 3.5f;
     public LayerMask capaNPC;
-    public KeyCode teclaInteractuar = KeyCode.F;
+    public KeyCode tecla = KeyCode.F;
 
-    private NPCConversacion npcCercano;
+    private NPCConversacion cercano;
 
-    void Update()
-    {
-        DetectarNPCs();
-        if (Input.GetKeyDown(teclaInteractuar) && npcCercano != null)
-        {
-            npcCercano.Interactuar();
-        }
+    void Update() {
+        Detectar();
+        if (Input.GetKeyDown(tecla) && cercano != null) cercano.Interactuar();
     }
 
-    private void DetectarNPCs()
-    {
-        // Detectamos a todos en el area
-        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, radioInteraccion, capaNPC);
-        
-        npcCercano = null;
-        float distanciaCercana = Mathf.Infinity;
+    void Detectar() {
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, radio, capaNPC);
+        cercano = null;
+        float minDist = Mathf.Infinity;
 
-        foreach (var col in cols)
-        {
+        foreach (var col in cols) {
             NPCConversacion npc = col.GetComponent<NPCConversacion>();
-            if (npc != null)
-            {
-                // PRIORIDAD: 
-                // 1. Cliente que quiere comprar (Hambre activo)
-                // 2. Vendedor (Siempre disponible)
-                // 3. Otros
-                float dist = Vector3.Distance(transform.position, col.transform.position);
-                
-                if (npc.quiereComprar || npc.esVendedor) {
-                    // Si encontramos a alguien con quien realmente podemos tratar, lo elegimos
-                    npcCercano = npc;
-                    return; 
-                }
+            if (npc == null) continue;
 
-                if (dist < distanciaCercana) {
-                    distanciaCercana = dist;
-                    npcCercano = npc;
-                }
+            float d = Vector2.Distance(transform.position, col.transform.position);
+            // Prioridad a los que quieren comprar o venden
+            if (npc.quiereComprar || npc.esVendedorBebidas) {
+                cercano = npc;
+                return;
+            }
+            if (d < minDist) {
+                minDist = d;
+                cercano = npc;
             }
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, radioInteraccion);
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, radio);
     }
 }

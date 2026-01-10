@@ -6,12 +6,13 @@ public enum PersonalidadNPC { Amable, Molesto, Indiferente, Ayuda }
 public struct Consecuencia
 {
     public float dinero;
-    public int churros; // Cuantos churros se entregan (-) o reciben (+)
+    public int churros; // Negativo para quitar, positivo para dar
     public float stamina;
     public float hidratacion;
+    public float reputacion;
 }
 
-[CreateAssetMenu(fileName = "NuevoDialogo", menuName = "Sistema/Dialogo Pro")]
+[CreateAssetMenu(fileName = "NuevoDialogo", menuName = "Sistema/Dialogo")]
 public class Dialogo : ScriptableObject
 {
     public string nombreNPC;
@@ -29,6 +30,6 @@ public class Dialogo : ScriptableObject
     public Consecuencia[] impactos = new Consecuencia[3];
 
     [Header("Flags")]
-    public bool esVenta; // Si es true, la opcion 0 requiere tener recursos
+    public bool esVenta; 
     public bool esGrito;
 }

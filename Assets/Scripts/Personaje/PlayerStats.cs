@@ -17,6 +17,10 @@ public class PlayerStats : MonoBehaviour
     public float temperatureMax = 42f; 
     [Range(0, 100)] public float ebriedad = 0f;
 
+    [Header("Configuracion de Ambiente")]
+    public float enfriamientoWater = 8f;
+    public float enfriamientoShadow = 3f;
+
     private bool estaEnAgua = false;
     private bool estaEnSombra = false;
 
@@ -24,64 +28,46 @@ public class PlayerStats : MonoBehaviour
     {
         if (GameManager.Instance != null && GameManager.Instance.juegoTerminado) return;
 
-        ManejarStats();
-        ChequearCondicionesVictoriaDerrota();
-    }
-
-    void ManejarStats()
-    {
+        // Limites
         hydration = Mathf.Clamp(hydration, 0f, hydrationMax);
         stamina = Mathf.Clamp(stamina, 0f, staminaMax);
         temperature = Mathf.Clamp(temperature, 0f, temperatureMax);
         ebriedad = Mathf.Clamp(ebriedad, 0f, 100f);
 
-        if (estaEnAgua) ReducirTemperatura(8f * Time.deltaTime);
-        else if (estaEnSombra) ReducirTemperatura(3f * Time.deltaTime);
+        // Enfriamiento
+        if (estaEnAgua) ReducirTemperatura(enfriamientoWater * Time.deltaTime);
+        else if (estaEnSombra) ReducirTemperatura(enfriamientoShadow * Time.deltaTime);
+
+        // Chequeo de derrota
+        if (hydration <= 0) GameManager.Instance.PerderNivel("Te moriste de sed.");
+        if (temperature >= temperatureMax) GameManager.Instance.PerderNivel("Te desmayaste por el calor.");
     }
 
-    void ChequearCondicionesVictoriaDerrota()
-    {
-        if (GameManager.Instance == null) return;
-
-        // CONDICIONES DE DERROTA
-        if (hydration <= 0) 
-            GameManager.Instance.PerderJuego("Te moriste de sed bajo el sol.");
-        
-        if (temperature >= temperatureMax) 
-            GameManager.Instance.PerderJuego("Te desmayaste por un golpe de calor.");
-
-        // CONDICION DE VICTORIA
-        if (money >= GameManager.Instance.metaDinero)
-            GameManager.Instance.GanarJuego();
-    }
-
-    public void AgregarDinero(float cantidad) { money += cantidad; }
-    public bool GastarDinero(float cantidad) {
-        if (money >= cantidad) { money -= cantidad; return true; }
+    public void AgregarDinero(float cant) { money += cant; }
+    public bool GastarDinero(float cant) {
+        if (money >= cant) { money -= cant; return true; }
         return false;
     }
 
-    public void AgregarChurros(int cantidad) { churrosCantidad += cantidad; }
+    public void AgregarChurros(int cant) { churrosCantidad += cant; }
     public bool ConsumirChurro() {
         if (churrosCantidad > 0) { churrosCantidad--; return true; }
         return false;
     }
 
-    public void RecuperarHidratacion(float cantidad) { hydration = Mathf.Min(hydration + cantidad, hydrationMax); }
-    public void ReducirHidratacion(float cantidad) { hydration = Mathf.Max(hydration - cantidad, 0f); }
-    public void ConsumirStamina(float cantidad) { stamina = Mathf.Max(stamina - cantidad, 0f); }
-    public void RecuperarStamina(float cantidad) { stamina = Mathf.Min(stamina + cantidad, staminaMax); }
-    public void ReducirTemperatura(float cantidad) { temperature = Mathf.Max(temperature - cantidad, 0f); }
-    public void AumentarTemperatura(float cantidad) { temperature = Mathf.Min(temperature + cantidad, temperatureMax); }
+    public void RecuperarHidratacion(float cant) { hydration = Mathf.Min(hydration + cant, hydrationMax); }
+    public void ReducirHidratacion(float cant) { hydration = Mathf.Max(hydration - cant, 0f); }
+    public void RecuperarStamina(float cant) { stamina = Mathf.Min(stamina + cant, staminaMax); }
+    public void ConsumirStamina(float cant) { stamina = Mathf.Max(stamina - cant, 0f); }
+    public void ReducirTemperatura(float cant) { temperature = Mathf.Max(temperature - cant, 0f); }
+    public void AumentarTemperatura(float cant) { temperature = Mathf.Min(temperature + cant, temperatureMax); }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
+    private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Water")) estaEnAgua = true;
         if (other.CompareTag("Shadow")) estaEnSombra = true;
     }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
+    private void OnTriggerExit2D(Collider2D other) {
         if (other.CompareTag("Water")) estaEnAgua = false;
         if (other.CompareTag("Shadow")) estaEnSombra = false;
     }

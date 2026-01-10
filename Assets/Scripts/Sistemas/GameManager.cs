@@ -1,76 +1,92 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [Header("Objetivos")]
-    public float metaDinero = 10000f;
+    [Header("Configuracion de Niveles")]
+    public List<NivelData> niveles;
+    public int nivelActualIndex = 0;
     public bool juegoTerminado = false;
 
     [Header("UI Paneles")]
-    public GameObject panelVictoria;
-    public GameObject panelDerrota;
+    public GameObject panelNivelCompletado; 
+    public GameObject panelGameOver;
+    public GameObject panelFinalVictoria;
 
-    private void Awake()
-    {
-        if (Instance == null) Instance = this;
-        else Destroy(gameObject);
+    private PlayerStats stats;
+    private SunSystem sun;
+
+    void Awake() { Instance = this; }
+
+    void Start() {
+        stats = FindFirstObjectByType<PlayerStats>();
+        sun = FindFirstObjectByType<SunSystem>();
+        CargarNivel(nivelActualIndex);
     }
 
-    void Start()
-    {
-        Time.timeScale = 1f;
-        if (panelVictoria) panelVictoria.SetActive(false);
-        if (panelDerrota) panelDerrota.SetActive(false);
+    public void CargarNivel(int index) {
+        if (index >= niveles.Count) return;
         
-        // Asegurar que el cursor se vea al inicio si es necesario
-        // Cursor.visible = true;
-        // Cursor.lockState = CursorLockMode.None;
+        nivelActualIndex = index;
+        NivelData data = niveles[nivelActualIndex];
+        
+        juegoTerminado = false;
+        Time.timeScale = 1f;
+        
+        if(panelNivelCompletado) panelNivelCompletado.SetActive(false);
+        if(panelGameOver) panelGameOver.SetActive(false);
+        if(panelFinalVictoria) panelFinalVictoria.SetActive(false);
+
+        ActualizarAmbientacion(data);
     }
 
-    public void GanarJuego()
-    {
-        if (juegoTerminado) return;
+    void ActualizarAmbientacion(NivelData data) {
+        GameObject[] clientes = GameObject.FindGameObjectsWithTag("Cliente");
+        foreach (var c in clientes) {
+            NPCConversacion npc = c.GetComponent<NPCConversacion>();
+            if (npc != null) {
+                float rng = Random.value;
+                npc.personalidad = (rng < data.porcentajeAmigables) ? PersonalidadNPC.Amable : PersonalidadNPC.Molesto;
+                npc.quiereComprar = (Random.value * 100 < data.probabilidadCompra);
+                npc.churrosDeseados = Random.Range(1, data.maxChurrosPorPedido + 1);
+            }
+        }
+        
+        if (data.esNivelBoss && data.prefabBoss != null) {
+            Instantiate(data.prefabBoss, Vector3.zero, Quaternion.identity);
+        }
+    }
+
+    void Update() {
+        if (juegoTerminado || niveles == null || niveles.Count == 0 || nivelActualIndex >= niveles.Count) return;
+
+        NivelData data = niveles[nivelActualIndex];
+
+        // Victoria
+        if (stats != null && stats.money >= data.metaDinero) FinalizarNivel();
+
+        // Derrota por tiempo
+        if (sun != null && sun.horaActual >= 20f) PerderNivel("Anocheció...");
+    }
+
+    void FinalizarNivel() {
         juegoTerminado = true;
-        Time.timeScale = 0f; 
-        if (panelVictoria) panelVictoria.SetActive(true);
-        
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        
-        Debug.Log("¡GANASTE! Sos el rey de los churros.");
+        Time.timeScale = 0f;
+        if (nivelActualIndex == niveles.Count - 1) panelFinalVictoria.SetActive(true);
+        else panelNivelCompletado.SetActive(true);
     }
 
-    public void PerderJuego(string motivo)
-    {
-        if (juegoTerminado) return;
+    public void PerderNivel(string m) {
         juegoTerminado = true;
-        Time.timeScale = 0f; 
-        if (panelDerrota) panelDerrota.SetActive(true);
-
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-
-        Debug.Log("PERDISTE: " + motivo);
+        Time.timeScale = 0f;
+        if (panelGameOver) panelGameOver.SetActive(true);
     }
 
-    public void ReiniciarNivel()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
-    public void IrACreditos()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Creditos");
-    }
-
-    public void VolverAlMenu()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Menu");
-    }
+    public void SiguienteNivel() { nivelActualIndex++; CargarNivel(nivelActualIndex); }
+    public void Reintentar() { CargarNivel(nivelActualIndex); }
+    public void IrACreditos() { SceneManager.LoadScene("Creditos"); }
+    public void VolverMenu() { SceneManager.LoadScene("Menu"); }
 }
