@@ -1,81 +1,43 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class NPCConversacion : MonoBehaviour
 {
-    [Header("Tipo de Personaje")]
+    [Header("Identidad")]
+    public string nombre = "Vecino";
+    public PersonalidadNPC personalidad;
+    public bool esVendedorBebidas;
     public bool esCliente;
-    public bool esVendedor;
-
-    [Header("Estado de Venta")]
     public bool quiereComprar;
-    public GameObject iconoChurro; // El objeto visual sobre la cabeza del cliente
+    public int churrosDeseados = 1;
 
-    [Header("Contenido")]
-    public Dialogo archivoDialogo;
+    [Header("Economia Individual")]
+    public float pagoBaseChurro = 120f; // Cuanto paga este NPC por 1 churro de base
 
-    [Header("Ajustes de Vendedor")]
-    public float precioAgua = 10f;
-    public float recuperacionHidratacion = 30f;
+    [Header("Precios (Si es Vendedor)")]
+    public float precioAgua = 3f;
+    public float precioBirra = 5f;
+    public float precioGaseosa = 4f;
 
-    void Start()
-    {
-        ActualizarEstadoIcono();
+    [Header("Dialogos")]
+    public List<Dialogo> poolDialogos;
+    public Dialogo dialogoGrito;
+
+    public void Interactuar() {
+        if (DialogoManager.Instance != null) DialogoManager.Instance.AbrirPanel(this);
     }
 
-    public void Interactuar()
-    {
-        // Si es cliente pero NO tiene el icono activo, no puede interactuar
-        if (esCliente && !quiereComprar) return;
+    public Dialogo ObtenerDialogoDinamico() {
+        // Primero intentamos usar los dialogos asignados a mano
+        if (poolDialogos != null && poolDialogos.Count > 0) 
+            return poolDialogos[Random.Range(0, poolDialogos.Count)];
 
-        if (archivoDialogo != null)
-        {
-            DialogoManager.Instance.AbrirPanel(this);
-        }
+        // Si no hay ninguno, usamos la Biblioteca Automatica (procedimental)
+        return BibliotecaDialogos.GenerarDialogoAleatorio(personalidad, quiereComprar);
     }
 
-    public void FinalizarVenta()
-    {
+    public void FinalizarVenta() {
         quiereComprar = false;
-        ActualizarEstadoIcono();
-        ActivarSiguienteClienteAleatorio();
-    }
-
-    public void ActivarComoCliente()
-    {
-        if (esCliente)
-        {
-            quiereComprar = true;
-            ActualizarEstadoIcono();
-        }
-    }
-
-    void ActualizarEstadoIcono()
-    {
-        if (iconoChurro != null)
-        {
-            iconoChurro.SetActive(quiereComprar);
-        }
-    }
-
-    void ActivarSiguienteClienteAleatorio()
-    {
-        // Buscamos todos los NPCs en la escena
-        NPCConversacion[] todos = Object.FindObjectsByType<NPCConversacion>(FindObjectsSortMode.None);
-        List<NPCConversacion> candidatos = new List<NPCConversacion>();
-
-        foreach (var npc in todos)
-        {
-            // Solo activamos a otros que sean clientes y que actualmente NO quieran comprar
-            if (npc.esCliente && !npc.quiereComprar && npc != this)
-            {
-                candidatos.Add(npc);
-            }
-        }
-
-        if (candidatos.Count > 0)
-        {
-            candidatos[Random.Range(0, candidatos.Count)].ActivarComoCliente();
-        }
+        GameEvents.OnChurroVendido?.Invoke();
     }
 }

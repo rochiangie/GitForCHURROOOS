@@ -1,45 +1,42 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [Header("Configuración")]
-    public float radioInteraccion = 2.5f;
+    public float radio = 3.5f;
     public LayerMask capaNPC;
+    public KeyCode tecla = KeyCode.F;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            RealizarInteraccion();
-        }
+    private NPCConversacion cercano;
+
+    void Update() {
+        Detectar();
+        if (Input.GetKeyDown(tecla) && cercano != null) cercano.Interactuar();
     }
 
-    void RealizarInteraccion()
-    {
-        // Usamos OverlapCircleAll para capturar todo lo que esté en el radio
-        Collider2D[] colisiones = Physics2D.OverlapCircleAll(transform.position, radioInteraccion, capaNPC);
+    void Detectar() {
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, radio, capaNPC);
+        cercano = null;
+        float minDist = Mathf.Infinity;
 
-        // Ordenar por distancia para hablar siempre con el más cercano primero
-        System.Array.Sort(colisiones, (a, b) =>
-            Vector2.Distance(transform.position, a.transform.position).CompareTo(
-            Vector2.Distance(transform.position, b.transform.position)));
-
-        foreach (Collider2D col in colisiones)
-        {
+        foreach (var col in cols) {
             NPCConversacion npc = col.GetComponent<NPCConversacion>();
+            if (npc == null) continue;
 
-            // Si el objeto tiene el script y NO es el jugador mismo
-            if (npc != null && col.gameObject != this.gameObject)
-            {
-                npc.Interactuar();
-                return; // Salimos inmediatamente al encontrar el primer NPC válido
+            float d = Vector2.Distance(transform.position, col.transform.position);
+            // Prioridad a los que quieren comprar o venden
+            if (npc.quiereComprar || npc.esVendedorBebidas) {
+                cercano = npc;
+                return;
+            }
+            if (d < minDist) {
+                minDist = d;
+                cercano = npc;
             }
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
+    void OnDrawGizmosSelected() {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radioInteraccion);
+        Gizmos.DrawWireSphere(transform.position, radio);
     }
 }

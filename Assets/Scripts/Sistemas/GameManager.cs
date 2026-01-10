@@ -1,104 +1,172 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    [Header("Estado del Juego")]
-    public int diaActual = 1;
-    public bool juegoPausado = false;
+    [Header("Configuracion de Niveles")]
+    public List<NivelData> niveles;
+    public int nivelActualIndex = 0;
     public bool juegoTerminado = false;
+    public bool enPausa = false;
 
-    [Header("Referencias UI")]
-    public GameObject panelGameOver;
-    public GameObject panelVictoria;
+    [Header("UI Paneles")]
+    public GameObject panelNivelCompletado; 
+    public GameObject panelGameOver;        
+    public GameObject panelFinalVictoria;
+    public GameObject panelPausa;
 
-    private void Awake()
-    {
-        // Singleton prolijo para que no se duplique
-        if (Instance == null)
-        {
-            Instance = this;
-            // Si es la escena de juego, no queremos que se destruya, 
-            // pero en una Jam a veces es mejor dejarlo por escena.
+    [Header("Textos de Feedback")]
+    public TextMeshProUGUI textoDerrota;
+
+    private PlayerStats stats;
+    private SunSystem sun;
+
+    void Awake() { 
+        if (Instance == null) Instance = this; 
+        else Destroy(gameObject);
+    }
+
+    void Start() {
+        stats = FindFirstObjectByType<PlayerStats>();
+        sun = FindFirstObjectByType<SunSystem>();
+        CargarNivel(nivelActualIndex);
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            AlternarPausa();
         }
-        else
-        {
-            Destroy(gameObject);
+
+        if (juegoTerminado || enPausa) return;
+        if (niveles == null || niveles.Count == 0 || nivelActualIndex >= niveles.Count) return;
+
+        NivelData data = niveles[nivelActualIndex];
+
+        bool hablando = DialogoManager.Instance != null && DialogoManager.Instance.panelUI.activeInHierarchy;
+        if (stats != null && stats.money >= data.metaDinero && !hablando) {
+            FinalizarNivel();
+        }
+
+        if (sun != null && sun.horaActual >= 20f) {
+            PerderNivel("Te quedaste sin luz y sin ventas...");
         }
     }
 
-    private void Start()
-    {
-        // Aseguramos que el tiempo corra al empezar
-        Time.timeScale = 1f;
-        if (panelGameOver != null) panelGameOver.SetActive(false);
-        if (panelVictoria != null) panelVictoria.SetActive(false);
-    }
-
-    public void IniciarDia()
-    {
-        juegoTerminado = false;
-        juegoPausado = false;
-        Time.timeScale = 1f;
-    }
-
-    public void GameOver()
-    {
+    public void AlternarPausa() {
         if (juegoTerminado) return;
+        enPausa = !enPausa;
+        Time.timeScale = enPausa ? 0f : 1f;
+        CerrarTodosLosPaneles();
+        if (panelPausa) panelPausa.SetActive(enPausa);
+    }
 
+    public void CargarNivel(int index) {
+        if (niveles == null || index < 0 || index >= niveles.Count) return;
+        
+        nivelActualIndex = index;
+        NivelData data = niveles[nivelActualIndex];
+        
+        juegoTerminado = false;
+        enPausa = false;
+        Time.timeScale = 1f;
+        
+        CerrarTodosLosPaneles();
+        
+        if (stats != null) {
+            stats.money = 0; 
+            stats.temperature = 0;
+            stats.hydration = 100;
+        }
+
+        if (sun != null) sun.horaActual = 8f; 
+
+        ActualizarAmbientacion(data);
+        Debug.Log("<color=cyan><b>[GameManager] NIVEL " + (nivelActualIndex + 1) + " CARGADO CON EXITO.</b></color>");
+    }
+
+    void CerrarTodosLosPaneles() {
+        if(panelNivelCompletado) panelNivelCompletado.SetActive(false);
+        if(panelGameOver) panelGameOver.SetActive(false);
+        if(panelFinalVictoria) panelFinalVictoria.SetActive(false);
+        if(panelPausa) panelPausa.SetActive(false);
+        if (DialogoManager.Instance != null) DialogoManager.Instance.Cerrar();
+    }
+
+    void ActualizarAmbientacion(NivelData data) {
+        GameObject[] clientes = GameObject.FindGameObjectsWithTag("Cliente");
+        foreach (var c in clientes) {
+            NPCConversacion npc = c.GetComponent<NPCConversacion>();
+            if (npc != null && !npc.esVendedorBebidas) {
+                float rng = Random.value;
+                npc.personalidad = (rng < data.porcentajeAmigables) ? PersonalidadNPC.Amable : PersonalidadNPC.Molesto;
+                npc.quiereComprar = (Random.value * 100 < data.probabilidadCompra);
+                npc.churrosDeseados = Random.Range(1, data.maxChurrosPorPedido + 1);
+                npc.pagoBaseChurro = Random.Range(15f, 25f);
+            }
+        }
+        
+        if (data.esNivelBoss && data.prefabBoss != null) {
+            Instantiate(data.prefabBoss, Vector3.zero, Quaternion.identity);
+        }
+    }
+
+    void FinalizarNivel() {
+        if (juegoTerminado) return;
         juegoTerminado = true;
-        Debug.Log("¡CHURROOOOOS! El vendedor se desmayó por el calor.");
-
-        // Activar panel de Game Over
-        if (panelGameOver != null) panelGameOver.SetActive(true);
-
-        // Frenamos el tiempo DESPUÉS de mostrar la UI para evitar errores de frustum
-        Invoke("PausarTiempo", 0.1f);
-
-        // Asegúrate de que GameEvents exista o comenta esta línea si da error
-        // GameEvents.TriggerGameOver(); 
-    }
-
-    private void PausarTiempo()
-    {
         Time.timeScale = 0f;
+        CerrarTodosLosPaneles();
+
+        if (nivelActualIndex == niveles.Count - 1) {
+            if (panelFinalVictoria) panelFinalVictoria.SetActive(true);
+        } else {
+            if (panelNivelCompletado) panelNivelCompletado.SetActive(true);
+        }
     }
 
-    // --- NUEVOS MÉTODOS PARA BOTONES (OnClick) ---
-
-    /// <summary>
-    /// Carga la escena que sigue en el Build Settings.
-    /// </summary>
-    public void CargarSiguienteEscena()
-    {
-        Time.timeScale = 1f;
-        int escenaActual = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(escenaActual + 1);
+    public void PerderNivel(string m) {
+        if (juegoTerminado) return;
+        juegoTerminado = true;
+        Time.timeScale = 0f;
+        CerrarTodosLosPaneles();
+        
+        if (panelGameOver) panelGameOver.SetActive(true);
+        if (textoDerrota) textoDerrota.text = m;
+        
+        Debug.Log("PERDISTE: " + m);
     }
 
-    /// <summary>
-    /// Carga la escena llamada específicamente "Juego".
-    /// </summary>
-    public void CargarEscenaJuego()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Juego");
+    // --- ESTA ES LA FUNCION PARA TU BOTON "CONTINUAR" ---
+    // No pide ningun numero (int). Al tocarlo, el script sabe solo que nivel sigue.
+    public void PresionarBoton_SiguienteNivel() {
+        Time.timeScale = 1f; // Reanudar el tiempo
+        
+        int proximoIndice = nivelActualIndex + 1;
+        
+        Debug.Log("<color=orange>[GameManager] Boton Continuar presionado. Entrando al Nivel " + (proximoIndice + 1) + "</color>");
+
+        if (proximoIndice < niveles.Count) {
+            CargarNivel(proximoIndice);
+        } else {
+            Debug.Log("<color=green>[GameManager] Â¡No hay mas niveles! Yendo a creditos.</color>");
+            IrACreditos();
+        }
     }
 
-    // --- MÉTODOS EXISTENTES ---
-
-    public void ReiniciarNivel()
-    {
-        // Importante resetear el tiempo antes de cargar la escena
-        Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    public void Reintentar() {
+        CargarNivel(nivelActualIndex);
     }
 
-    public void IrAlMenu()
-    {
+    public void IrACreditos() {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MenuScene");
+        SceneManager.LoadScene("Creditos");
+    }
+
+    public void VolverMenu() {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Menu");
     }
 }

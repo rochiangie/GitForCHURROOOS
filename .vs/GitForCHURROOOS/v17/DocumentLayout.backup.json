@@ -3,6 +3,30 @@
   "WorkspaceRootPath": "O:\\CHURROOOS\\GitForCHURROOOS\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\sistemas\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|o:\\churrooos\\gitforchurrooos\\assets\\scripts\\sistemas\\dialogo\\dialogomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\dialogo\\dialogomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\botonempezar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\botonempezar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\sistemas\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\sistemas\\dialogo\\dialogo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\dialogo\\dialogo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\personaje\\playeractions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\personaje\\playeractions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\sistemas\\dialogo\\npcconversacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\dialogo\\npcconversacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,28 +35,12 @@
       "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\personaje\\playerinteraction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|o:\\churrooos\\gitforchurrooos\\assets\\scripts\\sistemas\\dialogo\\dialogomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\dialogo\\dialogomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\sistemas\\dialogo\\dialogo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\dialogo\\dialogo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Personaje\\PlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Personaje\\PlayerController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\personaje\\playerstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\personaje\\playerstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\sistemas\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\uimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\sistemas\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\sistemas\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -54,11 +62,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 5,
+              "Title": "PlayerActions.cs",
+              "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Personaje\\PlayerActions.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Personaje\\PlayerActions.cs",
+              "ToolTip": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Personaje\\PlayerActions.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Personaje\\PlayerActions.cs",
+              "ViewState": "AgIAACYAAAAAAAAAAAAcwCwAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-08T18:58:51.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "ColliderTool.cs",
               "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Editor\\ColliderTool.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Editor\\ColliderTool.cs",
@@ -70,7 +90,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Personaje\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Personaje\\PlayerController.cs",
@@ -82,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 11,
               "Title": "ColliderTool.cs",
               "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Editor\\ColliderTool.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Editor\\ColliderTool.cs",
@@ -94,20 +114,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 6,
               "Title": "NPCConversacion.cs",
               "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\Dialogo\\NPCConversacion.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Sistemas\\Dialogo\\NPCConversacion.cs",
               "ToolTip": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\Dialogo\\NPCConversacion.cs",
               "RelativeToolTip": "Assets\\Scripts\\Sistemas\\Dialogo\\NPCConversacion.cs",
-              "ViewState": "AgIAADQAAAAAAAAAAAA7wFAAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAcwCAAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T16:59:15.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-08T16:59:15.548Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "PlayerStats.cs",
               "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Personaje\\PlayerStats.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Personaje\\PlayerStats.cs",
@@ -119,7 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "PlayerInteraction.cs",
               "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Personaje\\PlayerInteraction.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Personaje\\PlayerInteraction.cs",
@@ -127,49 +146,48 @@
               "RelativeToolTip": "Assets\\Scripts\\Personaje\\PlayerInteraction.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAA7wCwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-08T04:28:42.464Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-08T04:28:42.464Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 3,
               "Title": "UIManager.cs",
               "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\UIManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Sistemas\\UIManager.cs",
               "ToolTip": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\UIManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Sistemas\\UIManager.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAcwCYAAABHAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAcwDgAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-06T18:01:58.444Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "DialogoManager.cs",
               "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\Dialogo\\DialogoManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Sistemas\\Dialogo\\DialogoManager.cs",
               "ToolTip": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\Dialogo\\DialogoManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Sistemas\\Dialogo\\DialogoManager.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAswF4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFEAAAAAAAAAAIBYwGQAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-08T12:24:58.132Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Dialogo.cs",
               "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\Dialogo\\Dialogo.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Sistemas\\Dialogo\\Dialogo.cs",
               "ToolTip": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\Dialogo\\Dialogo.cs",
               "RelativeToolTip": "Assets\\Scripts\\Sistemas\\Dialogo\\Dialogo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAcwA8AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-08T12:24:36.433Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "AudioManager.cs",
               "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\AudioManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Sistemas\\AudioManager.cs",
@@ -181,15 +199,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 0,
               "Title": "GameManager.cs",
               "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Sistemas\\GameManager.cs",
               "ToolTip": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Sistemas\\GameManager.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAkwGcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAcwHIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T17:59:11.899Z"
+              "WhenOpened": "2026-01-06T17:59:11.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BotonEmpezar.cs",
+              "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\BotonEmpezar.cs",
+              "RelativeDocumentMoniker": "Assets\\BotonEmpezar.cs",
+              "ToolTip": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\BotonEmpezar.cs",
+              "RelativeToolTip": "Assets\\BotonEmpezar.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-09T18:12:00.769Z"
             }
           ]
         }

@@ -1,57 +1,79 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("UI References")]
-    public Slider heatSlider;
-    public TextMeshProUGUI churrosText;
-    public TextMeshProUGUI plataText;
+    [Header("Sliders")]
+    public Slider sliderHidratacion;
+    public Slider sliderStamina;
+    public Slider sliderTemperatura;
 
-    // Referencias a los scripts modulares
+    [Header("Textos")]
+    public TextMeshProUGUI textoDinero;
+    public TextMeshProUGUI textoChurros;
+    public TextMeshProUGUI textoReloj;
+
+    [Header("Efecto Calor (Overlay)")]
+    public Image overlayCalor; 
+    [Range(0, 1)] public float opacidadMaxima = 0.8f; // Subimos la intensidad
+
     private PlayerStats stats;
-    private PlayerInteraction interaction; // Si los churros están aquí
+    private SunSystem sol;
 
     void Start()
     {
-        // Buscamos al jugador por su Tag
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        GameObject p = GameObject.FindGameObjectWithTag("Player");
+        if (p) stats = p.GetComponent<PlayerStats>();
+        sol = FindFirstObjectByType<SunSystem>();
 
-        if (player != null)
-        {
-            stats = player.GetComponent<PlayerStats>();
-            interaction = player.GetComponent<PlayerInteraction>();
-        }
-        else
-        {
-            Debug.LogError("UIManager: No se encontró al objeto con el Tag 'Player'.");
+        if (overlayCalor != null) {
+            // Aseguramos que ocupe TODA la pantalla por codigo
+            RectTransform rect = overlayCalor.rectTransform;
+            rect.anchorMin = Vector2.zero;
+            rect.anchorMax = Vector2.one;
+            rect.offsetMin = Vector2.zero;
+            rect.offsetMax = Vector2.zero;
+            
+            // Forzar que este por DELANTE de todo
+            overlayCalor.transform.SetAsLastSibling();
+            overlayCalor.raycastTarget = false;
         }
     }
 
     void Update()
     {
-        if (stats != null)
-        {
-            // La temperatura ahora viene de PlayerStats
-            if (heatSlider != null)
-            {
-                heatSlider.value = stats.temperature / stats.staminaMax;
-            }
+        if (stats == null) return;
 
-            // El dinero (plata) ahora viene de PlayerStats
-            if (plataText != null)
-            {
-                plataText.text = "PLATA: $" + stats.money.ToString("F0");
-            }
+        // Sliders (Usamos el Maximo del PlayerStats para que sea real)
+        if(sliderHidratacion) sliderHidratacion.value = stats.hydration / stats.hydrationMax;
+        if(sliderStamina) sliderStamina.value = stats.stamina / stats.staminaMax;
+        if(sliderTemperatura) sliderTemperatura.value = stats.temperature / stats.temperatureMax;
+
+        if(textoDinero) textoDinero.text = "$" + stats.money.ToString("F0");
+        if(textoChurros) textoChurros.text = "CHURROS: " + stats.churrosCantidad;
+
+        if (sol != null && textoReloj != null) {
+            int horas = (int)sol.horaActual;
+            int minutos = (int)((sol.horaActual - horas) * 60);
+            textoReloj.text = string.Format("{0:00}:{1:00}", horas, minutos);
         }
 
-        // Para los churros: Si aún no creamos la variable 'churrosCantidad', 
-        // puedes poner un valor temporal o añadir 'public int churrosCantidad' a PlayerStats
-        if (churrosText != null && stats != null)
+        // --- CALCULO DE CALOR SEGUN TU MAXIMO (42) ---
+        if (overlayCalor != null)
         {
-            // Suponiendo que añadiremos 'churros' a PlayerStats pronto
-            churrosText.text = "CHURROS: " + "10"; // Valor temporal
+            // Si la temperatura es 42 y el maximo es 42, el factor es 1
+            float factorCalor = stats.temperature / stats.temperatureMax; 
+            
+            // Hacemos que el efecto empiece a notarse fuerte despues del 50% de temp
+            float intensidadEfecto = Mathf.Clamp01((factorCalor - 0.5f) * 2f);
+            
+            // Pulso de "sofoco"
+            float pulso = Mathf.Sin(Time.time * 2.5f) * 0.1f;
+            
+            Color c = overlayCalor.color;
+            c.a = Mathf.Clamp01((intensidadEfecto * opacidadMaxima) + (intensidadEfecto > 0.1f ? pulso : 0f));
+            overlayCalor.color = c;
         }
     }
 }

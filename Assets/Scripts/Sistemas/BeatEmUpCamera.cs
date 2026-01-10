@@ -1,40 +1,45 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BeatEmUpCamera : MonoBehaviour
 {
     public Transform target;
 
-    [Header("Follow")]
+    [Header("Configuracion de Seguimiento")]
     public float smoothSpeed = 5f;
-    public Vector3 offset;
+    public Vector3 offset = new Vector3(0, 2, -10);
 
-    [Header("Limits")]
-    public bool useLimits = true;
-    public float minX;
-    public float maxX;
-    public float minY;
-    public float maxY;
+    [Header("Limites de Camara")]
+    public float minX = -10f;
+    public float maxX = 10f;
+    public float minY = -5f;
+    public float maxY = 5f;
+
+    void Start()
+    {
+        if (target == null)
+        {
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                target = player.transform;
+            }
+        }
+    }
 
     void LateUpdate()
     {
-        if (!target) return;
+        if (target == null) return;
 
-        Vector3 desiredPosition = new Vector3(
-            target.position.x + offset.x,
-            target.position.y + offset.y,
-            transform.position.z
-        );
+        // Calculamos la posicion deseada
+        Vector3 targetPosition = target.position + offset;
 
-        if (useLimits)
-        {
-            desiredPosition.x = Mathf.Clamp(desiredPosition.x, minX, maxX);
-            desiredPosition.y = Mathf.Clamp(desiredPosition.y, minY, maxY);
-        }
+        // Aplicamos los limites
+        float clampedX = Mathf.Clamp(targetPosition.x, minX, maxX);
+        float clampedY = Mathf.Clamp(targetPosition.y, minY, maxY);
 
-        transform.position = Vector3.Lerp(
-            transform.position,
-            desiredPosition,
-            smoothSpeed * Time.deltaTime
-        );
+        Vector3 desiredPosition = new Vector3(clampedX, clampedY, targetPosition.z);
+
+        // Suavizamos el movimiento
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
     }
 }

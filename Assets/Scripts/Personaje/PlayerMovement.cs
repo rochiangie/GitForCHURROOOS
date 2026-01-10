@@ -1,61 +1,68 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Configuración de Velocidad")]
+    [Header("Velocidad")]
     public float walkSpeed = 5f;
     public float runSpeed = 8.5f;
-    private float currentSpeed;
 
     private Rigidbody2D rb;
+    private PlayerStats stats;
+    private PlayerActions actions;
     private Animator anim;
     private Vector2 moveInput;
-    private PlayerStats stats;
+    private float currentSpeed;
 
-    void Start()
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
         stats = GetComponent<PlayerStats>();
-
-        rb.gravityScale = 0;
+        actions = GetComponent<PlayerActions>();
+        anim = GetComponent<Animator>();
+        rb.gravityScale = 0f;
         rb.freezeRotation = true;
     }
 
     void Update()
     {
-        moveInput.x = Input.GetAxisRaw("Horizontal");
-        moveInput.y = Input.GetAxisRaw("Vertical");
+        // Movimiento
+        moveX = Input.GetAxisRaw("Horizontal");
+        moveY = Input.GetAxisRaw("Vertical");
+        moveInput = new Vector2(moveX, moveY).normalized;
 
-        // Lógica de Correr: Necesita Shift, estarse moviendo y tener Stamina > 5
-        if (Input.GetKey(KeyCode.LeftShift) && moveInput.sqrMagnitude > 0 && stats.stamina > 5f)
+        // Ataque (Tecla Espacio)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            currentSpeed = runSpeed;
-            if (anim != null) anim.SetBool("Run", true);
-            stats.stamina -= 15f * Time.deltaTime; // Consume energía
-        }
-        else
-        {
-            currentSpeed = walkSpeed;
-            if (anim != null) anim.SetBool("Run", false);
-
-            // Recupera energía si no corre
-            if (stats.stamina < stats.staminaMax)
-                stats.stamina += 10f * Time.deltaTime;
+            if (actions != null) actions.RealizarAtaque();
         }
 
-        if (anim != null) anim.SetFloat("Speed", moveInput.sqrMagnitude);
+        // Gestion de Velocidad y Stamina
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) && stats.stamina > 0 && moveInput.magnitude > 0.1f;
+        currentSpeed = isRunning ? runSpeed : walkSpeed;
+        
+        if (isRunning) stats.ConsumirStamina(15f * Time.deltaTime);
+        else stats.RecuperarStamina(10f * Time.deltaTime);
 
-        // Volteo (Flip)
-        if (moveInput.x > 0) transform.localScale = new Vector3(1, 1, 1);
-        else if (moveInput.x < 0) transform.localScale = new Vector3(-1, 1, 1);
+        // Animaciones
+        if (anim != null) {
+            anim.SetBool("isWalking", moveInput.magnitude > 0.1f);
+            anim.SetBool("Run", isRunning);
+        }
+
+        FlipSprite();
     }
+    
+    float moveX, moveY;
 
     void FixedUpdate()
     {
-        // Aplicar cansancio extremo si no hay hidratación
-        float mod = (stats.hydration <= 10f) ? 0.5f : 1f;
-        rb.MovePosition(rb.position + moveInput.normalized * (currentSpeed * mod) * Time.fixedDeltaTime);
+        rb.linearVelocity = moveInput * currentSpeed;
+    }
+
+    void FlipSprite()
+    {
+        if (moveInput.x > 0) transform.localScale = new Vector3(1, 1, 1);
+        else if (moveInput.x < 0) transform.localScale = new Vector3(-1, 1, 1);
     }
 }
