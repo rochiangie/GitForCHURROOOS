@@ -687,7 +687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &109934173
 RectTransform:
   m_ObjectHideFlags: 0
@@ -706,8 +706,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -12.12, y: 1.65}
-  m_SizeDelta: {x: 385.3949, y: 252.1543}
+  m_AnchoredPosition: {x: -13.1, y: 3.1}
+  m_SizeDelta: {x: 251.2641, y: 168.9435}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &109934174
 MonoBehaviour:
@@ -877,7 +877,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0.000038146973, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1047,7 +1047,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8.78
+  orthographic size: 12.34
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1234,30 +1234,41 @@ MonoBehaviour:
   textoElla: {fileID: 256635832}
   burbujaEl: {fileID: 109934172}
   textoEl: {fileID: 765456}
+  audioSource: {fileID: 0}
+  clipEscribir: {fileID: 0}
+  clipSiguiente: {fileID: 0}
+  clipFinal: {fileID: 0}
   typingSpeed: 0.04
   nombreEscenaSiguiente: Juego
   conversacion:
   - personaje: Jeni
     texto: Q onda?
     esBurbujaIzquierda: 1
+    sonidoEspecial: {fileID: 0}
   - personaje: Churrero
     texto: "Ac\xE1 laburando"
     esBurbujaIzquierda: 0
+    sonidoEspecial: {fileID: 0}
   - personaje: Jeni
     texto: "Tene plata para los pa\xF1ales?"
     esBurbujaIzquierda: 1
+    sonidoEspecial: {fileID: 0}
   - personaje: Churrero
     texto: Recien arranco, dame una chance
     esBurbujaIzquierda: 0
+    sonidoEspecial: {fileID: 0}
   - personaje: Jeni
     texto: Nos morimos de hambre, apurate!
     esBurbujaIzquierda: 1
+    sonidoEspecial: {fileID: 0}
   - personaje: Churrero
     texto: Bueno, tranqula bebe
     esBurbujaIzquierda: 0
+    sonidoEspecial: {fileID: 0}
   - personaje: Jeni
     texto: Te espero en casa sin la guita no pasas
     esBurbujaIzquierda: 1
+    sonidoEspecial: {fileID: 0}
 --- !u!4 &564526268
 Transform:
   m_ObjectHideFlags: 0
@@ -1342,7 +1353,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 335351702}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1373,8 +1384,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.2436, y: 2.4174}
-  m_SizeDelta: {x: 24.658, y: 12.351}
+  m_AnchoredPosition: {x: 1.9, y: 1.4}
+  m_SizeDelta: {x: 46.1438, y: 25.7641}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &924309954
 GameObject:
@@ -1961,7 +1972,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1283363103
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1980,7 +1991,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.71, y: 1.65}
+  m_AnchoredPosition: {x: 7.7, y: 3.1}
   m_SizeDelta: {x: 371.9565, y: 249.168}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1283363104
@@ -2415,8 +2426,8 @@ Transform:
   m_GameObject: {fileID: 1846268438}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.69, y: -6.42, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 30}
+  m_LocalPosition: {x: 1.8015, y: -0.9203, z: 0}
+  m_LocalScale: {x: 5.165768, y: 3.2148, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}

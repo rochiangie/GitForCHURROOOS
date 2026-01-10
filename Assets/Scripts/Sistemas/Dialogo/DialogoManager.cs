@@ -16,7 +16,7 @@ public class DialogoManager : MonoBehaviour
     public TextMeshProUGUI[] textosBotones;
 
     [Header("Ajustes")]
-    public float typingSpeed = 0.04f;
+    public float typingSpeed = 0.03f;
 
     private NPCConversacion npcActual;
     private Dialogo dialogoData;
@@ -32,7 +32,7 @@ public class DialogoManager : MonoBehaviour
     }
 
     public void AbrirPanel(NPCConversacion npc) {
-        if (npc == null) return;
+        if (npc == null || stats == null) return;
         npcActual = npc;
         dialogoData = npc.ObtenerDialogoDinamico();
         
@@ -49,7 +49,6 @@ public class DialogoManager : MonoBehaviour
 
     IEnumerator EscribirDialogoInicial() {
         yield return StartCoroutine(EscribirLetras(dialogoData.propuesta));
-        
         if (dialogoData.esGrito) {
             yield return new WaitForSeconds(1.5f);
             Cerrar();
@@ -58,24 +57,70 @@ public class DialogoManager : MonoBehaviour
         }
     }
 
-    IEnumerator EscribirLetras(string frase) {
-        escribiendo = true;
-        textoCuerpo.text = "";
-        float speed = (npcActual != null && npcActual.personalidad == PersonalidadNPC.Molesto) ? 0.02f : typingSpeed;
-        foreach(char c in frase) {
-            textoCuerpo.text += c;
-            yield return new WaitForSeconds(speed);
+    // --- FLUJO DE VENTAS / NEGOCIACION ---
+    void SeleccionarOpcion(int idx) {
+        if(escribiendo) return;
+        groupOpciones.SetActive(false);
+        
+        // Si es una conversación de venta y elegimos la opción positiva (0 o 1)
+        if (dialogoData.esVenta && idx < 2 && npcActual.esCliente) {
+            StartCoroutine(PreguntarCantidad());
+            return;
         }
-        escribiendo = false;
+
+        // Conversación normal o negativa (idx 2)
+        ProcesarImpacto(idx);
+        StartCoroutine(ReaccionFinal(dialogoData.reacciones[idx]));
     }
 
-    // --- FLUJO DE BEBIDAS ---
+    IEnumerator PreguntarCantidad() {
+        yield return StartCoroutine(EscribirLetras("¿Y cuántos vas a querer hoy?"));
+        
+        groupOpciones.SetActive(true);
+        int d1 = npcActual.churrosDeseados;
+        int d2 = Mathf.Max(1, d1 / 2);
+        
+        ConfigurarBoton(0, $"Dame {d1} churros.", () => IniciarTrato(d1));
+        ConfigurarBoton(1, $"Solo {d2}, por ahora.", () => IniciarTrato(d2));
+        ConfigurarBoton(2, "Mejor nada, gracias.", () => StartCoroutine(ReaccionFinal("Uh, bueno... avisame si cambias de idea.")));
+    }
+
+    void IniciarTrato(int cantidad) {
+        groupOpciones.SetActive(false);
+        
+        // Calculo de precio realista: $20 basico, ajustado por personalidad
+        float precioIndividual = 20f;
+        if (npcActual.personalidad == PersonalidadNPC.Amable) precioIndividual = 25f;
+        if (npcActual.personalidad == PersonalidadNPC.Molesto) precioIndividual = 18f;
+        
+        // Bonus por "Chamullo" (Ebriedad media)
+        if (stats.ebriedad > 30 && stats.ebriedad < 70) precioIndividual *= 1.4f;
+
+        float total = precioIndividual * cantidad;
+        StartCoroutine(FinalizarVentaNarrativa(cantidad, total));
+    }
+
+    IEnumerator FinalizarVentaNarrativa(int cant, float monto) {
+        yield return StartCoroutine(EscribirLetras($"Dale, te pago ${monto:F0} por los {cant}."));
+        yield return new WaitForSeconds(0.5f);
+
+        if (stats.churrosCantidad >= cant) {
+            stats.AgregarDinero(monto);
+            for(int i=0; i<cant; i++) stats.ConsumirChurro();
+            npcActual.FinalizarVenta();
+            StartCoroutine(ReaccionFinal("¡Buenisimo! Están riquísimos."));
+        } else {
+            StartCoroutine(ReaccionFinal("¡Me mentiste! No tenés churros suficientes."));
+        }
+    }
+
+    // --- BEBIDAS Y UTILIDADES ---
     IEnumerator MenuBebidas() {
         yield return StartCoroutine(EscribirLetras("¿Qué vas a llevar fresco?"));
         groupOpciones.SetActive(true);
-        ConfigurarBoton(0, "Agua ($8)", () => TratoBebida(8, 30, 0, "¡Ahi tenes!"));
-        ConfigurarBoton(1, "Birra ($15)", () => TratoBebida(15, 15, 20, "Cuidado con el sol."));
-        ConfigurarBoton(2, "Gaseosa ($12)", () => TratoBebida(12, 20, 0, "¡Refrescante!"));
+        ConfigurarBoton(0, "Agua ($8)", () => TratoBebida(8, 30, 0, "¡Ahi tienes!"));
+        ConfigurarBoton(1, "Birra ($15)", () => TratoBebida(15, 10, 25, "¡Salud!"));
+        ConfigurarBoton(2, "Gaseosa ($12)", () => TratoBebida(12, 20, 0, "¡Fresquita!"));
     }
 
     void TratoBebida(float precio, float hydration, float ebriedad, string r) {
@@ -85,11 +130,31 @@ public class DialogoManager : MonoBehaviour
             stats.ebriedad += ebriedad;
             StartCoroutine(ReaccionFinal(r));
         } else {
-            StartCoroutine(ReaccionFinal("No te alcanza la plata."));
+            StartCoroutine(ReaccionFinal("No te alcanza la plata, pibe."));
         }
     }
 
-    // --- FLUJO DE DIALOGO NORMAL ---
+    void ProcesarImpacto(int idx) {
+        if (dialogoData == null || idx >= dialogoData.impactos.Length) return;
+        Consecuencia c = dialogoData.impactos[idx];
+        stats.AgregarDinero(c.dinero); 
+        stats.RecuperarStamina(c.stamina);
+        stats.RecuperarHidratacion(c.hidratacion);
+        if (c.churros < 0) {
+            for(int i=0; i<Mathf.Abs(c.churros); i++) stats.ConsumirChurro();
+        } else stats.AgregarChurros(c.churros);
+    }
+
+    IEnumerator EscribirLetras(string frase) {
+        escribiendo = true;
+        textoCuerpo.text = "";
+        foreach(char c in frase) {
+            textoCuerpo.text += c;
+            yield return new WaitForSeconds(typingSpeed);
+        }
+        escribiendo = false;
+    }
+
     void MostrarOpcionesPrincipales() {
         groupOpciones.SetActive(true);
         for(int i=0; i<3; i++) {
@@ -100,96 +165,17 @@ public class DialogoManager : MonoBehaviour
         }
     }
 
-    void SeleccionarOpcion(int idx) {
-        if(escribiendo) return;
-        groupOpciones.SetActive(false);
-        
-        // Fase 2: Negociacion de Venta (Si es cliente y es venta)
-        if (dialogoData.esVenta && idx == 0 && npcActual != null && npcActual.esCliente) {
-            if (stats.churrosCantidad > 0) {
-                StartCoroutine(FaseNegociacion());
-            } else {
-                StartCoroutine(ReaccionFinal("¡No tenes churros, chanta! No me hagas perder el tiempo."));
-            }
-            return;
-        }
-
-        // Reaccion normal (Verificando si podemos procesar el impacto)
-        if (ProcesarImpacto(idx)) {
-            StartCoroutine(ReaccionFinal(dialogoData.reacciones[idx]));
-        } else {
-            StartCoroutine(ReaccionFinal("¡No tengo suficientes churros para darte!"));
-        }
-    }
-
-    IEnumerator FaseNegociacion() {
-        // ... (Cálculo de precio omitido por brevedad pero se mantiene igual)
-        float precioBase = npcActual.pagoBaseChurro != 0 ? npcActual.pagoBaseChurro : 20f;
-        float precioFinal = precioBase * npcActual.churrosDeseados;
-        
-        if (npcActual.personalidad == PersonalidadNPC.Amable) precioFinal *= 1.2f;
-        if (npcActual.personalidad == PersonalidadNPC.Molesto) precioFinal *= 0.8f;
-        if (stats.ebriedad > 40 && stats.ebriedad < 75) precioFinal *= 1.5f; 
-        else if (stats.ebriedad >= 85) precioFinal *= 0.5f; 
-
-        yield return StartCoroutine(EscribirLetras($"Quiero {npcActual.churrosDeseados} churros. Te doy ${precioFinal:F0} por todo."));
-        
-        groupOpciones.SetActive(true);
-        ConfigurarBoton(0, "¡Trato hecho!", () => FinalizarTrato(true, precioFinal));
-        ConfigurarBoton(1, "No, gracias.", () => FinalizarTrato(false, 0));
-        botones[2].gameObject.SetActive(false);
-    }
-
-    void FinalizarTrato(bool aceptado, float monto) {
-        groupOpciones.SetActive(false);
-        if (aceptado) {
-            // VERIFICACION CRITICA: ¿Tiene los churros que pidió el cliente?
-            if (stats.churrosCantidad >= npcActual.churrosDeseados) {
-                stats.AgregarDinero(monto);
-                for(int i=0; i<npcActual.churrosDeseados; i++) stats.ConsumirChurro();
-                npcActual.FinalizarVenta();
-                StartCoroutine(ReaccionFinal("¡Buenisimo! Estan calentitos."));
-            } else {
-                StartCoroutine(ReaccionFinal("¡Pero pibe, no tenes los churros que me dijiste!"));
-            }
-        } else {
-            StartCoroutine(ReaccionFinal("Y bueno, busco a otro."));
-        }
-    }
-
-    bool ProcesarImpacto(int idx) {
-        if (dialogoData == null || idx >= dialogoData.impactos.Length) return false;
-        Consecuencia c = dialogoData.impactos[idx];
-
-        // Si la consecuencia pide quitar churros (valor negativo), verificamos stock
-        if (c.churros < 0 && stats.churrosCantidad < Mathf.Abs(c.churros)) {
-            return false;
-        }
-
-        // Ejecutar impacto
-        stats.AgregarDinero(c.dinero); 
-        stats.RecuperarStamina(c.stamina);
-        stats.RecuperarHidratacion(c.hidratacion);
-        
-        if (c.churros < 0) {
-            for(int i=0; i<Mathf.Abs(c.churros); i++) stats.ConsumirChurro();
-        } else {
-            stats.AgregarChurros(c.churros);
-        }
-        return true;
-    }
-
-    IEnumerator ReaccionFinal(string r) {
-        yield return StartCoroutine(EscribirLetras(r));
-        yield return new WaitForSeconds(1.5f);
-        Cerrar();
-    }
-
     void ConfigurarBoton(int i, string txt, UnityEngine.Events.UnityAction accion) {
         botones[i].gameObject.SetActive(true);
         textosBotones[i].text = txt;
         botones[i].onClick.RemoveAllListeners();
         botones[i].onClick.AddListener(accion);
+    }
+
+    IEnumerator ReaccionFinal(string r) {
+        yield return StartCoroutine(EscribirLetras(r));
+        yield return new WaitForSeconds(1.2f);
+        Cerrar();
     }
 
     public void Cerrar() {

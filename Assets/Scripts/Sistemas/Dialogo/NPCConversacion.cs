@@ -33,7 +33,7 @@ public class NPCConversacion : MonoBehaviour
             return poolDialogos[Random.Range(0, poolDialogos.Count)];
 
         // Si no hay ninguno, usamos la Biblioteca Automatica (procedimental)
-        return BibliotecaDialogos.GenerarDialogoAleatorio(personalidad, quiereComprar);
+        return BibliotecaDialogos.GenerarDialogoFijo(personalidad, quiereComprar);
     }
 
     public void FinalizarVenta() {

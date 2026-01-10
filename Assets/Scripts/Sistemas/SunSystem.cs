@@ -2,13 +2,14 @@
 
 public class SunSystem : MonoBehaviour
 {
-    [Header("Configuracion de Tiempo")]
-    public float horaActual = 8f; 
+    [Header("Estado del Tiempo")]
+    public float horaActual = 8f; // Empieza a las 8 AM
     
     [Header("Mecanica de Calor")]
     public float horaPico = 14f;
 
     private PlayerStats stats;
+    private float horasTotalesTurno = 12f; // De 8 AM a 8 PM
 
     void Start()
     {
@@ -18,19 +19,21 @@ public class SunSystem : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance != null && GameManager.Instance.juegoTerminado) return;
-
-        // ECONOMIA INCREMENTAL: El tiempo, calor y deshidratacion se ajustan segun el NivelData
-        if (GameManager.Instance == null || GameManager.Instance.niveles == null || GameManager.Instance.nivelActualIndex >= GameManager.Instance.niveles.Count) return;
+        if (GameManager.Instance == null || GameManager.Instance.juegoTerminado) return;
+        if (GameManager.Instance.niveles == null || GameManager.Instance.nivelActualIndex >= GameManager.Instance.niveles.Count) return;
 
         NivelData dataNivel = GameManager.Instance.niveles[GameManager.Instance.nivelActualIndex];
         
-        // Usamos la velocidad definida especificamente en el Asset del Nivel
-        float velocidadActual = dataNivel.velocidadReloj;
+        // CALCULO DE VELOCIDAD POR MINUTOS:
+        // Si quiero que 12 horas duren X minutos:
+        // velocidad = 12 horas / (X minutos * 60 segundos)
+        float duracionSegundos = dataNivel.duracionDiaMinutos * 60f;
+        float velocidadTiempo = horasTotalesTurno / duracionSegundos;
 
         // Pasar el tiempo
-        horaActual += Time.deltaTime * velocidadActual;
+        horaActual += Time.deltaTime * velocidadTiempo;
         
+        // Multiplicador de dificultad para efectos (sed/calor)
         float multEfectos = 1f + (GameManager.Instance.nivelActualIndex * 0.25f); 
 
         // Afectar al Jugador
@@ -39,11 +42,9 @@ public class SunSystem : MonoBehaviour
             float cercaniaPico = 1f - Mathf.Abs(horaActual - horaPico) / 4f;
             float calorActual = Mathf.Clamp01(cercaniaPico);
             
-            // Perdida de hidratacion base + impacto del nivel
             float factorDeshidratacion = (0.5f + (calorActual * 2.5f)) * multEfectos;
             stats.ReducirHidratacion(factorDeshidratacion * Time.deltaTime);
             
-            // Aumento de temperatura con impacto del nivel
             float factorCalor = calorActual * 1.5f * multEfectos;
             stats.AumentarTemperatura(factorCalor * Time.deltaTime);
         }
