@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d7524864f1b68546996052669978931, type: 3}
+  m_Name: Jeni
+  m_EditorClassIdentifier: 
+  nombreNPC: Jeni
+  personalidad: 1
+  propuesta: "Ten\xE9s la guita para los pa\xF1ales de la nena?"
+  opciones:
+  - "Todav\xEDa no"
+  - Estoy en eso
+  - "Porqu\xE9 no te pon\xE9s a laburar?"
+  reacciones:
+  - "Metele que tiene hambre tambi\xE9n"
+  - No se nota
+  - Vago atorrante!!
+  impactos:
+  - dinero: -50
+    churros: 0
+    stamina: -50
+    hidratacion: 0
+  - dinero: -80
+    churros: 0
+    stamina: -80
+    hidratacion: -30
+  - dinero: -100
+    churros: 0
+    stamina: -100
+    hidratacion: -60
+  esVenta: 1
+  esGrito: 0
