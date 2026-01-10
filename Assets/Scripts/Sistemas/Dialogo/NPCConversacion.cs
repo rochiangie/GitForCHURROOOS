@@ -11,6 +11,9 @@ public class NPCConversacion : MonoBehaviour
     public bool quiereComprar;
     public int churrosDeseados = 1;
 
+    [Header("Economia Individual")]
+    public float pagoBaseChurro = 120f; // Cuanto paga este NPC por 1 churro de base
+
     [Header("Precios (Si es Vendedor)")]
     public float precioAgua = 3f;
     public float precioBirra = 5f;
