@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombreNPC: Parejita
   personalidad: 0
-  propuesta: Hola compa, tenes churros?
+  propuesta: tenes churros ricos?
   respuestas:
-  - textoOpcion: Si, claro, cuantos queres?
-    siguienteDialogo: {fileID: 11400000, guid: 5da4aa2016faeb149b7c5497987a7a2d, type: 2}
+  - textoOpcion: Obvio, cuantos queres?
+    siguienteDialogo: {fileID: 11400000, guid: b461d88174e15c2409563671a08c8a71, type: 2}
     reaccionSiTermina: 
     impacto:
       dinero: 0

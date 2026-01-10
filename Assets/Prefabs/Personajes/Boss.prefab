@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 93588739795884797}
   - component: {fileID: 1769426037385537467}
   - component: {fileID: 5506868622396194263}
+  - component: {fileID: 2950977897782441590}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Boss
@@ -319,3 +320,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!195 &2950977897782441590
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106146940106449999}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 2.9166667
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 10.766666
+  m_BaseOffset: 5.383333
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
