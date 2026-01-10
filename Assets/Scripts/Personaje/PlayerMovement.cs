@@ -7,6 +7,11 @@ public class PlayerMovement : MonoBehaviour
     public float walkSpeed = 5f;
     public float runSpeed = 8.5f;
 
+    [Header("Ajustes de Stamina")]
+    public float gastoStaminaCarrera = 20f;
+    public float recuperacionQuieto = 12f;
+    public float recuperacionCaminando = 5f;
+
     private Rigidbody2D rb;
     private PlayerStats stats;
     private PlayerActions actions;
@@ -39,10 +44,21 @@ public class PlayerMovement : MonoBehaviour
 
         // Gestion de Velocidad y Stamina
         bool isRunning = Input.GetKey(KeyCode.LeftShift) && stats.stamina > 0 && moveInput.magnitude > 0.1f;
-        currentSpeed = isRunning ? runSpeed : walkSpeed;
         
-        if (isRunning) stats.ConsumirStamina(15f * Time.deltaTime);
-        else stats.RecuperarStamina(10f * Time.deltaTime);
+        // --- PENALIZACION DE CANSANCIO ---
+        float speedMultiplier = 1f;
+        if (stats.stamina <= 0) {
+            speedMultiplier = 0.5f; // Camina a mitad de velocidad si esta cansado
+        }
+
+        currentSpeed = isRunning ? runSpeed : (walkSpeed * speedMultiplier);
+        
+        if (isRunning) stats.ConsumirStamina(gastoStaminaCarrera * Time.deltaTime);
+        else {
+            // Recupera según la nueva configuración regulable
+            float recoveryRate = (moveInput.magnitude > 0.1f) ? recuperacionCaminando : recuperacionQuieto;
+            stats.RecuperarStamina(recoveryRate * Time.deltaTime);
+        }
 
         // Animaciones
         if (anim != null) {
