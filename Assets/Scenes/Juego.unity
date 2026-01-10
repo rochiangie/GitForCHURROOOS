@@ -1009,12 +1009,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -1035,7 +1037,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &159213380
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1052,8 +1054,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 22.73, y: 223.92}
+  m_SizeDelta: {x: 1891.35, y: 447.84}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159213381
 MonoBehaviour:
@@ -1075,10 +1077,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ganaste
+  m_text: "Conseguiste el dinero suficiente por el d\xEDa, pero la vida continua"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1102,12 +1104,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 120
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 120
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -1171,7 +1173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &168491581
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1188,8 +1190,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 40.93, y: 231.88}
+  m_SizeDelta: {x: 1673.12, y: 404.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &168491582
 MonoBehaviour:
@@ -1213,8 +1215,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Perdiste
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1233,17 +1235,17 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
+  m_TextStyleHashCode: 97690656
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.75
+  m_fontSize: 323.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_fontSizeMax: 1202
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -1559,12 +1561,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 1
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -1884,12 +1888,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -2155,12 +2161,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: NPC
   personalidad: 0
-  esVendedor: 1
+  esVendedorBebidas: 0
   esCliente: 0
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: 21bd817ab7df1e24fbb1a4b9c82c8dbf, type: 2}
 --- !u!1 &228825872
@@ -2243,300 +2251,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1.0180054, y: -1.0180054}
   m_SizeDelta: {x: -2.713, y: -2.713}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &238624604
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 238624605}
-  - component: {fileID: 238624608}
-  - component: {fileID: 238624607}
-  - component: {fileID: 238624610}
-  - component: {fileID: 238624611}
-  m_Layer: 7
-  m_Name: vendedores_13
-  m_TagString: Vendedor
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &238624605
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238624604}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 37.866287, y: 17.797295, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2000576161}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &238624607
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238624604}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.533334, y: 11.233334}
-    newSize: {x: 5.12, y: 6.74}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 9.26, y: 13.44}
-  m_EdgeRadius: 0
---- !u!212 &238624608
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238624604}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: -306570363, guid: 21703f4268322fe45b29609f47c7493c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 5.12, y: 6.74}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!60 &238624610
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238624604}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8.533334, y: 11.233334}
-    newSize: {x: 5.12, y: 6.74}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1.2, y: -4.116667}
-      - {x: -1.0666667, y: -3.516667}
-      - {x: -1.0666667, y: -5.15}
-      - {x: -1, y: -5.416667}
-      - {x: -0.53333336, y: -5.516667}
-      - {x: 0.40000004, y: -5.4500003}
-      - {x: 0.5, y: -5.3500004}
-      - {x: 0.5, y: -5.016667}
-      - {x: 0.43333337, y: -4.8833337}
-      - {x: -0.10000001, y: -4.616667}
-      - {x: -0.10000001, y: -3.5500002}
-      - {x: 0.06666667, y: -3.5500002}
-      - {x: 0.13333334, y: -3.4166667}
-      - {x: 0.13333334, y: -1.6833334}
-      - {x: 0.20000002, y: -1.5500001}
-      - {x: 0.20000002, y: -0.3166667}
-      - {x: 0.3, y: -0.45000002}
-      - {x: 0.73333335, y: -0.78333336}
-      - {x: 1.2666668, y: -0.78333336}
-      - {x: 1.4666667, y: -0.7166667}
-      - {x: 1.6333334, y: -0.55}
-      - {x: 2.0333335, y: -0.25}
-      - {x: 2.5000002, y: 0.016666668}
-      - {x: 2.8000002, y: 0.5166667}
-      - {x: 3.1666667, y: 0.9166667}
-      - {x: 3.3000002, y: 1.1500001}
-      - {x: 3.5333335, y: 1.6166668}
-      - {x: 3.5666668, y: 1.8500001}
-      - {x: 3.5666668, y: 2.1833334}
-      - {x: 3.4, y: 2.4166667}
-      - {x: 3.1000001, y: 2.4166667}
-      - {x: 2.8333335, y: 2.1833334}
-      - {x: 2.8333335, y: 1.8166667}
-      - {x: 2.4333334, y: 1.4166667}
-      - {x: 2.6666667, y: 1.8833334}
-      - {x: 2.6666667, y: 2.1833334}
-      - {x: 2.3333335, y: 2.516667}
-      - {x: 2.2333333, y: 2.5500002}
-      - {x: 1.8666668, y: 2.15}
-      - {x: 1.6666667, y: 1.3833334}
-      - {x: 1.3333334, y: 0.48333335}
-      - {x: 0.9666667, y: 0.28333336}
-      - {x: 0.5666667, y: 0.85}
-      - {x: 0.20000002, y: 1.1500001}
-      - {x: -0.06666667, y: 1.3166667}
-      - {x: 0.10000001, y: 1.7833334}
-      - {x: 0.33333334, y: 2.25}
-      - {x: 0.5, y: 2.4166667}
-      - {x: 0.7666667, y: 2.4166667}
-      - {x: 1.0333334, y: 2.5500002}
-      - {x: 1.4666667, y: 2.8833334}
-      - {x: 1.4666667, y: 3.516667}
-      - {x: 1.3000001, y: 3.7500002}
-      - {x: 0.73333335, y: 4.016667}
-      - {x: 0.23333335, y: 3.9833336}
-      - {x: -0.06666667, y: 4.3833337}
-      - {x: -0.3, y: 4.616667}
-      - {x: -0.6333334, y: 4.7166667}
-      - {x: -1.3333334, y: 4.7166667}
-      - {x: -1.6333334, y: 4.616667}
-      - {x: -2.1000001, y: 4.15}
-      - {x: -2.5000002, y: 3.8500001}
-      - {x: -3.0000002, y: 3.716667}
-      - {x: -3.1333334, y: 3.5833335}
-      - {x: -3.3666668, y: 3.1833334}
-      - {x: -3.3666668, y: 2.8500001}
-      - {x: -3.3000002, y: 2.7166667}
-      - {x: -3.0000002, y: 2.4166667}
-      - {x: -2.4333334, y: 2.1166668}
-      - {x: -2, y: 2.0500002}
-      - {x: -1.7, y: 1.3833334}
-      - {x: -1.9333334, y: 1.4166667}
-      - {x: -2.4333334, y: 1.1166667}
-      - {x: -2.8000002, y: 0.6833334}
-      - {x: -3.0333335, y: 0.050000004}
-      - {x: -3.0333335, y: -0.75000006}
-      - {x: -2.8000002, y: -1.0500001}
-      - {x: -2.3666668, y: -1.5500001}
-      - {x: -2.3666668, y: -3.4833336}
-      - {x: -2.2333333, y: -3.5500002}
-      - {x: -2.2333333, y: -4.783334}
-      - {x: -2.3666668, y: -4.916667}
-      - {x: -2.3666668, y: -5.416667}
-      - {x: -2.2333333, y: -5.5833335}
-      - {x: -2.2, y: -5.616667}
-      - {x: -1.2, y: -5.616667}
-      - {x: -1.1666667, y: -5.5833335}
-      - {x: -1.0333334, y: -5.316667}
-      - {x: -1.2, y: -4.8833337}
-  m_UseDelaunayMesh: 0
---- !u!114 &238624611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238624604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91245402c41c34c45a599ca11e5690cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nombre: NPC
-  personalidad: 0
-  esVendedor: 1
-  esCliente: 0
-  quiereComprar: 0
-  precioBaseAgua: 20
-  pagoBaseChurro: 120
-  recuperacionHidratacion: 30
-  poolDialogos: []
-  dialogoGrito: {fileID: 11400000, guid: 21bd817ab7df1e24fbb1a4b9c82c8dbf, type: 2}
 --- !u!1 &254639386
 GameObject:
   m_ObjectHideFlags: 0
@@ -2857,12 +2571,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 1
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -3245,12 +2961,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 1
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -3753,6 +3471,142 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 0, y: 0, z: -10}
+--- !u!1 &349321034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 349321035}
+  - component: {fileID: 349321037}
+  - component: {fileID: 349321036}
+  m_Layer: 5
+  m_Name: Ganaste
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &349321035
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349321034}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 700442927}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 22.73, y: 223.92}
+  m_SizeDelta: {x: 1891.35, y: 447.84}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &349321036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349321034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: "Jeni est\xE1 feliz"
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 120
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 120
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &349321037
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 349321034}
+  m_CullTransparentMesh: 1
 --- !u!1 &362702228
 GameObject:
   m_ObjectHideFlags: 0
@@ -4055,12 +3909,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 1
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -4235,8 +4091,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4273,7 +4129,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 6.8374453, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -4677,12 +4533,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: NPC
   personalidad: 0
-  esVendedor: 1
+  esVendedorBebidas: 1
   esCliente: 0
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: 877e331b78ef54546a7efdf5368c4021, type: 2}
 --- !u!1 &435563455
@@ -5167,12 +5025,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -5435,7 +5295,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 442420291}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: IrACreditos
+        m_MethodName: PresionarBoton_SiguienteNivel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5465,8 +5325,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 1193477769, guid: 26c248721685da44ca34ad60faea50ba, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -6032,7 +5892,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &606435071
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6045,8 +5905,8 @@ RectTransform:
   m_LocalScale: {x: 0.16349344, y: 0.16349344, z: 0.16349344}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 159213380}
   - {fileID: 631793315}
+  - {fileID: 159213380}
   - {fileID: 492756005}
   m_Father: {fileID: 1068293174}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6281,7 +6141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1946992027, guid: 84873522082196348b931e3f46de09e9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6503,6 +6363,84 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &700442924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 700442927}
+  - component: {fileID: 700442926}
+  - component: {fileID: 700442925}
+  m_Layer: 5
+  m_Name: PanelVicotiraFinal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &700442925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700442924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &700442926
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700442924}
+  m_CullTransparentMesh: 1
+--- !u!224 &700442927
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700442924}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 0.16349344, y: 0.16349344, z: 0.16349344}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1123179126}
+  - {fileID: 349321035}
+  - {fileID: 1416444784}
+  m_Father: {fileID: 1068293174}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -2.1558838, y: 1.2055054}
+  m_SizeDelta: {x: 2070.9736, y: 1187.794}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &702925897
 GameObject:
   m_ObjectHideFlags: 0
@@ -6562,15 +6500,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Reiniciar
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -6587,7 +6525,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.85
+  m_fontSize: 30
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7244,12 +7182,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: NPC
   personalidad: 0
-  esVendedor: 1
+  esVendedorBebidas: 0
   esCliente: 0
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: ea81eb3c71b73f24bb8573ee30833e9b, type: 2}
 --- !u!1 &799898177
@@ -7909,13 +7849,57 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: panelPausa
+      value: 
+      objectReference: {fileID: 735735881}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
       propertyPath: panelDerrota
+      value: 
+      objectReference: {fileID: 1683762287}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: textoDerrota
+      value: 
+      objectReference: {fileID: 168491582}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: panelGameOver
       value: 
       objectReference: {fileID: 1683762287}
     - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
       propertyPath: panelVictoria
       value: 
       objectReference: {fileID: 606435070}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: niveles.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: panelFinalVictoria
+      value: 
+      objectReference: {fileID: 700442924}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: panelNivelCompletado
+      value: 
+      objectReference: {fileID: 606435070}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: 'niveles.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8411841e0c13828438a4862b3638aee7, type: 2}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: 'niveles.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 60739ceffbc2e5746b0a899a286c2ce6, type: 2}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: 'niveles.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 8559d6b47cc9a0341a5b99486fa2bbd3, type: 2}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: 'niveles.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a815b35cb3ddd3342a62a23c8f1fc8cf, type: 2}
+    - target: {fileID: 7374221886932755232, guid: 62d1870439c18c04f9b9b5ce8d2a4b58, type: 3}
+      propertyPath: 'niveles.Array.data[4]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 7f373ab8a01dccf4c8df20dcbbf1f0d3, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8222,15 +8206,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Continuar
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -8247,7 +8231,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.85
+  m_fontSize: 30
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8776,12 +8760,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -9071,7 +9057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1068293171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9148,6 +9134,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 606435071}
+  - {fileID: 700442927}
   - {fileID: 1683762288}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9202,6 +9189,81 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1123179125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1123179126}
+  - component: {fileID: 1123179128}
+  - component: {fileID: 1123179127}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1123179126
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123179125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 700442927}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -17.377, y: -5.792}
+  m_SizeDelta: {x: 2297.219, y: 1347.279}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1123179127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123179125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -1946992027, guid: 84873522082196348b931e3f46de09e9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1123179128
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123179125}
+  m_CullTransparentMesh: 1
 --- !u!1 &1127079319
 GameObject:
   m_ObjectHideFlags: 0
@@ -9276,6 +9338,142 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1127079319}
+  m_CullTransparentMesh: 1
+--- !u!1 &1128108525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1128108526}
+  - component: {fileID: 1128108528}
+  - component: {fileID: 1128108527}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1128108526
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128108525}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1416444784}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1128108527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128108525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Continuar
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1128108528
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1128108525}
   m_CullTransparentMesh: 1
 --- !u!1 &1160089032
 GameObject:
@@ -9547,12 +9745,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 1
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -9905,12 +10105,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: NPC
   personalidad: 0
-  esVendedor: 1
+  esVendedorBebidas: 0
   esCliente: 0
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: 21bd817ab7df1e24fbb1a4b9c82c8dbf, type: 2}
 --- !u!1 &1191149703
@@ -9947,7 +10149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.494934, y: 10.030014}
+  m_AnchoredPosition: {x: -0.000010014, y: 13}
   m_SizeDelta: {x: 90.779, y: 26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1191149705
@@ -10406,12 +10608,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 1
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -10804,12 +11008,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: NPC
   personalidad: 0
-  esVendedor: 1
+  esVendedorBebidas: 0
   esCliente: 0
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: 21bd817ab7df1e24fbb1a4b9c82c8dbf, type: 2}
 --- !u!1 &1237815403
@@ -11146,12 +11352,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -12175,6 +12383,139 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1416444783
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1416444784}
+  - component: {fileID: 1416444787}
+  - component: {fileID: 1416444786}
+  - component: {fileID: 1416444785}
+  m_Layer: 5
+  m_Name: Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1416444784
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416444783}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1128108526}
+  m_Father: {fileID: 700442927}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -115}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1416444785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416444783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1416444786}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 442420291}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: IrACreditos
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1416444786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416444783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 1193477769, guid: 26c248721685da44ca34ad60faea50ba, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1416444787
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1416444783}
+  m_CullTransparentMesh: 1
 --- !u!1 &1440209820
 GameObject:
   m_ObjectHideFlags: 0
@@ -12371,7 +12712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6.499962, y: 13.125}
+  m_AnchoredPosition: {x: 16.6, y: 12.935}
   m_SizeDelta: {x: 72.999, y: 25.87}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1475702503
@@ -12783,6 +13124,108 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1560673723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1560673727}
+  - component: {fileID: 1560673726}
+  - component: {fileID: 1560673725}
+  - component: {fileID: 1560673724}
+  m_Layer: 5
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1560673724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560673723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1560673725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560673723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!223 &1560673726
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560673723}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 5
+  m_TargetDisplay: 0
+--- !u!224 &1560673727
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1560673723}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2111919392}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 83.63, y: -23.96}
+  m_SizeDelta: {x: 11.8066, y: 6.811}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1586222248
 GameObject:
   m_ObjectHideFlags: 0
@@ -13280,12 +13723,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: NPC
   personalidad: 0
-  esVendedor: 1
+  esVendedorBebidas: 0
   esCliente: 0
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos: []
   dialogoGrito: {fileID: 11400000, guid: 21bd817ab7df1e24fbb1a4b9c82c8dbf, type: 2}
 --- !u!1 &1588702298
@@ -13825,12 +14270,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 1
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -14242,13 +14689,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nombre: Cliente
-  personalidad: 0
-  esVendedor: 0
+  personalidad: 2
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 1
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -14647,12 +15096,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -14673,7 +15124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1683762288
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15274,7 +15725,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 442420291}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ReiniciarNivel
+        m_MethodName: Reintentar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -15304,8 +15755,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 1654601817, guid: 3d2ceb4de2a713147abc06da178fec62, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -15718,12 +16169,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 0
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -16081,6 +16534,158 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807908478}
   m_CullTransparentMesh: 1
+--- !u!1 &1810846144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1810846148}
+  - component: {fileID: 1810846147}
+  - component: {fileID: 1810846146}
+  - component: {fileID: 1810846145}
+  m_Layer: 7
+  m_Name: puesto_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1810846145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810846144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df435128bad0b047a3677c8d1e8d4f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cantidadRecarga: 50
+  radioInteraccion: 2.5
+  teclaRecarga: 101
+  mensajeVisual: {fileID: 2111919391}
+--- !u!61 &1810846146
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810846144}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10.24, y: 10.24}
+    newSize: {x: 10.24, y: 10.24}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 13.27, y: 16.11}
+  m_EdgeRadius: 0
+--- !u!212 &1810846147
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810846144}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 5
+  m_Sprite: {fileID: -8236634198900203255, guid: 391d24abf90f06b45bb134f8a15f054e, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 10.24, y: 10.24}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!4 &1810846148
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810846144}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 82.3605, y: -18.9722, z: 0}
+  m_LocalScale: {x: 1.348, y: 1.4236, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1940485023}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1870111753
 GameObject:
   m_ObjectHideFlags: 0
@@ -16727,12 +17332,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 1
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -16820,8 +17427,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 18
+  m_fontSizeBase: 18
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -17113,6 +17720,140 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1940485022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1940485023}
+  - component: {fileID: 1940485025}
+  - component: {fileID: 1940485024}
+  m_Layer: 7
+  m_Name: Square
+  m_TagString: Shadow
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1940485023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940485022}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.3458, y: -2.985, z: 0}
+  m_LocalScale: {x: 10.696827, y: 6.970055, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1810846148}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1940485024
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940485022}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!212 &1940485025
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940485022}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1946904380
 GameObject:
   m_ObjectHideFlags: 0
@@ -17401,7 +18142,6 @@ Transform:
   - {fileID: 412017627}
   - {fileID: 1586222249}
   - {fileID: 217609834}
-  - {fileID: 238624605}
   - {fileID: 1228108365}
   - {fileID: 1168655367}
   m_Father: {fileID: 0}
@@ -17463,7 +18203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 326793456, guid: 84873522082196348b931e3f46de09e9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -17966,12 +18706,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nombre: Cliente
   personalidad: 0
-  esVendedor: 0
+  esVendedorBebidas: 0
   esCliente: 1
   quiereComprar: 1
-  precioBaseAgua: 20
+  churrosDeseados: 1
   pagoBaseChurro: 120
-  recuperacionHidratacion: 30
+  precioAgua: 3
+  precioBirra: 5
+  precioGaseosa: 4
   poolDialogos:
   - {fileID: 11400000, guid: bab75750645a16a4c9b3edf9715b78b9, type: 2}
   dialogoGrito: {fileID: 11400000, guid: c2932beb8ecdf624aa33601cb45d5acc, type: 2}
@@ -18111,6 +18853,142 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2111919391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2111919392}
+  - component: {fileID: 2111919394}
+  - component: {fileID: 2111919393}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2111919392
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111919391}
+  m_LocalRotation: {x: -0, y: -0, z: 0.07261852, w: 0.9973599}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1560673727}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 8.329}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.69, y: 1.23}
+  m_SizeDelta: {x: 9.8554, y: 1.9061}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2111919393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111919391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Reponer
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_sharedMaterial: {fileID: 1260715531048141648, guid: 9a14a8a1184c5f14fbce3338ea4d7a35, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 2
+  m_fontSizeBase: 2
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 2
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 1.7020273, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &2111919394
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111919391}
+  m_CullTransparentMesh: 1
 --- !u!1 &2119372268
 GameObject:
   m_ObjectHideFlags: 0
@@ -18353,6 +19231,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc97daa8b78ca6c4a800d071451e6d51, type: 3}
+--- !u!1001 &6645021673248044569
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1106146940106449999, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_Name
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 1106146940106449999, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555675508651875755, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 101.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555675508651875755, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -19.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555675508651875755, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1071.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555675508651875755, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555675508651875755, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555675508651875755, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555675508651875755, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555675508651875755, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555675508651875755, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7555675508651875755, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eb0014afcdc94d247b40997c1d266044, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -18374,3 +19313,6 @@ SceneRoots:
   - {fileID: 1263329592}
   - {fileID: 921834453}
   - {fileID: 1068293174}
+  - {fileID: 6645021673248044569}
+  - {fileID: 1810846148}
+  - {fileID: 1560673727}

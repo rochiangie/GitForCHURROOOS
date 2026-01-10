@@ -139,11 +139,21 @@ public class GameManager : MonoBehaviour
         Debug.Log("PERDISTE: " + m);
     }
 
-    public void SiguienteNivel() {
-        Time.timeScale = 1f; 
-        nivelActualIndex++;
-        if (nivelActualIndex < niveles.Count) CargarNivel(nivelActualIndex);
-        else IrACreditos();
+    // --- ESTA ES LA FUNCION PARA TU BOTON "CONTINUAR" ---
+    // No pide ningun numero (int). Al tocarlo, el script sabe solo que nivel sigue.
+    public void PresionarBoton_SiguienteNivel() {
+        Time.timeScale = 1f; // Reanudar el tiempo
+        
+        int proximoIndice = nivelActualIndex + 1;
+        
+        Debug.Log("<color=orange>[GameManager] Boton Continuar presionado. Entrando al Nivel " + (proximoIndice + 1) + "</color>");
+
+        if (proximoIndice < niveles.Count) {
+            CargarNivel(proximoIndice);
+        } else {
+            Debug.Log("<color=green>[GameManager] ¡No hay mas niveles! Yendo a creditos.</color>");
+            IrACreditos();
+        }
     }
 
     public void Reintentar() {

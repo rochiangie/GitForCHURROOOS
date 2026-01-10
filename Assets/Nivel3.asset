@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bad6077106649984ca415d2f35c00310, type: 3}
   m_Name: Nivel3
   m_EditorClassIdentifier: 
-  metaDinero: 200
+  metaDinero: 500
   duracionDiaHoras: 12
-  probabilidadCompra: 70
-  porcentajeAmigables: 0.693
-  maxChurrosPorPedido: 4
-  multiplicadorCalor: 1.2
+  probabilidadCompra: 50
+  porcentajeAmigables: 0.496
+  maxChurrosPorPedido: 3
+  multiplicadorCalor: 1.5
   esNivelBoss: 0
   prefabBoss: {fileID: 0}

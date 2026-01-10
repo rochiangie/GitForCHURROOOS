@@ -104,16 +104,26 @@ public class DialogoManager : MonoBehaviour
         if(escribiendo) return;
         groupOpciones.SetActive(false);
         
-        if (dialogoData.esVenta && idx == 0 && npcActual.esCliente) {
-            StartCoroutine(FaseNegociacion());
+        // Fase 2: Negociacion de Venta (Si es cliente y es venta)
+        if (dialogoData.esVenta && idx == 0 && npcActual != null && npcActual.esCliente) {
+            if (stats.churrosCantidad > 0) {
+                StartCoroutine(FaseNegociacion());
+            } else {
+                StartCoroutine(ReaccionFinal("¡No tenes churros, chanta! No me hagas perder el tiempo."));
+            }
             return;
         }
 
-        ProcesarImpacto(idx);
-        StartCoroutine(ReaccionFinal(dialogoData.reacciones[idx]));
+        // Reaccion normal (Verificando si podemos procesar el impacto)
+        if (ProcesarImpacto(idx)) {
+            StartCoroutine(ReaccionFinal(dialogoData.reacciones[idx]));
+        } else {
+            StartCoroutine(ReaccionFinal("¡No tengo suficientes churros para darte!"));
+        }
     }
 
     IEnumerator FaseNegociacion() {
+        // ... (Cálculo de precio omitido por brevedad pero se mantiene igual)
         float precioBase = npcActual.pagoBaseChurro != 0 ? npcActual.pagoBaseChurro : 20f;
         float precioFinal = precioBase * npcActual.churrosDeseados;
         
@@ -126,34 +136,47 @@ public class DialogoManager : MonoBehaviour
         
         groupOpciones.SetActive(true);
         ConfigurarBoton(0, "¡Trato hecho!", () => FinalizarTrato(true, precioFinal));
-        ConfigurarBoton(1, "Ni loco, muy barato.", () => FinalizarTrato(false, 0));
+        ConfigurarBoton(1, "No, gracias.", () => FinalizarTrato(false, 0));
         botones[2].gameObject.SetActive(false);
     }
 
     void FinalizarTrato(bool aceptado, float monto) {
         groupOpciones.SetActive(false);
         if (aceptado) {
+            // VERIFICACION CRITICA: ¿Tiene los churros que pidió el cliente?
             if (stats.churrosCantidad >= npcActual.churrosDeseados) {
                 stats.AgregarDinero(monto);
                 for(int i=0; i<npcActual.churrosDeseados; i++) stats.ConsumirChurro();
                 npcActual.FinalizarVenta();
                 StartCoroutine(ReaccionFinal("¡Buenisimo! Estan calentitos."));
             } else {
-                StartCoroutine(ReaccionFinal("¡Me mentiste! No tenes suficientes churros."));
+                StartCoroutine(ReaccionFinal("¡Pero pibe, no tenes los churros que me dijiste!"));
             }
         } else {
             StartCoroutine(ReaccionFinal("Y bueno, busco a otro."));
         }
     }
 
-    void ProcesarImpacto(int idx) {
-        if (dialogoData == null || idx >= dialogoData.impactos.Length) return;
+    bool ProcesarImpacto(int idx) {
+        if (dialogoData == null || idx >= dialogoData.impactos.Length) return false;
         Consecuencia c = dialogoData.impactos[idx];
+
+        // Si la consecuencia pide quitar churros (valor negativo), verificamos stock
+        if (c.churros < 0 && stats.churrosCantidad < Mathf.Abs(c.churros)) {
+            return false;
+        }
+
+        // Ejecutar impacto
         stats.AgregarDinero(c.dinero); 
         stats.RecuperarStamina(c.stamina);
         stats.RecuperarHidratacion(c.hidratacion);
-        if (c.churros < 0) for(int i=0; i<Mathf.Abs(c.churros); i++) stats.ConsumirChurro();
-        else stats.AgregarChurros(c.churros);
+        
+        if (c.churros < 0) {
+            for(int i=0; i<Mathf.Abs(c.churros); i++) stats.ConsumirChurro();
+        } else {
+            stats.AgregarChurros(c.churros);
+        }
+        return true;
     }
 
     IEnumerator ReaccionFinal(string r) {
