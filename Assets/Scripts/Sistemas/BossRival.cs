@@ -12,9 +12,11 @@ public class BossRival : MonoBehaviour
     private PlayerStats stats;
     private float timerRobo;
     private Rigidbody2D rb;
+    private float knockbackTimer = 0f;
 
     void Start()
     {
+        // ... (resto del start igual)
         GameObject p = GameObject.FindGameObjectWithTag("Player");
         if(p) {
             player = p.transform;
@@ -26,6 +28,12 @@ public class BossRival : MonoBehaviour
     void Update()
     {
         if (player == null || GameManager.Instance.juegoTerminado) return;
+
+        // Si estamos bajo efecto de empuje, no sobreescribimos la velocidad
+        if (knockbackTimer > 0) {
+            knockbackTimer -= Time.deltaTime;
+            return;
+        }
 
         // Persecucion simple
         float distancia = Vector2.Distance(transform.position, player.position);
@@ -40,6 +48,11 @@ public class BossRival : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             ManejarRobo();
         }
+    }
+
+    // Metodo para que el PlayerActions nos avise que nos empujo
+    public void RecibirEmpuje(float duracion = 0.5f) {
+        knockbackTimer = duracion;
     }
 
     void ManejarRobo()

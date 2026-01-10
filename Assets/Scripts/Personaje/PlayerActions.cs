@@ -3,10 +3,11 @@
 public class PlayerActions : MonoBehaviour
 {
     [Header("Configuracion de Ataque/Empujon")]
-    public float fuerzaEmpuje = 10f;
-    public float radioAtaque = 1.5f;
+    public float fuerzaEmpuje = 15f;
+    public float radioAtaque = 2.0f;
+    public float duracionAturdimiento = 0.4f;
     public LayerMask capaNPC;
-    public Transform puntoAtaque; // Un objeto vacio frente al player
+    public Transform puntoAtaque; 
 
     private PlayerStats stats;
     private Animator anim;
@@ -15,22 +16,18 @@ public class PlayerActions : MonoBehaviour
     {
         stats = GetComponent<PlayerStats>();
         anim = GetComponent<Animator>();
-        
-        // Si no asignaste un punto de ataque, usamos la posicion del jugador
         if (puntoAtaque == null) puntoAtaque = transform;
     }
 
     public void RealizarAtaque()
     {
-        // 1. Animacion
         if (anim != null) anim.SetTrigger("attack");
 
-        // 2. Sonido
         if (AudioManager.Instance != null) {
             AudioManager.Instance.PlaySFX(AudioManager.Instance.golpePelea);
         }
 
-        // 3. Deteccion de NPCs para empujar
+        // Deteccion
         Collider2D[] golpeados = Physics2D.OverlapCircleAll(puntoAtaque.position, radioAtaque, capaNPC);
 
         foreach (Collider2D npcCol in golpeados)
@@ -38,13 +35,25 @@ public class PlayerActions : MonoBehaviour
             Rigidbody2D rbNPC = npcCol.GetComponent<Rigidbody2D>();
             if (rbNPC != null)
             {
-                // Calculamos direccion del empuje (desde el jugador hacia el NPC)
+                // 1. Calculamos direccion
                 Vector2 direccion = (npcCol.transform.position - transform.position).normalized;
+                if (direccion == Vector2.zero) direccion = transform.right; // Fallback
+
+                // 2. Si es un Boss, lo aturdimos para que no ignore la fisica
+                BossRival boss = npcCol.GetComponent<BossRival>();
+                if (boss != null) boss.RecibirEmpuje(duracionAturdimiento);
+
+                // 3. Aplicamos la fuerza (limpiamos velocidad previa para que se sienta el golpe)
+                rbNPC.linearVelocity = Vector2.zero;
                 rbNPC.AddForce(direccion * fuerzaEmpuje, ForceMode2D.Impulse);
                 
-                Debug.Log("¡PUM! Empujaste a un NPC.");
+                Debug.Log($"<color=red>¡PUM!</color> Empujaste a {npcCol.name} con fuerza {fuerzaEmpuje}");
             }
         }
+
+        // Efecto visual extra: Shake de camara si hay BeatEmUpCamera
+        var cam = FindFirstObjectByType<BeatEmUpCamera>();
+        // if(cam) cam.Shake(0.1f, 0.1f); // Opcional si implementas Shake
     }
 
     // --- Metodos de Venta/Consumo (Ya existentes) ---

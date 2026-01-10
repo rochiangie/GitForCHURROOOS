@@ -23,34 +23,41 @@ public class NPCConversacion : MonoBehaviour
     public float precioGaseosa = 12f;
 
     [Header("Pools de Diálogos")]
-    public List<Dialogo> poolAmables;
-    public List<Dialogo> poolMolestos;
-    public List<Dialogo> poolYaCompro;
+    public List<Dialogo> poolAmables = new List<Dialogo>();
+    public List<Dialogo> poolMolestos = new List<Dialogo>();
+    public List<Dialogo> poolYaCompro = new List<Dialogo>();
 
     public void Interactuar() {
         if (DialogoManager.Instance != null) DialogoManager.Instance.AbrirPanel(this);
     }
 
     public Dialogo ObtenerDialogoDinamico() {
-        // Si ya nos compro, priorizamos el pool de "Ya Compro" (molestia por reincidencia)
+        List<Dialogo> posibles = new List<Dialogo>();
+
         if (yaCompro) {
-            if (poolYaCompro != null && poolYaCompro.Count > 0) {
-                return poolYaCompro[Random.Range(0, poolYaCompro.Count)];
-            }
-            // Si no tenes un dialogo especifico de "ya compre", usamos los molestos como respaldo
-            if (poolMolestos != null && poolMolestos.Count > 0) {
-                return poolMolestos[Random.Range(0, poolMolestos.Count)];
+            // Si ya compro, el NPC "cambia de humor". Buscamos en TODOS sus pools 
+            // cualquier dialogo que este marcado como 'soloPostVenta'.
+            
+            // 1. Miramos en el pool especifico de Ya Compro
+            if (poolYaCompro != null) posibles.AddRange(poolYaCompro);
+
+            // 2. Buscamos en los otros pools por si pusiste el "SaliDeAca" ahi con el flag marcado
+            foreach(var d in poolAmables) if(d != null && d.soloPostVenta) posibles.Add(d);
+            foreach(var d in poolMolestos) if(d != null && d.soloPostVenta) posibles.Add(d);
+        } else {
+            // Si NO compro, respetamos la personalidad asignada por el nivel
+            List<Dialogo> poolBase = (personalidad == PersonalidadNPC.Amable) ? poolAmables : poolMolestos;
+            foreach (Dialogo d in poolBase) {
+                if (d != null && !d.soloPostVenta) posibles.Add(d);
             }
         }
 
-        // Casos normales: elegimos segun la personalidad asignada por el nivel
-        List<Dialogo> poolARevisar = (personalidad == PersonalidadNPC.Amable) ? poolAmables : poolMolestos;
-
-        if (poolARevisar != null && poolARevisar.Count > 0) {
-            return poolARevisar[Random.Range(0, poolARevisar.Count)];
+        // Devolvemos uno al azar de los filtrados
+        if (posibles.Count > 0) {
+            return posibles[Random.Range(0, posibles.Count)];
         }
 
-        Debug.LogWarning($"<color=yellow>[NPC {nombre}]</color> No tiene diálogos cargados.");
+        Debug.LogWarning($"<color=yellow>[NPC {nombre}]</color> No encontro ningun dialogo compatible (yaCompro: {yaCompro}).");
         return null;
     }
 

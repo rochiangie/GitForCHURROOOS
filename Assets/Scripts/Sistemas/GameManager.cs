@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("Configuracion de Niveles")]
     public List<NivelData> niveles;
     public int nivelActualIndex = 0;
+    public List<Dialogo> dialogosPostVentaGlobal; // Lista de posibles dialogos tras vender
     public bool juegoTerminado = false;
     public bool enPausa = false;
 
@@ -107,17 +108,44 @@ public class GameManager : MonoBehaviour
 
     void ActualizarAmbientacion(NivelData data) {
         GameObject[] clientes = GameObject.FindGameObjectsWithTag("Cliente");
+        int countAmables = 0;
+        int countMolestos = 0;
+        string nombresAmables = "";
+        
         foreach (var c in clientes) {
             NPCConversacion npc = c.GetComponent<NPCConversacion>();
             if (npc != null && !npc.esVendedorBebidas) {
                 float rng = Random.value;
                 npc.personalidad = (rng < data.porcentajeAmigables) ? PersonalidadNPC.Amable : PersonalidadNPC.Molesto;
+                
+                if (npc.personalidad == PersonalidadNPC.Amable) {
+                    countAmables++;
+                    nombresAmables += npc.nombre + ", ";
+                } else countMolestos++;
+
                 npc.quiereComprar = (Random.value * 100 < data.probabilidadCompra);
                 npc.churrosDeseados = Random.Range(1, data.maxChurrosPorPedido + 1);
                 npc.pagoBaseChurro = Random.Range(15f, 25f);
+
+                // Inyectamos un dialogo aleatorio del pool global post-venta
+                if (dialogosPostVentaGlobal != null && dialogosPostVentaGlobal.Count > 0 && npc.poolYaCompro.Count == 0) {
+                    Dialogo elegido = dialogosPostVentaGlobal[Random.Range(0, dialogosPostVentaGlobal.Count)];
+                    npc.poolYaCompro.Add(elegido);
+                }
             }
         }
         
+        // --- REPORTE DETALLADO DEL NIVEL ---
+        Debug.Log("<color=yellow><b>========= REPORTE DE NIVEL " + (nivelActualIndex + 1) + " =========</b></color>");
+        Debug.Log($"<color=cyan>👥 Clientes Totales:</color> {clientes.Length}");
+        Debug.Log($"<color=green>😊 Amables ({countAmables}):</color> {nombresAmables.TrimEnd(' ', ',')}");
+        Debug.Log($"<color=red>😠 Molestos:</color> {countMolestos}");
+        Debug.Log($"<color=orange>💰 Meta:</color> ${data.metaDinero}");
+        Debug.Log($"<color=white>🕒 Duracion Real:</color> {data.duracionDiaMinutos} minutos (12h de juego)");
+        Debug.Log($"<color=magenta>🔥 Dificultad Ambiental:</color> x{1f + (nivelActualIndex * 0.25f)} (Sed y Calor)");
+        if (data.esNivelBoss) Debug.Log("<color=red><b>⚠️ NIVEL BOSS DETECTADO</b></color>");
+        Debug.Log("<color=yellow><b>===========================================</b></color>");
+
         if (data.esNivelBoss && data.prefabBoss != null) {
             Instantiate(data.prefabBoss, Vector3.zero, Quaternion.identity);
         }

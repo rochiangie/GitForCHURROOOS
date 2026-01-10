@@ -45,6 +45,7 @@ public class Dialogo : ScriptableObject
     public RamaDialogo[] respuestas;
 
     [Header("Configuracion Especial")]
+    public bool soloPostVenta; // ¿Solo puede aparecer si ya se compro antes?
     public bool esVenta; // Si termina la charla, ¿pasa a la fase de cobrar churros?
     public bool esGrito; // ¿Es un dialogo que se cierra solo?
 }

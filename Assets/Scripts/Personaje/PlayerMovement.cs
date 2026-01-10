@@ -31,8 +31,8 @@ public class PlayerMovement : MonoBehaviour
         moveY = Input.GetAxisRaw("Vertical");
         moveInput = new Vector2(moveX, moveY).normalized;
 
-        // Ataque (Tecla Espacio)
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Ataque (Tecla F)
+        if (Input.GetKeyDown(KeyCode.F))
         {
             if (actions != null) actions.RealizarAtaque();
         }
