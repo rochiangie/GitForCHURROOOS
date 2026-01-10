@@ -19,15 +19,20 @@ public class SunSystem : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance == null || GameManager.Instance.juegoTerminado) return;
-        if (GameManager.Instance.niveles == null || GameManager.Instance.nivelActualIndex >= GameManager.Instance.niveles.Count) return;
+        // SEGURIDAD: Si no hay GameManager o el juego esta detenido, no pasa el tiempo
+        if (GameManager.Instance == null || GameManager.Instance.juegoTerminado || GameManager.Instance.enPausa) return;
+        
+        // SEGURIDAD: Si la lista de niveles esta mal configurada
+        if (GameManager.Instance.niveles == null || GameManager.Instance.nivelActualIndex >= GameManager.Instance.niveles.Count) {
+            Debug.LogWarning("[SunSystem] No hay niveles configurados en el GameManager.");
+            return;
+        }
 
         NivelData dataNivel = GameManager.Instance.niveles[GameManager.Instance.nivelActualIndex];
         
-        // CALCULO DE VELOCIDAD POR MINUTOS:
-        // Si quiero que 12 horas duren X minutos:
-        // velocidad = 12 horas / (X minutos * 60 segundos)
-        float duracionSegundos = dataNivel.duracionDiaMinutos * 60f;
+        // CALCULO DE VELOCIDAD POSITIVA:
+        float duracionMinutos = Mathf.Max(0.1f, dataNivel.duracionDiaMinutos); // Evitamos division por cero
+        float duracionSegundos = duracionMinutos * 60f;
         float velocidadTiempo = horasTotalesTurno / duracionSegundos;
 
         // Pasar el tiempo

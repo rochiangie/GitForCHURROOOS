@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nivel3
   m_EditorClassIdentifier: 
   metaDinero: 150
-  duracionDiaMinutos: 7
+  duracionDiaMinutos: 4
   probabilidadCompra: 50
   porcentajeAmigables: 0.496
   minChurrosPorPedido: 1

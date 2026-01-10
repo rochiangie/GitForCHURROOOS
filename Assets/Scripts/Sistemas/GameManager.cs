@@ -65,7 +65,16 @@ public class GameManager : MonoBehaviour
     }
 
     public void CargarNivel(int index) {
-        if (niveles == null || index < 0 || index >= niveles.Count) return;
+        if (niveles == null || niveles.Count == 0) {
+            Debug.LogError("[GameManager] ¡No hay niveles configurados en la lista!");
+            return;
+        }
+
+        if (index < 0 || index >= niveles.Count) {
+            Debug.LogWarning($"[GameManager] Intentando cargar nivel {index}, pero solo hay {niveles.Count}. Reseteando a 0.");
+            nivelActualIndex = 0;
+            index = 0;
+        }
         
         nivelActualIndex = index;
         NivelData data = niveles[nivelActualIndex];

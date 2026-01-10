@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Nivel1
   m_EditorClassIdentifier: 
   metaDinero: 50
-  duracionDiaMinutos: 7
+  duracionDiaMinutos: 2
   probabilidadCompra: 80
   porcentajeAmigables: 1
   minChurrosPorPedido: 1
   maxChurrosPorPedido: 5
-  multiplicadorCalor: 1
+  multiplicadorCalor: 2.5
   esNivelBoss: 0
   prefabBoss: {fileID: 0}
