@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "O:\\CHURROOOS\\GitForCHURROOOS\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\sistemas\\dialogo\\npcconversacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\dialogo\\npcconversacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\sistemas\\bossrival.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\bossrival.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|o:\\churrooos\\gitforchurrooos\\assets\\scripts\\sistemas\\bossrival.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\bossrival.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|o:\\churrooos\\gitforchurrooos\\assets\\scripts\\sistemas\\dialogo\\npcconversacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\sistemas\\dialogo\\npcconversacion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{64E9A90B-D620-4303-9345-2BE3287AC848}|Assembly-CSharp.csproj|O:\\CHURROOOS\\GitForCHURROOOS\\assets\\scripts\\sistemas\\churroproyectil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -75,6 +75,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "BossRival.cs",
+              "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\BossRival.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Sistemas\\BossRival.cs",
+              "ToolTip": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\BossRival.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Sistemas\\BossRival.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAAwCwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T18:50:13.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "NPCConversacion.cs",
               "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\Dialogo\\NPCConversacion.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Sistemas\\Dialogo\\NPCConversacion.cs",
@@ -83,19 +96,6 @@
               "ViewState": "AgIAACwAAAAAAAAAAAAcwDoAAACAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-08T16:59:15.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BossRival.cs",
-              "DocumentMoniker": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\BossRival.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Sistemas\\BossRival.cs",
-              "ToolTip": "O:\\CHURROOOS\\GitForCHURROOOS\\Assets\\Scripts\\Sistemas\\BossRival.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Sistemas\\BossRival.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAwwCwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-10T18:50:13.426Z",
               "EditorCaption": ""
             },
             {

@@ -163,14 +163,15 @@ public class GameManager : MonoBehaviour
             
             if (spawnPoint != null) {
                 spawnPos = spawnPoint.transform.position;
+                Debug.Log($"<color=green><b>[SPAWN]</b></color> Punto de spawn encontrado en {spawnPos}.");
             } else {
-                // Si no hay punto, que aparezca lejos del player para que no sea injusto
+                Debug.LogWarning("<color=orange><b>[SPAWN]</b></color> No se encontro objeto con Tag 'SpawnBoss'. Usando fallback alejado del jugador.");
                 GameObject p = GameObject.FindGameObjectWithTag("Player");
-                if(p) spawnPos = p.transform.position + new Vector3(10, 10, 0); 
+                if(p) spawnPos = p.transform.position + new Vector3(8f, 8f, 0); 
             }
 
             Instantiate(data.prefabBoss, spawnPos, Quaternion.identity);
-            Debug.Log($"<color=red><b>[BOSS]</b></color> ¡Apareció en {spawnPos}!");
+            Debug.Log($"<color=red><b>[BOSS]</b></color> Instanciado en {spawnPos}.");
         }
     }
 

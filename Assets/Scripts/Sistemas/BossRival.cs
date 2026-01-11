@@ -46,7 +46,12 @@ public class BossRival : MonoBehaviour
         if (agent != null) {
             agent.updateRotation = false; // El sprite no debe girar como un avion
             agent.updateUpAxis = false;   // No queremos que se incline en 3D
+            agent.updatePosition = false; // El agente NO mueve el transform, lo movemos por RB
             agent.speed = velocidadChase;
+
+            // Warp obliga al agente a estar en la posicion inicial de inmediato
+            agent.Warp(transform.position);
+            Debug.Log($"<color=white>[BOSS]</color> Mi posicion inicial detectada es: {transform.position}");
         }
 
         GameObject p = GameObject.FindGameObjectWithTag("Player");
@@ -71,27 +76,34 @@ public class BossRival : MonoBehaviour
         // Si estamos bajo efecto de empuje o bloqueo, pausamos el agente
         if (knockbackTimer > 0) {
             knockbackTimer -= Time.deltaTime;
-            if(agent != null) agent.isStopped = true;
+            if(agent != null && agent.isOnNavMesh) agent.isStopped = true;
             return;
         }
-
-        if(agent != null) agent.isStopped = false;
 
         float distancia = Vector2.Distance(transform.position, player.position);
         
         if (distancia > distanciaRobo)
         {
-            // --- MOVIMIENTO CON NAVMESH ---
-            if (agent != null && agent.enabled) {
+            if (agent != null && agent.enabled && agent.isOnNavMesh) {
+                agent.isStopped = false; 
                 agent.SetDestination(player.position);
-                agent.speed = velocidadChase;
+                
+                // --- MOVIMIENTO FISICO BASADO EN NAVMESH ---
+                // Le pedimos al RB que use la velocidad que el NavMesh desea
+                rb.linearVelocity = agent.desiredVelocity;
             }
         }
         else
         {
-            if(agent != null) agent.isStopped = true;
+            if(agent != null && agent.isOnNavMesh) agent.isStopped = true;
             rb.linearVelocity = Vector2.zero;
             ManejarRobo();
+        }
+
+        // --- SINCRONIZACION ---
+        // Sincronizamos la posicion del agente con la del objeto fisico
+        if (agent != null && agent.isOnNavMesh) {
+            agent.nextPosition = transform.position;
         }
     }
 
